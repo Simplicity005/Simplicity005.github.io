@@ -1,0 +1,51 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif; /* Clean, modern font */
+}
+
+body {
+  background-color: #0f172a; /* Dark slate background */
+  color: #f8fafc;
+}
+
+/* Navbar Styling */
+.navbar {
+  width: 100%;
+  padding: 2rem 0;
+  background-color: #0f172a;
+  border-bottom: 1px solid #1e293b; /* Subtle line to separate nav */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center; /* This centers the UL */
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem; /* Space between links */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #94a3b8; /* Muted text color */
+  font-weight: 500;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Hover Effect */
+.nav-links a:hover {
+  color: #38bdf8; /* Soft blue highlight */
+}
