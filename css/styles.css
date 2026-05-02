@@ -19,13 +19,18 @@ body {
   width: 100%;
   padding: 2rem 0;
   background-color: #0f172a;
-  border-bottom: 1px solid #1e293b; /* Subtle line to separate nav */
+  border-bottom: 1px solid #1e293b;
+  display: flex;
+  justify-content: space-between; /* Spreads the three divs apart */
+  align-items: center;
+  padding: 20px 40px;
+  position: relative; /* Subtle line to separate nav */
 }
 
 .nav-container {
-  display: flex;
-  justify-content: center; /* This centers the UL */
+  display: flex; /* This centers the UL */
   align-items: center;
+  justify-content: center;
 }
 
 .nav-links {
@@ -48,4 +53,24 @@ body {
 /* Hover Effect */
 .nav-links a:hover {
   color: #38bdf8; /* Soft blue highlight */
+}
+
+.nav-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center; /* This centers the links specifically */
+}
+.nav-left {
+  position: absolute;
+}
+
+.logo {
+  font-family: "Meddon", cursive;
+  font-weight: 500;
+  font-size: 1.2rem;
+  font-style: normal;
+  color: #94a3b8;
+}
+.logo:hover {
+  cursor: text;
 }
