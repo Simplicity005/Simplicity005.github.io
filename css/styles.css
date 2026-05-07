@@ -10,21 +10,25 @@
 }
 
 body {
-  background-color: #0f172a; /* Dark slate background */
-  color: #f8fafc;
+  background-color: #0f172a; /* The Navy/Slate color from your image */
+  background-image: url("../assets/images/topo-pattern.svg"); /* This activates the topographic lines */
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #1a1b2e; /* Dark text on light cards */
 }
 
 /* Navbar Styling */
 .navbar {
   width: 100%;
   padding: 2rem 0;
-  background-color: #0f172a;
   border-bottom: 1px solid #1e293b;
   display: flex;
   justify-content: space-between; /* Spreads the three divs apart */
   align-items: center;
   padding: 20px 40px;
   position: relative; /* Subtle line to separate nav */
+  border-style: none;
+  background-color: transparent;
 }
 
 .nav-container {
@@ -73,4 +77,48 @@ body {
 }
 .logo:hover {
   cursor: text;
+}
+
+/* 2. Grid Container Setup */
+.grid-container {
+  display: grid;
+  max-width: 1000px;
+  margin: 60px auto; /* Centered, with space below the navbar */
+
+  /* Defining 4 columns of equal width and 3 rows */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+  gap: 30px; /* Space between the boxes */
+  height: 80vh; /* Set a height to stretch the rows */
+
+  /* The main logic: Defining where the boxes go using "areas" */
+  grid-template-areas:
+    "hero hero hero photo"
+    "hero hero hero contact"
+    ". . . contact";
+}
+
+/* 3. Base Card Styles (The Bubbles) */
+.card {
+  background-color: #6a8d92; /* The grey/sage card color */
+  border-radius: 60px; /* Very high rounded corners, matching image */
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Assigning HTML divs to the Grid areas */
+.hero-box {
+  grid-area: hero;
+}
+.photo-box {
+  grid-area: photo;
+  background-color: transparent; /* Leave transparent for now, so we only see the background */
+}
+.contact-box {
+  grid-area: contact;
+  padding: 40px;
+  align-items: center; /* Center the "Get in touch" text */
 }
