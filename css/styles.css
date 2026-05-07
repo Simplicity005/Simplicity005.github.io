@@ -3,10 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:
-    "Inter",
-    -apple-system,
-    sans-serif; /* Clean, modern font */
 }
 
 body {
@@ -116,6 +112,7 @@ body {
   margin-bottom: -50px;
   filter: drop-shadow(20px 20px 0px #000);
   z-index: 0;
+  font-size: 2rem;
 }
 .photo-box {
   grid-area: photo;
@@ -129,5 +126,11 @@ body {
   margin-left: -300px; /* Pulls it LEFT */
   z-index: 1;
   filter: drop-shadow(20px 20px 0px #000);
+  padding: 0 100px 0 200px;
   background-color: #a1c2bd;
+  font-size: 3rem;
+  text-align: right;
+}
+.hero-name {
+  font-style: bold;
 }
