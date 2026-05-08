@@ -92,22 +92,19 @@ body {
 
 /* 2. Grid Container Setup */
 .grid-container {
+  position: relative;
   display: grid;
   max-width: 1000px;
   margin: 60px auto; /* Centered, with space below the navbar */
 
   /* Defining 4 columns of equal width and 3 rows */
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(7, 90px);
 
   gap: 30px; /* Space between the boxes */
   height: 70vh; /* Set a height to stretch the rows */
 
   /* The main logic: Defining where the boxes go using "areas" */
-  grid-template-areas:
-    "hero hero hero photo"
-    "hero hero hero contact"
-    ". . . contact";
 }
 
 /* 3. Base Card Styles (The Bubbles) */
@@ -122,21 +119,31 @@ body {
 
 /* Assigning HTML divs to the Grid areas */
 .hero-box {
-  grid-area: hero;
-  margin-bottom: -50px;
+  grid-column: 1 / 8; /* Spans 1st to 7th line */
+  grid-row: 1 / 5;
+
+  margin-bottom: 0px;
   filter: drop-shadow(20px 20px 0px #000);
   z-index: 0;
   font-size: 2rem;
 }
 .photo-box {
-  grid-area: photo;
-  background-color: transparent; /* Leave transparent for now, so we only see the background */
+  grid-column: 6 / 9; /* Starts exactly where Hero ends */
+  grid-row: 1 / 5; /* Sits at the top */
+  background-color: #708993;
+  padding: 0; /* Remove padding so photo can fill the box */
+  overflow: hidden; /* Keeps the photo inside the rounded corners */
+  filter: drop-shadow(20px 20px 0px #000);
+  z-index: 20;
+  border: 3px solid black;
 }
 .contact-box {
-  grid-area: contact;
+  grid-column: 10 / 10; /* Starts inside Box 1 and ends inside Box 2 */
+  grid-row: 1 / 5; /* Sits on the bottom half */
+  background-color: #a1c2bd;
   padding: 40px;
   align-items: center; /* Center the "Get in touch" text */
-  margin-top: -50px; /* Pulls it UP */
+  margin-top: 0px; /* Pulls it UP */
   margin-left: -300px; /* Pulls it LEFT */
   z-index: 1;
   filter: drop-shadow(20px 20px 0px #000);
@@ -148,24 +155,10 @@ body {
 .hero-name {
   font-style: bold;
 }
-.photo-box {
-  grid-area: photo;
-  padding: 0; /* Remove padding so the photo can touch the edges if you want */
-  overflow: hidden; /* This keeps the photo inside the rounded bubble corners */
-  background-color: #6a8d92; /* Matches the other cards */
-  display: flex;
-  align-items: flex-end; /* Keeps you at the bottom of the card like the mockup */
-  justify-content: center;
-}
-
 .profile-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* This makes the photo fill the space without stretching */
-  display: block;
-  /* If you want that slightly 'zoomed' look from your design: */
-  transform: scale(1.1);
-  transition: transform 0.5s ease;
+  object-fit: cover; /* This makes sure you fill the box without stretching */
 }
 
 /* Optional: Fun hover effect */
