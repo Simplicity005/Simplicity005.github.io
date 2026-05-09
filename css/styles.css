@@ -32,7 +32,6 @@ body {
 .navbar {
   width: 100%;
   padding: 2rem 0;
-  border-bottom: 1px solid #1e293b;
   display: flex;
   justify-content: space-between; /* Spreads the three divs apart */
   align-items: center;
@@ -109,7 +108,7 @@ body {
 
 /* 3. Base Card Styles (The Bubbles) */
 .card {
-  background-color: #708993; /* The grey/sage card color */
+  /* The grey/sage card color */
   border-radius: 40px; /* Very high rounded corners, matching image */
   padding: 50px;
   display: flex;
@@ -119,6 +118,7 @@ body {
 
 /* Assigning HTML divs to the Grid areas */
 .hero-box {
+  background-color: #a1c2bd;
   grid-column: 1 / 8; /* Spans 1st to 7th line */
   grid-row: 1 / 5;
 
@@ -140,7 +140,7 @@ body {
 .contact-box {
   grid-column: 10 / 10; /* Starts inside Box 1 and ends inside Box 2 */
   grid-row: 1 / 5; /* Sits on the bottom half */
-  background-color: #a1c2bd;
+  background-color: #708993;
   padding: 40px;
   align-items: center; /* Center the "Get in touch" text */
   margin-top: 0px; /* Pulls it UP */
@@ -148,7 +148,6 @@ body {
   z-index: 1;
   filter: drop-shadow(20px 20px 0px #000);
   padding: 0 100px 0 200px;
-  background-color: #a1c2bd;
   font-size: 3rem;
   text-align: right;
 }
