@@ -84,7 +84,7 @@ body {
   max-width: 80vw;
   margin: 60px auto;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr) 0.5fr;
   gap: 30px;
 }
 
@@ -120,7 +120,7 @@ body {
 .contact-box {
   grid-column: 8 / 11;
   grid-row: 1 / 5;
-  background-color: #1b4332;
+  background-color: #2d6a4f;
   z-index: 1;
   filter: drop-shadow(20px 20px 0px #000);
   font-size: 1.5rem;
