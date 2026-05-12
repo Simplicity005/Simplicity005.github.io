@@ -83,9 +83,9 @@ body {
   display: grid;
   max-width: 80vw;
   margin: 60px auto;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(4, 1fr) 0.5fr;
-  gap: 30px;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 50px;
 }
 
 .card {
@@ -98,7 +98,7 @@ body {
 
 .hero-box {
   background-color: #52b788;
-  grid-column: 1 / 9;
+  grid-column: 1 / 10;
   grid-row: 1 / 5;
   filter: drop-shadow(20px 20px 0px #000);
   z-index: 0;
@@ -107,7 +107,7 @@ body {
 }
 
 .photo-box {
-  grid-column: 6 / 9;
+  grid-column: 7 / 10;
   grid-row: 1 / 5;
   background-color: #b7e4c7;
   padding: 0;
@@ -118,7 +118,7 @@ body {
 }
 
 .contact-box {
-  grid-column: 8 / 11;
+  grid-column: 8 / 12;
   grid-row: 1 / 5;
   background-color: #2d6a4f;
   z-index: 1;
@@ -137,6 +137,18 @@ body {
   height: 100%;
   object-fit: cover;
   filter: drop-shadow(20px 20px 0px black);
+}
+
+.linkedin {
+  grid-column: 2/4;
+  background-color: #74c69d;
+  border-radius: 40px;
+}
+.gmail {
+  grid-column: 5/7;
+}
+.instagram {
+  grid-column: 8/10;
 }
 
 .about-bento {
