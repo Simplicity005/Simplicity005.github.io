@@ -40,7 +40,6 @@ body {
   background: transparent;
 }
 
-/* Base flex values to force mathematical layout balancing */
 .nav-left,
 .nav-right {
   flex: 1;
@@ -48,11 +47,11 @@ body {
 }
 
 .nav-center {
-  flex: 2; /* Gives the middle links more priority over structural flanks */
+  flex: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px; /* Perfectly gaps your inline links directly inside the container */
+  gap: 40px;
 }
 
 .nav-left {
@@ -87,9 +86,6 @@ body {
   filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
 }
 
-/* ==========================================================================
-   GRID PORTFOLIO LAYOUT
-   ========================================================================== */
 .grid-container {
   position: relative;
   display: grid;
@@ -111,7 +107,7 @@ body {
 .hero-box {
   background-color: #52b788;
   grid-column: 1 / 10;
-  grid-row: 1 / 5;
+  grid-row: 1 / 4;
   filter: drop-shadow(20px 20px 0px #000);
   z-index: 0;
   font-size: 1.5rem;
@@ -123,8 +119,9 @@ body {
 }
 
 .photo-box {
-  grid-column: 7 / 10;
-  grid-row: 1 / 5;
+  position: relative;
+  grid-column: 7 / 12;
+  grid-row: 1 / 4;
   background-color: #b7e4c7;
   padding: 0;
   overflow: hidden;
@@ -134,36 +131,23 @@ body {
 }
 
 .profile-img {
-  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   height: 100%;
+  width: 100%;
   object-fit: cover;
   filter: drop-shadow(20px 20px 0px black);
 }
 
-.contact-box {
-  grid-column: 8 / 12;
-  grid-row: 1 / 5;
-  background-color: #2d6a4f;
-  z-index: 1;
-  filter: drop-shadow(20px 20px 0px #000);
-  font-size: 1.5rem;
-  text-align: right;
-  padding-left: 100px;
-  color: #95d5b2;
-}
-
-/* ==========================================================================
-   DYNAMIC BENTO SOCIAL CARDS
-   ========================================================================== */
 .social-bento-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-row: 4 / 5; /* Forces items down structurally to bottom-level of bento */
-  z-index: 30; /* Places them above deep background layers */
+  grid-row: 4 / 5;
+  z-index: 30;
 }
 
-/* Individual Grid Column Positions */
 .linkedin {
   grid-column: 2 / 3;
 }
