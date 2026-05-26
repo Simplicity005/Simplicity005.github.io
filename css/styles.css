@@ -1,3 +1,6 @@
+html {
+  scrollbar-gutter: stable both-edges;
+}
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +23,7 @@ body {
   background-image:
     linear-gradient(rgba(64, 145, 108, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(64, 145, 108, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px; /* Size of the grid squares */
+  background-size: 40px 40px;
   will-change: transform;
   transition: transform 0.1s ease-out;
 }
@@ -32,52 +35,61 @@ body {
   align-items: center;
   padding: 20px 40px;
   position: sticky;
+  top: 0;
+  z-index: 1000;
   background: transparent;
 }
 
-.nav-container {
+/* Base flex values to force mathematical layout balancing */
+.nav-left,
+.nav-right {
+  flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2.5rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #52b788;
-  font-family: "Medula One", system-ui;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-  font-weight: 700;
-}
-
-.nav-links a:hover {
-  color: #d8f3dc;
-  filter: drop-shadow(5px 3px 0px black);
 }
 
 .nav-center {
-  flex-grow: 1;
+  flex: 2; /* Gives the middle links more priority over structural flanks */
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 40px; /* Perfectly gaps your inline links directly inside the container */
 }
 
 .nav-left {
-  position: absolute;
+  justify-content: flex-start;
+}
+
+.nav-right {
+  justify-content: flex-end;
 }
 
 .logo {
   font-family: "Mrs Saint Delafield", cursive;
   font-weight: 500;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: #d8f3dc;
+  text-decoration: none;
 }
 
+.nav-center a {
+  text-decoration: none;
+  color: #52b788;
+  font-family: "Medula One", system-ui;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-center a:hover {
+  color: #d8f3dc;
+  transform: translateY(-2px);
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* ==========================================================================
+   GRID PORTFOLIO LAYOUT
+   ========================================================================== */
 .grid-container {
   position: relative;
   display: grid;
@@ -106,6 +118,10 @@ body {
   color: #1b4332;
 }
 
+.hero-name {
+  font-weight: bold;
+}
+
 .photo-box {
   grid-column: 7 / 10;
   grid-row: 1 / 5;
@@ -117,6 +133,13 @@ body {
   border: 3px solid black;
 }
 
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: drop-shadow(20px 20px 0px black);
+}
+
 .contact-box {
   grid-column: 8 / 12;
   grid-row: 1 / 5;
@@ -125,32 +148,66 @@ body {
   filter: drop-shadow(20px 20px 0px #000);
   font-size: 1.5rem;
   text-align: right;
+  padding-left: 100px;
   color: #95d5b2;
 }
 
-.hero-name {
-  font-weight: bold;
+/* ==========================================================================
+   DYNAMIC BENTO SOCIAL CARDS
+   ========================================================================== */
+.social-bento-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-row: 4 / 5; /* Forces items down structurally to bottom-level of bento */
+  z-index: 30; /* Places them above deep background layers */
 }
 
-.profile-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: drop-shadow(20px 20px 0px black);
-}
-
+/* Individual Grid Column Positions */
 .linkedin {
-  grid-column: 2/4;
-  background-color: #74c69d;
-  border-radius: 40px;
+  grid-column: 2 / 3;
 }
 .gmail {
-  grid-column: 5/7;
+  grid-column: 4 / 5;
 }
 .instagram {
-  grid-column: 8/10;
+  grid-column: 6 / 7;
 }
 
+.social-card {
+  width: 75px;
+  height: 75px;
+  background-color: #74c69d;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 2px solid #1b4332;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(8px 8px 0px #000);
+}
+
+.social-card img {
+  height: 35px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Interactive States for Social Buttons */
+.social-card:hover {
+  transform: translate(-4px, -4px);
+  filter: drop-shadow(12px 12px 0px #000);
+  background-color: #d8f3dc;
+}
+
+.social-card:hover img {
+  transform: scale(1.15);
+}
+
+/* ==========================================================================
+   ABOUT ME SECTION
+   ========================================================================== */
 .about-bento {
   display: grid;
   max-width: 80vw;
@@ -164,18 +221,20 @@ body {
   background-color: #708993;
   text-align: center;
   grid-column: span 10;
-  grid-row: 1/1;
+  grid-row: 1 / 2;
   border-radius: 40px;
   padding: 30px;
   font-size: 1.3rem;
   filter: drop-shadow(20px 20px 0px #000);
 }
+
 .about-me-para {
   background-color: #708993;
   position: relative;
   grid-column: span 10;
-  grid-row: 3/6;
+  grid-row: 3 / 6;
   text-align: center;
   padding: 30px;
   border-radius: 40px;
+  line-height: 1.6;
 }

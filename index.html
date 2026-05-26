@@ -1,120 +1,88 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Medula+One&family=Mrs+Saint+Delafield&display=swap");
-    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Name | Portfolio</title>
+    <title>Arjun Sanesh | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Medula+One&family=Mrs+Saint+Delafield&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <div id="bg-pattern"></div>
+
     <nav class="navbar">
       <div class="nav-left">
         <span class="logo">Arjun Sanesh</span>
       </div>
 
       <div class="nav-center">
-        <ul class="nav-links">
-          <li><a href="#about">ABOUT ME</a></li>
-          <li><a href="#work">MY WORK</a></li>
-          <li><a href="#contact">CONTACT ME</a></li>
-        </ul>
+        <a href="#about">ABOUT ME</a>
+        <a href="#work">MY WORK</a>
+        <a href="#contact">CONTACT ME</a>
       </div>
+
+      <div class="nav-right"></div>
     </nav>
+
     <main class="grid-container">
       <div class="card hero-box">
         <p class="greeting">Hi, I'm</p>
         <h1 class="hero-name">ARJUN SANESH</h1>
         <p class="hero-tagline">Software Engineer // Systems Enthusiast</p>
       </div>
+
       <div class="card photo-box">
         <img
           src="./assets/images/1000027072 (1).png"
-          alt="Arjun"
+          alt="Portrait of Arjun Sanesh"
           class="profile-img"
         />
       </div>
+
       <div class="card contact-box">
         <h2>GET IN TOUCH</h2>
       </div>
-      <div class="social-bento linkedin">
+
+      <div class="social-bento-item linkedin">
         <a
           href="YOUR_LINKEDIN_URL"
           class="social-card"
           target="_blank"
+          rel="noopener noreferrer"
           aria-label="LinkedIn"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-            ></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
+          <img src="assets/images/linkedin.png" alt="LinkedIn icon" />
         </a>
       </div>
-      <div class="social-bento gmail">
+
+      <div class="social-bento-item gmail">
         <a
           href="mailto:YOUR_EMAIL@gmail.com"
           class="social-card"
           aria-label="Gmail"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-            ></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
+          <img src="assets/images/mail.png" alt="Email icon" />
         </a>
       </div>
-      <div class="social-bento instagram">
+
+      <div class="social-bento-item instagram">
         <a
-          href="YOUR_INSTAGRAM_URL"
+          href="YOUR_TRANS_INSTAGRAM_URL"
           class="social-card"
           target="_blank"
+          rel="noopener noreferrer"
           aria-label="Instagram"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
+          <img src="assets/images/instagram.png" alt="Instagram icon" />
         </a>
       </div>
     </main>
+
     <section id="about" class="about-bento">
       <div class="about-center">
         <h2>About Me</h2>
@@ -131,6 +99,7 @@
         simplicity, both in code and in life.
       </div>
     </section>
+
     <script src="js/script.js"></script>
   </body>
 </html>
