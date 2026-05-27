@@ -92,7 +92,7 @@ body {
   max-width: 80vw;
   margin: 60px auto;
   grid-template-columns: repeat(11, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 13vh);
   gap: 50px;
 }
 
@@ -149,18 +149,20 @@ body {
 }
 
 .linkedin {
-  grid-column: 2 / 3;
+  grid-column-start: 2;
+  grid-column-end: 5;
 }
 .gmail {
-  grid-column: 4 / 5;
+  grid-column-start: 5;
+  grid-column-end: 8;
 }
 .instagram {
-  grid-column: 6 / 7;
+  grid-column-start: 8;
+  grid-column-end: 11;
 }
 
 .social-card {
-  width: 75px;
-  height: 75px;
+  background-color: #1b4332;
   background-color: #74c69d;
   border-radius: 25px;
   display: flex;
