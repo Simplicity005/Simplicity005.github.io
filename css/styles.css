@@ -3,9 +3,6 @@
    Accent Yellow : FEEC41
 */
 
-html {
-  scrollbar-gutter: stable both-edges;
-}
 * {
   margin: 0;
   padding: 0;
@@ -42,9 +39,11 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: transparent;
+  background-color: rgb(244, 241, 222, 0);
+  box-shadow: none;
   align-items: center;
   justify-content: center;
+  transition: border 0.3s ease;
 }
 
 .nav-center {
@@ -178,7 +177,7 @@ body {
   justify-content: center;
   text-decoration: none;
   border: 2px solid black;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.2s ease;
   filter: drop-shadow(3px 3px 0px #000);
 }
 
@@ -189,6 +188,7 @@ body {
   z-index: 50;
   background-color: #f4f1de;
   border-radius: 100%;
+  clip-path: circle(45%);
 }
 
 /* Interactive States for Social Buttons */

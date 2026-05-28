@@ -13,3 +13,30 @@ document.addEventListener('mousemove', (e) => {
     // Apply the transformation
     bg.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
+
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  const scrollPosition = window.scrollY;
+  
+  // The distance (in pixels) over which the navbar becomes fully opaque.
+  // 300px means it starts at 0% opacity at the top, and hits 100% opacity 300px down.
+  const maxScroll = 300; 
+  
+  // Calculate alpha ratio between 0 and 1
+  let alpha = scrollPosition / maxScroll;
+  
+  // Cap the alpha value at 1 so it doesn't break when scrolling deep down
+  if (alpha > 1) {
+    alpha = 1;
+  }
+  
+  // Apply the calculated opacity directly to your #081c15 green color (8, 28, 21 in RGB)
+  navbar.style.backgroundColor = `rgba(244, 241, 222, ${alpha*3})`;
+  
+  // Dynamic shadow: only fade in the shadow tracking the opacity level
+  if (alpha > 0.1) {
+    navbar.style.border = `3px solid rgba(0, 0, 0, ${alpha*3})`;
+  } else {
+    navbar.style.border = 'none';
+  }
+});
