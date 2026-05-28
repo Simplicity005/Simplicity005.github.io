@@ -31,7 +31,7 @@ window.addEventListener('scroll', () => {
   }
   
   // Apply the calculated opacity directly to your #081c15 green color (8, 28, 21 in RGB)
-  navbar.style.backgroundColor = `rgba(242, 204, 143, ${alpha*3})`;
+  navCenter.style.backgroundColor = `rgb(244, 241, 222)`;
   
   // Dynamic shadow: only fade in the shadow tracking the opacity level
   if (alpha > 0.1) {
