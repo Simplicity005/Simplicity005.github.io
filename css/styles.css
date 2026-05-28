@@ -1,3 +1,8 @@
+/* Accent teal : 24B1B1
+   Accent Magenta : ff00ff
+   Accent Yellow : FEEC41
+*/
+
 html {
   scrollbar-gutter: stable both-edges;
 }
@@ -50,6 +55,21 @@ body {
   width: 40vw;
 }
 
+.nav-items {
+  flex: 1;
+  background-color: #f4f1de;
+  border-radius: 7px;
+  width: max-content;
+  border: 2px solid black;
+  transition: all 0.2s ease;
+  filter: drop-shadow(2px 2px 0px black);
+}
+
+.nav-items:hover {
+  filter: drop-shadow(0px 0px 0px black);
+  transform: translateX(3px);
+  transform: translate(3px);
+}
 .nav-center a {
   display: block;
   text-decoration: none;
@@ -58,22 +78,19 @@ body {
   font-size: 1rem;
   font-weight: 900;
   text-align: center;
+  padding: 5px;
+  transition: all 0.1s;
 }
 
-.nav-items {
-  flex: 1;
-  background-color: #f4f1de;
-  border-radius: 7px;
-  width: max-content;
-  padding: 5px;
-  border: 3px solid black;
-  transition: all 0.2s ease;
-  filter: drop-shadow(2px 2px 0px black);
-}
 .nav-center a:hover {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(244, 241, 222, 0.3),
+    rgba(244, 241, 222, 0.3) 2px,
+    transparent 2px,
+    transparent 5px
+  );
   color: #f4f1de;
-  transform: translateY(0px);
-  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0));
   background-color: black;
 }
 
@@ -96,13 +113,15 @@ body {
 }
 
 .hero-box {
-  background-color: #52b788;
+  background-color: #f4f1de;
   grid-column: 1 / 10;
   grid-row: 1 / 4;
-  filter: drop-shadow(20px 20px 0px #000);
+  filter: drop-shadow(10px 10px 0px #000);
+  border-radius: 20px;
+  border: 3px solid black;
   z-index: 0;
   font-size: 1.5rem;
-  color: #1b4332;
+  color: black;
 }
 
 .hero-name {
@@ -113,10 +132,10 @@ body {
   position: relative;
   grid-column: 7 / 12;
   grid-row: 1 / 4;
-  background-color: #b7e4c7;
+  background-color: #24b1b1;
   padding: 0;
   overflow: hidden;
-  filter: drop-shadow(20px 20px 0px #000);
+  filter: drop-shadow(10px 10px 0px #000);
   z-index: 20;
   border: 3px solid black;
 }
