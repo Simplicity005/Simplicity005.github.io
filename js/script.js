@@ -31,12 +31,12 @@ window.addEventListener('scroll', () => {
   }
   
   // Apply the calculated opacity directly to your #081c15 green color (8, 28, 21 in RGB)
-  navbar.style.backgroundColor = `rgba(244, 241, 222, ${alpha*3})`;
+  navbar.style.backgroundColor = `rgba(242, 204, 143, ${alpha*3})`;
   
   // Dynamic shadow: only fade in the shadow tracking the opacity level
   if (alpha > 0.1) {
-    navbar.style.border = `3px solid rgba(0, 0, 0, ${alpha*3})`;
+    navbar.style.borderBottom = `3px solid rgba(0, 0, 0, ${alpha*3})`;
   } else {
-    navbar.style.border = 'none';
+    navbar.style.borderBottom = 'none';
   }
 });

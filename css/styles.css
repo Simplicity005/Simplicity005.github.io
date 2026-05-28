@@ -33,7 +33,7 @@ body {
 .navbar {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 20px 40px;
   position: sticky;
@@ -41,9 +41,7 @@ body {
   z-index: 1000;
   background-color: rgb(244, 241, 222, 0);
   box-shadow: none;
-  align-items: center;
-  justify-content: center;
-  transition: border 0.3s ease;
+  transition: border-bottom 0.3s ease;
 }
 
 .nav-center {
