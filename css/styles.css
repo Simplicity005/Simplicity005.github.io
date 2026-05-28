@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  background: #081c15 no-repeat center/cover;
+  background: #f4f1de no-repeat center/cover;
   font-family: "Oswald", sans-serif;
 }
 
@@ -177,7 +177,7 @@ body {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border: 2px solid #1b4332;
+  border: 2px solid black;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   filter: drop-shadow(3px 3px 0px #000);
 }
@@ -185,21 +185,25 @@ body {
 .social-card img {
   height: 35px;
   width: auto;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   z-index: 50;
+  background-color: #f4f1de;
+  border-radius: 100%;
 }
 
 /* Interactive States for Social Buttons */
 .social-card:hover {
-  transform: translate(4px, 4px);
-  filter: drop-shadow(0px 0px 0px #000);
+  transform: translate(2px, 2px);
+
   background: repeating-linear-gradient(
     45deg,
-    rgb(254, 236, 65, 0.3),
-    rgba(0, 0, 0, 0.3) 2px,
+    rgba(244, 241, 222, 0.3),
+    rgba(244, 241, 222, 0.3) 2px,
     transparent 2px,
     transparent 5px
   );
+  background-color: black;
+  filter: drop-shadow(0px 0px 0px #000);
 }
 
 /* ==========================================================================
