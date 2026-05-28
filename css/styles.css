@@ -38,36 +38,16 @@ body {
   top: 0;
   z-index: 1000;
   background: transparent;
-}
-
-.nav-left,
-.nav-right {
-  flex: 1;
-  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-center {
-  flex: 2;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 40px;
-}
-
-.nav-left {
-  justify-content: flex-start;
-}
-
-.nav-right {
-  justify-content: flex-end;
-}
-
-.logo {
-  font-family: "Mrs Saint Delafield", cursive;
-  font-weight: 500;
-  font-size: 2.5rem;
-  color: #d8f3dc;
-  text-decoration: none;
+  width: 40vw;
 }
 
 .nav-center a {
@@ -77,12 +57,12 @@ body {
   font-family: "Oswald", sans-serif;
   font-size: 1rem;
   font-weight: 900;
+  text-align: center;
 }
 
 .nav-items {
-  display: block;
+  flex: 1;
   background-color: #f4f1de;
-  color: black;
   border-radius: 7px;
   width: max-content;
   padding: 5px;
