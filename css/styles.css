@@ -158,6 +158,8 @@ body {
 }
 
 .profile-card-name {
+  grid-column: 2/4;
+  grid-row: 1/2;
   font-family: "Oswald", sans-serif;
   font-size: 1.5rem;
   font-weight: 900;
