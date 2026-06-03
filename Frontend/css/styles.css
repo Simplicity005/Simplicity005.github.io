@@ -138,7 +138,7 @@ body {
 .profile-img-window {
   position: relative;
   justify-self: flex-start;
-  width: 200px;
+  width: 30rem;
   border: 3px solid black;
   border-radius: 0px;
   overflow: hidden;
@@ -155,23 +155,24 @@ body {
 }
 
 .profile-card-name {
-  justify-self: right;
-  grid-column: 2/7;
-  grid-row: 1/1;
   font-family: donau;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 300;
   color: black;
 }
 
 .profile-card-bio {
-  font-family: "Oswald", sans-serif;
+  font-family: monospace;
   font-size: 0.95rem;
   line-height: 1.4;
   color: #222;
   font-weight: 500;
 }
-
+.profile-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .btn-neo-teal {
   display: inline-block;
   width: max-content;
@@ -196,6 +197,12 @@ body {
   background-color: #feec41;
 }
 
+.btn-neo-teal a {
+  text-decoration: none;
+  color: black;
+  font-family: donau;
+  font-size: 1rem;
+}
 /* ==========================================================================
    SOCIAL BUTTONS ROW
    ========================================================================== */
