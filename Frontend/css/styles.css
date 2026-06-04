@@ -7,6 +7,10 @@
   src: url("../assets/fonts/BaticaSans-Regular.otf");
 }
 
+@font-face {
+  font-family: Sinteca;
+  src: url(../assets/fonts/Sinteca-Medium.otf);
+}
 * {
   margin: 0;
   padding: 0;
@@ -144,28 +148,14 @@ body {
   border-radius: 0px;
   overflow: hidden;
   /* Removed the static repeating gradient from here */
-  background-color: #360185; /* Dark background base color */
-}
-.profile-img-window::before {
-  content: "";
-  position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  z-index: -1;
 
-  /* Creates high-density stripes that the filter will warp into the turing lines */
   background: repeating-linear-gradient(
     45deg,
-    rgba(244, 241, 222, 0.6) 0px,
-    rgba(244, 241, 222, 0.6) 4px,
-    transparent 4px,
-    transparent 24px
-  );
-
-  /* THIS HOOKS UP THE LIQUID MAZE DISTORTION */
-  filter: url(#liquid-turing-pattern);
+    rgba(244, 241, 222, 0.5),
+    transparent 2px,
+    transparent 5px
+  ); /* Dark background base color */
+  background-color: #360185;
 }
 
 .profile-card-img {
@@ -177,7 +167,10 @@ body {
   right: 0;
   z-index: 2; /* Keeps your photo perfectly sharp and untouched on top */
 }
-
+.profile-card-top h3 {
+  color: #222;
+  font-family: Batica;
+}
 .profile-card-name {
   font-family: Batica;
   font-size: 1.5rem;
@@ -186,11 +179,11 @@ body {
 }
 
 .profile-card-bio {
-  font-family: monospace;
+  font-family: Sinteca;
   font-size: 0.95rem;
   line-height: 1.2;
   color: #222;
-  font-weight: 500;
+  font-weight: 200;
 }
 .profile-card-content {
   display: flex;
@@ -232,7 +225,7 @@ body {
   grid-row: 1 / 5;
   display: flex;
   flex-direction: row;
-  background-color: #fec3a6;
+  background-color: #360185;
   border: 3px solid black;
   border-radius: 0px;
   filter: drop-shadow(5px 5px 0px #000);
