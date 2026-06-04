@@ -3,8 +3,8 @@
    Accent Yellow : FEEC41
 */
 @font-face {
-  font-family: donau;
-  src: url("../assets/fonts/Donau\ Neue_Uppercase.otf");
+  font-family: Batica;
+  src: url("../assets/fonts/BaticaSans-Regular.otf");
 }
 
 * {
@@ -14,7 +14,7 @@
 }
 
 body {
-  background: #efe9ae no-repeat center/cover;
+  background: #360185 no-repeat center/cover;
   font-family: "Oswald", sans-serif;
 }
 
@@ -25,7 +25,7 @@ body {
   width: 120%;
   height: 120%;
   z-index: -1;
-  background-color: #efe9ae;
+  background-color: #360185;
   background-image:
     linear-gradient(rgba(64, 145, 108, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(64, 145, 108, 0.1) 1px, transparent 1px);
@@ -63,7 +63,7 @@ body {
   border: 3px solid black;
   box-shadow: 3px 3px black;
   border-radius: 0px;
-  background-color: #fec3a6;
+  background-color: #f4b342;
 }
 
 .nav-items {
@@ -75,9 +75,10 @@ body {
   display: block;
   text-decoration: none;
   color: black;
-  font-family: donau;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: Batica;
+  font-size: 1rem;
+  font-weight: bold;
+  font-weight: 500;
   text-align: center;
   padding: 5px;
   transition: all 0.1s;
@@ -124,7 +125,7 @@ body {
   grid-row: 1 / 5;
   display: flex;
   flex-direction: row;
-  background-color: #cdeac0;
+  background-color: #f4b342;
   border: 3px solid black;
   border-radius: 0px;
   filter: drop-shadow(5px 5px 0px #000);
@@ -142,7 +143,7 @@ body {
   border: 3px solid black;
   border-radius: 0px;
   overflow: hidden;
-  background-color: #eae2b7;
+  background-color: #f7bf5d;
 }
 
 .profile-card-img {
@@ -155,16 +156,16 @@ body {
 }
 
 .profile-card-name {
-  font-family: donau;
+  font-family: Batica;
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 200;
   color: black;
 }
 
 .profile-card-bio {
   font-family: monospace;
   font-size: 0.95rem;
-  line-height: 1.4;
+  line-height: 1.2;
   color: #222;
   font-weight: 500;
 }
@@ -180,7 +181,6 @@ body {
   padding: 8px 20px;
   background-color: #f77f00;
   color: black;
-  font-family: "Oswald", sans-serif;
   font-weight: 900;
   font-size: 0.9rem;
   text-decoration: none;
@@ -200,8 +200,24 @@ body {
 .btn-neo-teal a {
   text-decoration: none;
   color: black;
-  font-family: donau;
+  font-family: Batica;
   font-size: 1rem;
+}
+
+.experience-card {
+  grid-column: 7 / 11;
+  grid-row: 1 / 5;
+  display: flex;
+  flex-direction: row;
+  background-color: #fec3a6;
+  border: 3px solid black;
+  border-radius: 0px;
+  filter: drop-shadow(5px 5px 0px #000);
+  padding: 15px;
+  gap: 0px;
+  justify-content: left;
+  gap: 15px;
+  z-index: 20;
 }
 /* ==========================================================================
    SOCIAL BUTTONS ROW
