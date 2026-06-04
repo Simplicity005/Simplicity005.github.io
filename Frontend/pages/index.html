@@ -13,6 +13,23 @@
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
+    <svg style="display: none">
+      <filter id="liquid-turing-pattern">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.04"
+          numOctaves="4"
+          result="noise"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="35"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </svg>
     <div id="bg-pattern"></div>
 
     <nav class="navbar">
@@ -34,6 +51,9 @@
         </div>
 
         <div class="profile-card-content">
+          <div class="profile-card-top">
+            <h3>Hi, I am</h3>
+          </div>
           <div class="profile-card-name"><h2>Arjun Sanesh</h2></div>
           <div class="profile-card-bio">
             <p>Software Engineer // Systems Enthusiast.</p>

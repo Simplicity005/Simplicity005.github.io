@@ -143,7 +143,29 @@ body {
   border: 3px solid black;
   border-radius: 0px;
   overflow: hidden;
-  background-color: #f7bf5d;
+  /* Removed the static repeating gradient from here */
+  background-color: #360185; /* Dark background base color */
+}
+.profile-img-window::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  z-index: -1;
+
+  /* Creates high-density stripes that the filter will warp into the turing lines */
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(244, 241, 222, 0.6) 0px,
+    rgba(244, 241, 222, 0.6) 4px,
+    transparent 4px,
+    transparent 24px
+  );
+
+  /* THIS HOOKS UP THE LIQUID MAZE DISTORTION */
+  filter: url(#liquid-turing-pattern);
 }
 
 .profile-card-img {
@@ -153,13 +175,14 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
+  z-index: 2; /* Keeps your photo perfectly sharp and untouched on top */
 }
 
 .profile-card-name {
   font-family: Batica;
   font-size: 1.5rem;
   font-weight: 200;
-  color: black;
+  color: #360185;
 }
 
 .profile-card-bio {
