@@ -264,23 +264,33 @@ h5 {
 
 #top-text {
   font-size: 2rem;
+  line-height: 1;
 }
 #name-center {
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-family: Batica;
-  color: #24b1b1;
+  color: #00adb5;
+  line-height: 1;
+}
+#asterisk-explanation {
+  line-height: 2;
+  font-size: 1.1rem;
+  text-align: right;
 }
 
 .image-container {
-  background-color: #cecdcd;
+  background-color: #c9bfc5;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
+  filter: drop-shadow(5px 5px black);
   overflow: hidden;
 }
 
 .image-container > img {
   height: 400px;
+  width: auto;
   z-index: 3;
   margin-top: auto;
+  border-radius: 30px;
 }
