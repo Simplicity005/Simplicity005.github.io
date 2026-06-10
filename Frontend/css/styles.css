@@ -189,11 +189,11 @@ body {
 }
 
 .nav-center {
-  padding: 0 40px 0 40px;
+  padding: 0 20px 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
   width: 50%; /* Custom constraint to fit items neatly without massive stretching */
   margin: 0 auto;
   border-radius: 20px;
@@ -208,7 +208,7 @@ body {
 .nav-center a {
   display: block;
   text-decoration: none;
-  color: #eeeeee;
+  color: #cecdcd;
   font-family: Batica;
   font-size: 1rem;
   font-weight: bold;
@@ -219,7 +219,7 @@ body {
 }
 
 .nav-center a:hover {
-  color: rgb(0, 173, 181);
+  color: rgb(0, 211, 222);
 }
 
 /* ==========================================================================
