@@ -242,7 +242,7 @@ body {
 .hero-container {
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: 75%;
   justify-self: center;
   justify-content: space-between;
   padding: 50px;
@@ -265,6 +265,7 @@ h5 {
 #top-text {
   font-size: 2rem;
   line-height: 1;
+  margin: 5px;
 }
 #name-center {
   font-size: 4.5rem;
@@ -288,10 +289,7 @@ h5 {
   justify-self: center;
 }
 .social-container {
-  padding: 10px 14px;
-  border-radius: 25px;
   transition: all 0.2s ease-in-out;
-  background-color: #c9bfc5;
 }
 .social-container:hover {
   background-color: #00adb5;
@@ -300,6 +298,7 @@ h5 {
   height: 25px;
   width: auto;
   margin-top: 4px;
+  filter: invert(80%);
 }
 .image-container {
   background-color: #c9bfc5;
