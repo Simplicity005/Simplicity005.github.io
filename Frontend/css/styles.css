@@ -276,10 +276,16 @@ h5 {
   padding: 20px;
   line-height: 1;
 }
+.asterisk-socials {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
 #asterisk-explanation {
   line-height: 2;
   font-size: 1.1rem;
   text-align: right;
+  order: 2;
 }
 
 .socials {
@@ -288,8 +294,10 @@ h5 {
   gap: 20px;
   justify-content: left;
   justify-self: center;
+  flex: 2;
 }
 .social-container {
+  padding: 3px 7px;
   transition: all 0.2s ease-in-out;
 }
 .social-container:hover {
