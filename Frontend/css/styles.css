@@ -299,6 +299,38 @@ h5 {
   filter: invert(80%);
   transition: all 0.1s ease-in-out;
 }
+.image-side {
+  display: flex;
+  position: relative;
+}
+
+.asterisk-big {
+  order: 1;
+  position: absolute;
+  color: #00adb5;
+  font-size: 50rem;
+  z-index: 2;
+  right: -150px;
+  top: -250px;
+  filter: drop-shadow(3px 3px 200px black);
+  animation: moveAsterisk 50s linear infinite;
+  transform-origin: 49% 38%;
+}
+
+@keyframes moveAsterisk {
+  0% {
+    transform: rotate(0deg);
+    z-index: 2;
+  }
+  50% {
+    transform: rotate(180deg);
+    z-index: 2;
+  }
+  100% {
+    transform: rotate(360deg);
+    z-index: 2;
+  }
+}
 .image-container {
   background-color: #c9bfc5;
   display: flex;
