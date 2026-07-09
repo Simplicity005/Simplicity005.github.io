@@ -387,7 +387,7 @@ h5 {
 /* ---- About Section ---- */
 .about-container {
   width: 100%;
-  padding: 100px 50px;
+  padding: 50px 50px;
   z-index: 3;
   display: flex;
   justify-content: center;
