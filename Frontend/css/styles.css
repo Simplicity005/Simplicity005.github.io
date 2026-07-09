@@ -27,15 +27,23 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  background-color: #000;
-  overflow: hidden;
-  height: 100vh;
+  min-height: 100%;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #000;
+  overflow-x: hidden;
+}
+
 .gradient-bg {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   overflow: hidden;
@@ -193,10 +201,22 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  flex-shrink: 0;
+  background-color: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
   box-shadow: none;
   transition:
-    background-color 0.1s ease,
-    box-shadow 0.1s ease;
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(10, 20, 20, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 
 .nav-center {
@@ -229,12 +249,15 @@ body {
 .hero-container {
   display: flex;
   flex-direction: row;
+  flex: 1 0 auto;
+  min-height: 90vh;
   width: 100%;
   justify-content: center;
   align-items: center;
   gap: 100px;
   padding: 50px;
   z-index: 3;
+  box-sizing: border-box;
 }
 
 .text-side {
@@ -331,18 +354,97 @@ h5 {
     z-index: 2;
   }
 }
+
+/* Hero photo ghost slot - the real photo floats above this */
 .image-container {
   background-color: #c9bfc5;
-  display: flex;
-  flex-direction: column;
   border-radius: 30px;
-  overflow: hidden;
+  height: 30rem;
+  width: 20rem;
 }
 
-.image-container > img {
-  height: 30rem;
-  width: auto;
-  z-index: 3;
-  margin-top: auto;
+/* The single photo shared between hero & about sections */
+.floating-photo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
   border-radius: 30px;
+  overflow: hidden;
+  z-index: 5;
+  pointer-events: none;
+  will-change: top, left, width, height;
+}
+
+.floating-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- About Section ---- */
+.about-container {
+  width: 100%;
+  padding: 100px 50px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.about-inner {
+  width: 100%;
+  max-width: 1100px;
+  padding: 60px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-family: Batica;
+  background-color: #00adb5;
+  color: #222831;
+  padding: 15px 20px;
+  line-height: 1;
+}
+
+.about-title {
+  display: table;
+  margin: 0 auto 50px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+/* About photo ghost slot - matches the hero slot's aspect ratio */
+.about-image-container {
+  background-color: #c9bfc5;
+  border-radius: 30px;
+  height: 22rem;
+  width: 14.7rem;
+}
+
+.about-text-side {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.about-para {
+  color: #cecdcd;
+  font-family: Batica;
+  font-weight: 200;
+  font-size: 1.15rem;
+  line-height: 1.6;
 }

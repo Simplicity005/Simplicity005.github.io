@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <div class="nav-center">
         <a href="#about">About Me</a>
         <a href="#work">My Work</a>
@@ -74,14 +74,34 @@
       </div>
       <div class="image-side">
         <h1 class="asterisk-big">*</h1>
-        <div class="image-container">
-          <img
-            src="../assets/images/1000027072 (1).png"
-            alt="Arjun-Sanesh-Profile-Image"
-          />
-        </div>
+        <!-- Ghost slot: reserves the space + shows the rounded bg box.
+             The real photo is the floating #floatingPhoto element,
+             which sits exactly on top of this at rest. -->
+        <div class="image-container" id="hero-photo-slot"></div>
       </div>
     </main>
+
+    <section class="about-container" id="about">
+      <div class="about-inner">
+        <h1 class="section-title about-title">About Me</h1>
+        <div class="about-content">
+          <div class="about-image-side">
+            <!-- Ghost slot: the floating photo docks here once you scroll down -->
+            <div class="about-image-container" id="about-photo-slot"></div>
+          </div>
+          <div class="about-text-side">
+            <p class="about-para">
+              I'm Arjun, a developer who enjoys building clean, functional
+              things on the web. I like turning ideas into interactive
+              experiences, whether that's a slick UI, a fun side project, or
+              solving a tricky problem with code. When I'm not building, I'm
+              probably exploring something new to learn.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="projects-container">
       <div class="projects-headline">
         <h1 id="projects">My Work</h1>
@@ -96,6 +116,12 @@
           </p>
         </div>
       </div>
+    </div>
+
+    <!-- The single shared photo that glides from the hero slot
+         into the about slot as you scroll -->
+    <div class="floating-photo" id="floatingPhoto">
+      <img src="../assets/images/1000027072 (1).png" alt="Arjun Sanesh" />
     </div>
 
     <script src="../js/script.js"></script>
