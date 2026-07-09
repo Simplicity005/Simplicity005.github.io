@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // The transition finishes a bit before the about photo would
     // naturally reach the top of the screen. Tweak 0.55 to taste
     // (higher = transition finishes earlier while scrolling).
-    progressEnd = Math.max(endRect.top - window.innerHeight * 0.55, 1);
+    progressEnd = Math.max(endRect.top - window.innerHeight * 1, 1);
   }
 
   function updateFloatingPhoto() {
