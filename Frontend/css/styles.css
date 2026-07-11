@@ -395,8 +395,9 @@ h5 {
 .about-inner {
   width: 100%;
   max-width: 1100px;
-  padding: 60px;
-  border-radius: 30px;
+  height: max-content;
+  padding: 70px;
+  border-radius: 25px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(25px);
@@ -414,6 +415,7 @@ h5 {
 }
 
 .about-content {
+  padding: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
