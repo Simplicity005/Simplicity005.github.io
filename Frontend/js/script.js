@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.getElementById("navbar");
   const hero = document.getElementById("hero");
   const aboutInner = document.getElementById("about-inner");
+  const projectInner = document.getElementById("project-inner");
 
   function updateScrollEffects() {
     const scrollY = window.scrollY;
@@ -41,20 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
     hero.style.opacity = Math.max(heroOpacity, 0);
     hero.style.transform = `translateY(${scrollY * 0.25}px)`;
 
-    if (aboutInner) {
-      const aboutRect = aboutInner.getBoundingClientRect();
-      const aboutStartFade = windowHeight * 0.9;
-      const aboutEndFade = windowHeight * 0.3;
+    const sections = [aboutInner, projectInner];
 
-      let aboutProgress =
-        (aboutStartFade - aboutRect.top) / (aboutStartFade - aboutEndFade);
-      aboutProgress = Math.min(Math.max(aboutProgress, 0), 1);
+    sections.forEach((sec) => {
+      if (sec) {
+        const rect = sec.getBoundingClientRect();
+        const startFade = windowHeight * 0.9;
+        const endFade = windowHeight * 0.3;
 
-      const aboutScale = 0.85 + 0.15 * aboutProgress;
+        let progress = (startFade - rect.top) / (startFade - endFade);
+        progress = Math.min(Math.max(progress, 0), 1);
 
-      aboutInner.style.opacity = aboutProgress;
-      aboutInner.style.transform = `scale(${aboutScale})`;
-    }
+        const scale = 0.85 + 0.15 * progress;
+
+        sec.style.opacity = progress;
+        sec.style.transform = `scale(${scale})`;
+      }
+    });
   }
 
   let ticking = false;
@@ -83,4 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onResize);
+
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      if (!card.classList.contains("active")) {
+        cards.forEach((c) => c.classList.remove("active"));
+        card.classList.add("active");
+      }
+    });
+  });
 });
