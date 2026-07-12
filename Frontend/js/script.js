@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* ---------- Interactive gradient blob (follows cursor) ---------- */
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  window.scrollTo(0, 0);
+
   const interBubble = document.querySelector(".interactive");
   let curX = 0;
   let curY = 0;
@@ -14,90 +18,51 @@ document.addEventListener("DOMContentLoaded", () => {
   function moveBlob() {
     curX += (tgX - curX) / 80;
     curY += (tgY - curY) / 80;
-
     interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-
     requestAnimationFrame(moveBlob);
   }
-
   moveBlob();
 
-  /* ---------- Navbar translucency on scroll ---------- */
   const navbar = document.getElementById("navbar");
+  const hero = document.getElementById("hero");
+  const aboutInner = document.getElementById("about-inner");
 
-  function updateNavbar() {
-    if (window.scrollY > 40) {
+  function updateScrollEffects() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    if (scrollY > 40) {
       navbar.classList.add("scrolled");
     } else {
       navbar.classList.remove("scrolled");
     }
-  }
 
-  /* ---------- Hero photo -> About photo scroll transition ---------- */
-  const heroSlot = document.getElementById("hero-photo-slot");
-  const aboutSlot = document.getElementById("about-photo-slot");
-  const floatingPhoto = document.getElementById("floatingPhoto");
+    let heroOpacity = 1 - scrollY / (windowHeight * 0.6);
+    hero.style.opacity = Math.max(heroOpacity, 0);
+    hero.style.transform = `translateY(${scrollY * 0.25}px)`;
 
-  let startRect = null;
-  let endRect = null;
-  let progressEnd = 1;
+    if (aboutInner) {
+      const aboutRect = aboutInner.getBoundingClientRect();
+      const aboutStartFade = windowHeight * 0.9;
+      const aboutEndFade = windowHeight * 0.3;
 
-  function lerp(a, b, t) {
-    return a + (b - a) * t;
-  }
+      let aboutProgress =
+        (aboutStartFade - aboutRect.top) / (aboutStartFade - aboutEndFade);
+      aboutProgress = Math.min(Math.max(aboutProgress, 0), 1);
 
-  // Measures where the two ghost slots sit in the DOCUMENT (not viewport),
-  // so the math stays correct no matter where you've scrolled to.
-  function measure() {
-    const heroBox = heroSlot.getBoundingClientRect();
-    const aboutBox = aboutSlot.getBoundingClientRect();
-    const scrollY = window.scrollY;
+      const aboutScale = 0.85 + 0.15 * aboutProgress;
 
-    startRect = {
-      top: heroBox.top + scrollY,
-      left: heroBox.left,
-      width: heroBox.width,
-      height: heroBox.height,
-    };
-
-    endRect = {
-      top: aboutBox.top + scrollY,
-      left: aboutBox.left,
-      width: aboutBox.width,
-      height: aboutBox.height,
-    };
-
-    // The transition finishes a bit before the about photo would
-    // naturally reach the top of the screen. Tweak 0.55 to taste
-    // (higher = transition finishes earlier while scrolling).
-    progressEnd = Math.max(endRect.top - window.innerHeight * 1, 1);
-  }
-
-  function updateFloatingPhoto() {
-    const scrollY = window.scrollY;
-    let progress = scrollY / progressEnd;
-    progress = Math.min(Math.max(progress, 0), 1);
-
-    // smoothstep easing for a nicer glide
-    const eased = progress * progress * (3 - 2 * progress);
-
-    const docTop = lerp(startRect.top, endRect.top, eased);
-    const left = lerp(startRect.left, endRect.left, eased);
-    const width = lerp(startRect.width, endRect.width, eased);
-    const height = lerp(startRect.height, endRect.height, eased);
-
-    floatingPhoto.style.top = docTop - scrollY + "px";
-    floatingPhoto.style.left = left + "px";
-    floatingPhoto.style.width = width + "px";
-    floatingPhoto.style.height = height + "px";
+      aboutInner.style.opacity = aboutProgress;
+      aboutInner.style.transform = `scale(${aboutScale})`;
+    }
   }
 
   let ticking = false;
+
   function onScroll() {
     if (!ticking) {
       requestAnimationFrame(() => {
-        updateNavbar();
-        updateFloatingPhoto();
+        updateScrollEffects();
         ticking = false;
       });
       ticking = true;
@@ -105,13 +70,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onResize() {
-    measure();
-    updateFloatingPhoto();
+    updateScrollEffects();
   }
 
-  measure();
-  updateNavbar();
-  updateFloatingPhoto();
+  setTimeout(() => {
+    updateScrollEffects();
+  }, 100);
+
+  window.addEventListener("load", () => {
+    updateScrollEffects();
+  });
 
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onResize);

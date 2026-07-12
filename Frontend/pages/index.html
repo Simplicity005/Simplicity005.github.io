@@ -30,7 +30,6 @@
         <div class="interactive"></div>
       </div>
     </div>
-
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <defs>
         <filter id="goo">
@@ -45,12 +44,11 @@
         </filter>
       </defs>
     </svg>
-
-    <main class="hero-container">
+    <main class="hero-container" id="hero">
       <div class="text-side">
-        <h3 id="top-text">Hi, I am</h3>
-        <h1 id="name-center">Arjun Sanesh</h1>
-        <div class="asterisk-socials">
+        <h3 id="top-text" class="load-anim item-1">Hi, I am</h3>
+        <h1 id="name-center" class="load-anim item-2">Arjun Sanesh</h1>
+        <div class="asterisk-socials load-anim item-3">
           <h5 id="asterisk-explanation">* Interesting fella</h5>
           <div class="socials">
             <div class="social-container">
@@ -72,22 +70,24 @@
           </div>
         </div>
       </div>
-      <div class="image-side">
+      <div class="image-side load-anim item-4">
         <h1 class="asterisk-big">*</h1>
-        <!-- Ghost slot: reserves the space + shows the rounded bg box.
-             The real photo is the floating #floatingPhoto element,
-             which sits exactly on top of this at rest. -->
-        <div class="image-container" id="hero-photo-slot"></div>
+        <div class="image-container" id="hero-photo-slot">
+          <img src="../assets/images/1000027072 (1).png" alt="Arjun Sanesh" />
+        </div>
       </div>
     </main>
-
     <section class="about-container" id="about">
-      <div class="about-inner">
+      <div class="about-inner" id="about-inner">
         <h1 class="section-title about-title">About Me</h1>
         <div class="about-content">
           <div class="about-image-side">
-            <!-- Ghost slot: the floating photo docks here once you scroll down -->
-            <div class="about-image-container" id="about-photo-slot"></div>
+            <div class="about-image-container" id="about-photo-slot">
+              <img
+                src="../assets/images/1000027072 (1).png"
+                alt="Arjun Sanesh"
+              />
+            </div>
           </div>
           <div class="about-text-side">
             <p class="about-para">
@@ -101,7 +101,6 @@
         </div>
       </div>
     </section>
-
     <div class="projects-container">
       <div class="projects-headline">
         <h1 id="projects">My Work</h1>
@@ -117,13 +116,6 @@
         </div>
       </div>
     </div>
-
-    <!-- The single shared photo that glides from the hero slot
-         into the about slot as you scroll -->
-    <div class="floating-photo" id="floatingPhoto">
-      <img src="../assets/images/1000027072 (1).png" alt="Arjun Sanesh" />
-    </div>
-
     <script src="../js/script.js"></script>
   </body>
 </html>
