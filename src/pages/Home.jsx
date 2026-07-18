@@ -5,7 +5,7 @@ import Hero from "../components/ui/Hero";
 import About from "../components/ui/About";
 import Work from "../components/ui/Work";
 
-const Home = () => {
+function Home() {
   return (
     <>
       <Background />
@@ -15,6 +15,6 @@ const Home = () => {
       <Work />
     </>
   );
-};
+}
 
 export default Home;
