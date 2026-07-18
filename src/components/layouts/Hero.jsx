@@ -1,7 +1,7 @@
 import React from "react";
 import Socials from "../ui/Socials";
 
-const Hero = () => {
+function Hero() {
   return (
     <main className="hero-container" id="hero">
       <div className="text-side">
@@ -35,6 +35,6 @@ const Hero = () => {
       </div>
     </main>
   );
-};
+}
 
 export default Hero;
