@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "../components/layout/Navbar";
-import Background from "../components/layout/Background";
-import Hero from "../components/ui/Hero";
-import About from "../components/ui/About";
+import Navbar from "../components/layouts/Navbar";
+import Background from "../components/layouts/Background";
+import Hero from "../components/layouts/Hero";
+import About from "../components/layouts/About";
 import Work from "../components/ui/Work";
 
 function Home() {
