@@ -6,9 +6,7 @@
   font-family: Sinteca;
   src: url(../assets/fonts/Sinteca-Medium.otf);
 }
-html {
-  scroll-behavior: smooth;
-}
+
 :root {
   --color-bg1: rgb(0, 0, 0);
   --color-bg2: rgb(7, 122, 125, 0.5);
@@ -29,13 +27,15 @@ html {
 html,
 body {
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #000;
+  background-color: hsl(0, 0%, 0%);
   overflow-x: hidden;
+  width: 100%;
 }
 .gradient-bg {
   width: 100vw;
@@ -202,12 +202,12 @@ body {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 .nav-center {
-  padding: 0 20px;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  width: 50%;
+  gap: clamp(5px, 4rem, 100px);
+  width: 100%;
   margin: 0 auto;
 }
 .nav-center a {
@@ -215,7 +215,7 @@ body {
   text-decoration: none;
   color: #cecdcd;
   font-family: Batica;
-  font-size: 1.2rem;
+  font-size: clamp(10px 20vh 40px);
   font-weight: 500;
   text-align: center;
   padding: 5px;
@@ -258,7 +258,7 @@ body {
   width: 100%;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: clamp(30px, 30vh, 100px);
   padding: 50px;
   z-index: 3;
   box-sizing: border-box;
@@ -276,12 +276,12 @@ h5 {
   font-weight: 200;
 }
 #top-text {
-  font-size: 2rem;
+  font-size: clamp(10px, 2.5rem, 30px);
   line-height: 1;
   margin: 5px;
 }
 #name-center {
-  font-size: 4.5rem;
+  font-size: clamp(30px, 3.5rem, 50px);
   font-family: Batica;
   background-color: #00adb5;
   color: #222831;
