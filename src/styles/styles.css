@@ -179,7 +179,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 20px 40px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -206,6 +206,8 @@ body {
 .nav-logo {
   height: 30px;
   width: auto;
+  z-index: 1002;
+  opacity: 0.7;
 }
 
 .hamburger {
@@ -220,26 +222,30 @@ body {
 .hamburger .bar {
   width: 25px;
   height: 2px;
-  background-color: #cecdcd;
+  background-color: #a8a8a8;
   transition: all 0.3s ease-in-out;
 }
 
 .nav-links {
   display: flex;
-  gap: clamp(20px, 6vw, 100px);
+  gap: clamp(20px, 5vw, 100px);
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #cecdcd;
+  color: #ffffff5b;
   font-family: Batica;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  transition: color 0.2s ease-in-out;
+  transition: all 0.3s;
+  padding: 10px;
+  border-radius: 35px;
 }
 
 .nav-links a:hover {
-  color: rgb(0, 211, 222);
+  color: rgba(0, 211, 222);
+  background-color: rgba(10, 20, 20, 0.55);
+  backdrop-filter: blur(50px);
 }
 
 @media screen and (max-width: 768px) {
@@ -255,13 +261,13 @@ body {
     display: flex;
   }
   .hamburger.openHam {
-    transform: translateX(-50px);
+    transform: translateX(-100px);
   }
   .nav-links {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 280px;
+    width: 50vw;
     height: 100vh;
     flex-direction: column;
     justify-content: center;
@@ -274,6 +280,10 @@ body {
     padding: 0;
     gap: 40px;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-links a {
+    text-align: left;
+    font-size: 1.5rem;
   }
 
   .nav-links.active {
@@ -290,6 +300,10 @@ body {
 
   .hamburger .bar.open:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
+  }
+  .nav-logo {
+    z-index: 2000;
+    position: relative;
   }
 }
 @keyframes gracefulFade {

@@ -25,11 +25,13 @@ function Navbar() {
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`} id="navbar">
       <div className="nav-left">
-        <img
-          src="/src/assets/Logo.png"
-          alt="Simplicity Logo"
-          className="nav-logo"
-        />
+        <a href="#home">
+          <img
+            src="/src/assets/Logo.png"
+            alt="Simplicity Logo"
+            className="nav-logo"
+          />
+        </a>
         <div className="hamburger" onClick={toggleMenu}>
           <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
           <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
