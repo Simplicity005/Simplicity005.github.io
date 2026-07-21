@@ -572,6 +572,10 @@ h5 {
     align-items: left;
   }
 
+  .image-side .load-anim .item-4 {
+    display: none;
+  }
+
   #name-center {
     font-size: 1.8rem;
   }
