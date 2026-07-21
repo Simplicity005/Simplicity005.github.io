@@ -30,7 +30,7 @@ function Hero() {
       <div className="image-side load-anim item-4">
         <h1 className="asterisk-big">*</h1>
         <div className="image-container" id="hero-photo-slot">
-          <img src="../assets/images/1000027072 (1).png" alt="Arjun Sanesh" />
+          <img src="../" alt="Arjun Sanesh" />
         </div>
       </div>
     </main>
