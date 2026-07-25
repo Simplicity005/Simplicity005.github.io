@@ -23,7 +23,10 @@ function Navbar() {
   };
 
   return (
-    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`} id="navbar">
+    <nav
+      className={`navbar ${isScrolled && !isMobileMenuOpen ? "scrolled" : ""}`}
+      id="navbar"
+    >
       <div className="nav-left">
         <a href="#home">
           <img

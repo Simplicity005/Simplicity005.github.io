@@ -221,7 +221,7 @@ body {
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
-  z-index: 1001;
+  z-index: 1002;
 }
 
 .hamburger .bar {
@@ -330,17 +330,16 @@ h5 {
   transition: all 0.2s ease-in-out;
   border-radius: 5px;
 }
-.social-container:hover,
-.social-img:hover {
+.social-container:hover {
   background-color: #00adb5;
-  filter: invert(0%);
+  backdrop-filter: blur(24px);
 }
 .social-img {
   height: 20px;
   width: auto;
   margin-top: 4px;
   filter: invert(80%);
-  transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease;
 }
 .image-side {
   display: flex;
@@ -692,8 +691,8 @@ h5 {
     background-color: rgba(10, 20, 20, 0.65);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    transition: left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    z-index: 1000;
+    transition: left 0.8s ease;
+    z-index: 1001;
     padding: 0;
     gap: 40px;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
