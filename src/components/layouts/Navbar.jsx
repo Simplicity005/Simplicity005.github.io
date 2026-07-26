@@ -28,7 +28,7 @@ function Navbar() {
       id="navbar"
     >
       <div className="nav-left">
-        <a href="#home">
+        <a href="#hero">
           <img
             src="/src/assets/Logo.png"
             alt="Simplicity Logo"
