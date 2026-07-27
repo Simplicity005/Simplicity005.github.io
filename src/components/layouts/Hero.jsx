@@ -30,66 +30,26 @@ function Hero() {
       <div className="image-side load-anim item-4">
         <div className="asterisk-big">
           <svg
-            version="1.1"
-            id="svg2"
-            xmlns:dc="http://purl.org/dc/elements/1.1/"
-            xmlns:cc="http://creativecommons.org/ns#"
-            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-            xmlns:svg="http://www.w3.org/2000/svg"
-            xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-            sodipodi:docname="asterisk.svg"
-            inkscape:version="0.48.4 r9939"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            fill="#00adb5"
             width="256px"
             height="256px"
-            viewBox="0 0 1200.00 1200.00"
-            enable-background="new 0 0 1200 1200"
-            xml:space="preserve"
-            fill="#00adb5"
+            viewBox="0 0 10 10"
+            xmlns="http://www.w3.org/2000/svg"
             stroke="#00adb5"
-            transform="rotate(0)"
-            stroke-width="0.012"
+            stroke-width="0.0001"
           >
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke="#000000"
-              stroke-width="21.6"
             ></g>
             <g id="SVGRepo_iconCarrier">
               {" "}
-              <sodipodi:namedview
-                inkscape:cy="448"
-                inkscape:cx="-67.796606"
-                inkscape:zoom="0.26339286"
-                showgrid="false"
-                id="namedview3175"
-                guidetolerance="10"
-                gridtolerance="10"
-                objecttolerance="10"
-                borderopacity="1"
-                bordercolor="#666666"
-                pagecolor="#ffffff"
-                inkscape:current-layer="svg2"
-                inkscape:window-maximized="1"
-                inkscape:window-y="24"
-                inkscape:window-height="876"
-                inkscape:window-width="1535"
-                inkscape:pageshadow="2"
-                inkscape:pageopacity="0"
-                inkscape:window-x="65"
-              >
+              <g>
                 {" "}
-              </sodipodi:namedview>{" "}
-              <path
-                id="path3756"
-                inkscape:connector-curvature="0"
-                d="M489.838,29.354v443.603L68.032,335.894L0,545.285l421.829,137.086 l-260.743,358.876l178.219,129.398L600.048,811.84l260.673,358.806l178.146-129.398L778.101,682.465L1200,545.379l-68.032-209.403 l-421.899,137.07V29.443H489.84L489.838,29.354z"
-              ></path>{" "}
+                <path d="M8,5.19a1,1,0,0,0,1-1,.94.94,0,0,0-.23-.68,1,1,0,0,0-1.39-.06,7.75,7.75,0,0,1-1.18.86,4.52,4.52,0,0,1-.8.38,4.71,4.71,0,0,1,.11-.84,7.83,7.83,0,0,1,.42-1.43,1,1,0,0,0-1.29-1.3,1,1,0,0,0-.51,1.3,6.54,6.54,0,0,1,.43,1.43,5.16,5.16,0,0,1,.11.88,5,5,0,0,1-.81-.38,7.83,7.83,0,0,1-1.18-.9,1,1,0,0,0-.75-.26,1,1,0,0,0,.17,2,7,7,0,0,1,1.45,0,5,5,0,0,1,.87.19A4,4,0,0,1,3.79,6a6.28,6.28,0,0,1-1.19.85,1,1,0,0,0-.49.62,1,1,0,0,0,.51,1.32,1,1,0,0,0,1.32-.51A.89.89,0,0,0,4,8a6.58,6.58,0,0,1,.52-1.36A4.79,4.79,0,0,1,5,5.89a3.59,3.59,0,0,1,.49.79A6.22,6.22,0,0,1,6,8a1,1,0,0,0,.49.62,1,1,0,0,0,.94-1.73,7.53,7.53,0,0,1-1.19-.84,7.36,7.36,0,0,1-.63-.62,5.42,5.42,0,0,1,.87-.19A7,7,0,0,1,8,5.19Z"></path>{" "}
+              </g>{" "}
             </g>
           </svg>
         </div>
