@@ -1,9 +1,12 @@
 import React from "react";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 function About() {
+  const revealRef = useScrollReveal();
+
   return (
     <section className="about-container" id="about">
-      <div className="about-inner" id="about-inner">
+      <div className="about-inner" id="about-inner" ref={revealRef}>
         <h1 className="section-title about-title">
           About
           <br />

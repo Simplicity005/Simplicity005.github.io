@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logo from "../../assets/Logo.png";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,11 +30,7 @@ function Navbar() {
     >
       <div className="nav-left">
         <a href="#hero">
-          <img
-            src="/src/assets/Logo.png"
-            alt="Simplicity Logo"
-            className="nav-logo"
-          />
+          <img src={logo} alt="Simplicity Logo" className="nav-logo" />
         </a>
         <div className="hamburger" onClick={toggleMenu}>
           <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
