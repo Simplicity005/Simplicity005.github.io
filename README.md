@@ -1,4 +1,4 @@
-# Simplicity Portfolio
+# Simplicity's Portfolio
 
 A modern personal portfolio website built with React and Vite. This project showcases the work, background, and projects of Arjun Sanesh in a clean, animated single-page experience.
 
