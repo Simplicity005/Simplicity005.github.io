@@ -1,16 +1,67 @@
-# React + Vite
+# Simplicity Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern personal portfolio website built with React and Vite. This project showcases the work, background, and projects of Arjun Sanesh in a clean, animated single-page experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Responsive one-page portfolio layout
+- Animated hero section and scroll-reveal effects
+- About section with personal introduction
+- Interactive project showcase carousel
+- Social links and contact-friendly navigation
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite 8
+- React Router DOM
+- CSS for styling and layout
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- src/components: reusable UI and layout components
+- src/pages: page-level structure
+- src/data: project content data
+- src/styles: global styles
+- public: static assets
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18 or newer
+- npm
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open the local URL shown in the terminal
+
+## Available Scripts
+
+- npm run dev — start the Vite development server
+- npm run build — build the production bundle
+- npm run preview — preview the production build locally
+- npm run lint — run ESLint checks
+
+## Deployment
+
+The app can be deployed as a static site. After building, publish the contents of the dist folder to your hosting provider.
+
+Example:
+
+```bash
+npm run build
+```
+
+## Author
+
+Arjun Sanesh
