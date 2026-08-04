@@ -281,18 +281,18 @@ body {
 }
 .text-side h3,
 h5 {
-  color: #cecdcd;
-  font-family: Batica;
-  font-weight: 200;
+  color: #cecdcdc7;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
 }
 #top-text {
-  font-size: clamp(10px, 2.5rem, 30px);
+  font-size: clamp(10px, 2rem, 30px);
   line-height: 1;
   margin: 5px;
 }
 #name-center {
   font-size: clamp(30px, 3.5rem, 50px);
-  font-family: Batica;
+  font-family: "Space Grotesk", sans-serif;
   background-color: #00adb5;
   color: #222831;
   padding: 20px;
@@ -305,7 +305,7 @@ h5 {
 }
 #asterisk-explanation {
   line-height: 2;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-align: right;
   order: 2;
 }
@@ -322,15 +322,14 @@ h5 {
   border-radius: 5px;
 }
 .social-container:hover {
-  background-color: #00adb5;
-  backdrop-filter: blur(24px);
+  background-color: black;
 }
 .social-img {
   height: 20px;
   width: auto;
   margin-top: 4px;
   filter: invert(80%);
-  transition: all 0.1s ease;
+  transition: all 0.1s ease-in-out;
 }
 .image-side {
   display: flex;
@@ -424,8 +423,8 @@ h5 {
 }
 .section-title,
 .project-title {
-  font-size: 5rem;
-  font-family: Batica;
+  font-size: 3rem;
+  font-family: "Space Grotesk", sans-serif;
   color: #00adb5;
   text-align: right;
   line-height: 1;
@@ -453,8 +452,8 @@ h5 {
 }
 .about-para {
   color: #cecdcd;
-  font-family: Batica;
-  font-weight: 200;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 300;
   font-size: 1.25rem;
   line-height: 1.4;
 }
@@ -478,7 +477,7 @@ h5 {
   justify-content: center;
 }
 .card.active {
-  flex: 3;
+  flex: 2;
   height: 450px;
   cursor: default;
 }
@@ -540,7 +539,7 @@ h5 {
   align-items: flex-start;
 }
 .card-title {
-  font-family: Batica;
+  font-family: "Space Grotesk", sans-serif;
   color: #00adb5;
   font-size: 1.5rem;
   text-align: center;
