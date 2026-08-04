@@ -1,6 +1,6 @@
 import React from "react";
-
-function ProjectCard({ project, isActive, onClick }) {
+function ProjectCard({ project, index, isActive, onClick }) {
+  const formattedIndex = String(index + 1).padStart(2, '0');
   return (
     <div className={`card ${isActive ? "active" : ""}`} onClick={onClick}>
       <div
@@ -8,8 +8,8 @@ function ProjectCard({ project, isActive, onClick }) {
         style={{ backgroundImage: `url(${project.image})` }}
       ></div>
       <div className="card-content">
-        <img className="card-img" src={project.image} alt={project.title} />
         <div className="text-content">
+          <span className="card-index">N° {formattedIndex}</span>
           <h2 className="card-title">{project.title}</h2>
           <p className="card-details">{project.description}</p>
         </div>
@@ -17,5 +17,4 @@ function ProjectCard({ project, isActive, onClick }) {
     </div>
   );
 }
-
 export default ProjectCard;
