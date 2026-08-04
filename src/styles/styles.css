@@ -184,9 +184,9 @@ body {
   width: 90%;
   padding: 20px 40px;
   background-color: rgba(10, 20, 20, 0.55);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(8px);
   border-radius: 50px;
-  -webkit-backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
   top: 20px;
 }
@@ -233,7 +233,6 @@ body {
   font-family: "Space Grotesk", sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
-  transition: all 0.2s;
   padding: 10px;
   border-radius: 35px;
   transition: all 0.2s ease-in-out;
@@ -423,23 +422,21 @@ h5 {
 .project-inner {
   flex-direction: column;
 }
-.section-title {
-  text-align: center;
+.section-title,
+.project-title {
   font-size: 5rem;
   font-family: Batica;
   color: #00adb5;
   text-align: right;
-  padding: 30px;
   line-height: 1;
 }
+
+.section-title {
+  padding: 30px;
+}
+
 .project-title {
-  text-align: center;
-  font-size: 5rem;
-  font-family: Batica;
-  color: #00adb5;
-  text-align: right;
   padding-bottom: 30px;
-  line-height: 1;
 }
 .about-content {
   padding: 30px;
@@ -611,6 +608,7 @@ h5 {
     gap: 10px;
     flex: 1;
   }
+
   .socials img {
     height: clamp(20px, 1rem, 30px);
     width: auto;
@@ -655,25 +653,25 @@ h5 {
   .project-inner {
     padding: 20px;
   }
-  .asterisk-socials {
-    flex-direction: row;
-  }
-}
-@media screen and (max-width: 768px) {
+
   .navbar {
     padding: 20px 30px;
   }
+
   .nav-left {
     display: flex;
     justify-content: left;
     gap: clamp(30px, 5vw, 40px);
   }
+
   .hamburger {
     display: flex;
   }
+
   .hamburger.openHam {
     transform: translateX(-100px);
   }
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -692,6 +690,7 @@ h5 {
     gap: 40px;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
   }
+
   .nav-links a {
     text-align: left;
     font-size: 1.5rem;
@@ -712,6 +711,7 @@ h5 {
   .hamburger .bar.open:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
+
   .nav-logo {
     z-index: 2000;
     position: relative;
