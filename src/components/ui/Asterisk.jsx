@@ -4,12 +4,12 @@ function Asterisk() {
   return (
     <div className="asterisk-big">
       <svg
-        fill="#00adb5"
+        fill="#ffffff"
         width="256px"
         height="256px"
         viewBox="0 0 10 10"
         xmlns="http://www.w3.org/2000/svg"
-        stroke="#00adb5"
+        stroke="#ffffff"
         stroke-width="0.0001"
       >
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

@@ -174,18 +174,18 @@ body {
   padding: 20px 40px;
   position: sticky;
   top: 0px;
-  z-index: 1000;
+  z-index: 1001;
   background-color: transparent;
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.35s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 .navbar.scrolled {
   padding: 15px 40px;
-  background-color: rgba(5, 5, 5, 0.6);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(0, 0, 0, 0.349);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  padding: 20px 40px;
   top: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .nav-left {
   flex: 1;
@@ -336,17 +336,17 @@ h5 {
 }
 .asterisk-big {
   order: 1;
-  right: -80px;
-  top: -80px;
+  right: -100px;
+  top: -95px;
   position: absolute;
+  z-index: 0;
 }
 .asterisk-big svg {
-  height: 380px;
+  height: 200px;
   width: auto;
   position: relative;
-  filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.5));
   animation: moveAsterisk 90s linear infinite;
-  opacity: 0.25;
+  opacity: 1;
 }
 @keyframes moveAsterisk {
   0% {
@@ -360,11 +360,11 @@ h5 {
 }
 .image-container,
 .about-image-container {
+  z-index: 0;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 .image-container {
