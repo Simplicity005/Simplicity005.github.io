@@ -179,13 +179,13 @@ body {
   transition: all 0.35s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 .navbar.scrolled {
-  padding: 15px 40px;
   backdrop-filter: blur(12px);
   background-color: rgba(0, 0, 0, 0.349);
   -webkit-backdrop-filter: blur(12px);
   padding: 20px 40px;
   top: 20px;
   width: 90%;
+  max-width: 1200px;
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .nav-left {
@@ -390,8 +390,9 @@ h5 {
 }
 .about-container,
 .project-container {
-  width: 100%;
-  padding: 100px 50px;
+  width: 90%;
+  margin: auto;
+  max-width: 1200px;
   z-index: 3;
   display: flex;
   min-height: 100vh;
@@ -404,7 +405,7 @@ h5 {
   width: 100%;
   max-width: 1200px;
   min-height: max-content;
-  padding: 80px;
+  padding: clamp(20px, 3vw, 50px);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -415,7 +416,6 @@ h5 {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transform: translateY(30px);
   will-change: opacity, transform;
 }
 .project-inner {
@@ -423,7 +423,7 @@ h5 {
 }
 .section-title,
 .project-title {
-  font-size: 4rem;
+  font-size: clamp(30px, 5vw, 70px);
   font-family: "Space Grotesk", sans-serif;
   color: #ffffff;
   text-align: right;
@@ -454,7 +454,7 @@ h5 {
   color: rgba(255, 255, 255, 0.7);
   font-family: "DM Sans", sans-serif;
   font-weight: 300;
-  font-size: 1.3rem;
+  font-size: clamp(15px, 1.1rem, 40px);
   line-height: 1.6;
 }
 .carousel {
@@ -576,8 +576,8 @@ h5 {
   display: block;
 }
 @media screen and (max-width: 768px) {
-  .navbar {
-    padding: 15px 25px;
+  .navbar.scrolled {
+    width: 90%;
   }
 
   .nav-left {
@@ -652,12 +652,16 @@ h5 {
   }
   .about-content {
     flex-direction: column;
-    padding: 30px 0 0 0;
+    padding: 15px 0 0 0;
+  }
+  .about-content p {
+    margin: 0;
   }
   .section-title {
+    margin: 0;
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0 0 30px 0;
+    padding: 0 0 15px 0;
     text-align: left;
   }
   .about-inner,
