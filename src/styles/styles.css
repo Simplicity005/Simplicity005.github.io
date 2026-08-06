@@ -273,33 +273,33 @@ body {
 }
 .text-side h3,
 h5 {
+  margin: 0;
   font-family: "DM Sans", sans-serif;
   font-weight: 300;
 }
 #top-text {
-  font-size: clamp(12px, 1.2rem, 18px);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  margin: 0;
+  font-size: clamp(12px, 1.6rem, 40px);
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 5px;
 }
 #name-center {
-  font-size: clamp(40px, 6vw, 90px);
+  margin: 10px 0px;
+  font-size: clamp(45px, 5vw, 90px);
   font-family: "Space Grotesk", sans-serif;
-  color: #ffffff;
-  padding: 0;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  margin-bottom: 15px;
+  color: #000;
+  background-color: #ffffffcb;
+  padding: 10px;
 }
 .asterisk-socials {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 #asterisk-explanation {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
+  align-self: center;
 }
 .socials {
   display: flex;
@@ -317,14 +317,20 @@ h5 {
   align-items: center;
   justify-content: center;
 }
+.social-container a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
 .social-container:hover {
   background-color: #ffffff;
   border-color: #ffffff;
 }
 .social-img {
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
   object-fit: contain;
+
   filter: invert(100%) opacity(70%);
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -343,7 +349,7 @@ h5 {
   z-index: 1;
 }
 .asterisk-big svg {
-  height: 200px;
+  height: 180px;
   width: auto;
   position: relative;
   animation: moveAsterisk 90s linear infinite;
@@ -369,8 +375,8 @@ h5 {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 .image-container {
-  height: 32rem;
-  width: 22rem;
+  height: 27rem;
+  width: 20rem;
 }
 .image-container img {
   width: 100%;

@@ -23,7 +23,7 @@ function Hero() {
     <main className="hero-container" id="hero" ref={heroRef}>
       <div className="text-side">
         <h3 id="top-text" className="load-anim item-1">
-          Creative Developer
+          Hi! I am
         </h3>
         <h1 id="name-center" className="load-anim item-2">
           Arjun Sanesh.
