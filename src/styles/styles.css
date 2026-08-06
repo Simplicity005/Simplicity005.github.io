@@ -285,7 +285,7 @@ h5 {
 }
 #name-center {
   margin: 10px 0px;
-  font-size: clamp(45px, 5vw, 90px);
+  font-size: clamp(45px, 5vw, 70px);
   font-family: "Space Grotesk", sans-serif;
   color: #000;
   background-color: #ffffffcb;
@@ -647,7 +647,7 @@ h5 {
     display: none;
   }
   .asterisk-socials {
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: flex-start;
   }
   .about-content {
