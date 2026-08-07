@@ -7,7 +7,7 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 1);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -25,7 +25,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`navbar ${isScrolled && !isMobileMenuOpen ? "scrolled" : ""}`}
+      className={`navbar ${isScrolled && !isMobileMenuOpen ? "scrolled" : ""} ${isMobileMenuOpen ? "nav-side-open" : ""}`}
       id="navbar"
     >
       <div className="nav-left">

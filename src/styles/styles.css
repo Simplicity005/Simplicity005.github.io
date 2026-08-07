@@ -171,7 +171,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 12px 24px;
   position: sticky;
   top: 0px;
   z-index: 1001;
@@ -180,26 +180,32 @@ body {
 }
 .navbar.scrolled {
   backdrop-filter: blur(12px);
-  background-color: rgba(0, 0, 0, 0.349);
+  background-color: rgba(0, 0, 0, 0.2);
   -webkit-backdrop-filter: blur(12px);
-  padding: 20px 40px;
+  padding: 12px 24px; /* Resized from 20px 40px */
   top: 20px;
   width: 90%;
   max-width: 1200px;
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .nav-left {
+  display: flex;
   flex: 1;
-  justify-content: space-evenly;
 }
 .nav-right {
   flex: 1;
 }
 .nav-logo {
+  display: block;
   height: 24px;
   width: auto;
   z-index: 1002;
   opacity: 0.6;
+}
+.nav-left a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 .hamburger {
   align-self: center;
@@ -212,24 +218,25 @@ body {
 .hamburger .bar {
   width: 25px;
   height: 2px;
-  background-color: #ffffff;
+  background-color: #ffffff86;
   transition: all 0.3s ease-in-out;
+  border-radius: 50px;
   z-index: 1003;
 }
 .nav-links {
   display: flex;
-  gap: clamp(20px, 5vw, 60px);
+  gap: clamp(10px, 3vw, 30px); /* Resized from 20px to 60px */
   border-radius: 30px;
 }
 .nav-links a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
   font-family: "Space Grotesk", sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Resized from 0.9rem */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 400;
-  padding: 8px 16px;
+  padding: 6px 12px; /* Resized from 8px 16px */
   border-radius: 35px;
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -581,15 +588,20 @@ h5 {
     width: 90%;
   }
 
+  .nav-left a {
+    display: inline-flex;
+  }
   .nav-left {
-    flex-direction: column;
-    justify-content: space-between;
+    display: flex; /* <-- This is the magic fix! */
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
     width: 100%;
+    gap: 20px;
   }
 
-  /* Dialed back the logo size and opacity */
   .nav-logo {
-    height: 18px;
+    height: 20px; /* Resized from 18px */
     opacity: 0.4;
   }
 
@@ -598,42 +610,46 @@ h5 {
     z-index: 1003;
   }
 
-  /* Half-screen drawer with a subtle glass border */
   .nav-links {
     position: fixed;
     top: 0;
-    left: -100%;
-    width: 50vw;
+    left: -100%; /* Keeps it hidden on the left */
+    width: 60vw; /* Slightly wider to prevent text cramping */
     height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(5, 5, 7, 0.95);
+    background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    border-right: 1px solid rgba(255, 255, 255, 0.05); /* Changed to right border since it slides from left */
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
     padding: 0;
-    gap: 30px;
+    gap: 20px; /* Resized from 30px */
+  }
+  .navbar.nav-side-open {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
   }
 
   .nav-links.active {
-    left: 0;
+    left: 0; /* Slides in from the left perfectly */
   }
 
-  /* Shrunk the massive links */
   .nav-links a {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Resized from 1.2rem */
   }
 
   /* Hamburger Animation */
   .hamburger .bar.open:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
+
   .hamburger .bar.open:nth-child(2) {
     opacity: 0;
   }
+
   .hamburger .bar.open:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
