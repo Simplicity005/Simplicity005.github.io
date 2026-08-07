@@ -25,18 +25,21 @@ function Navbar() {
 
   return (
     <nav
-      className={`navbar ${isScrolled && !isMobileMenuOpen ? "scrolled" : ""} ${isMobileMenuOpen ? "nav-side-open" : ""}`}
+      className={`navbar ${isScrolled ? "scrolled" : ""} ${isMobileMenuOpen ? "nav-side-open" : ""}`}
       id="navbar"
     >
       <div className="nav-left">
-        <a href="#hero">
-          <img src={logo} alt="Simplicity Logo" className="nav-logo" />
-        </a>
+        {/* Hamburger goes first so it sits on the left */}
         <div className="hamburger" onClick={toggleMenu}>
           <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
           <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
           <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
         </div>
+
+        {/* Logo goes second */}
+        <a href="#hero">
+          <img src={logo} alt="Simplicity Logo" className="nav-logo" />
+        </a>
       </div>
 
       <div className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
