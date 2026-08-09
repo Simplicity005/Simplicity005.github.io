@@ -270,15 +270,23 @@ body {
    ========================================================================== */
 .hero-container {
   display: flex;
-  flex-direction: row;
   flex: 1 0 auto;
   min-height: 90vh;
   width: 100%;
   justify-content: center;
   align-items: center;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.hero-parallax {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   gap: clamp(30px, 8vw, 80px);
   padding: 50px;
-  z-index: 3;
   box-sizing: border-box;
   will-change: opacity, transform;
 }
@@ -1194,7 +1202,7 @@ h5 {
   }
 
   /* Hero adjustments */
-  .hero-container {
+  .hero-parallax {
     flex-direction: column;
     gap: 40px;
     padding: 30px;
@@ -1217,41 +1225,69 @@ h5 {
   /* About adjustments */
   .about-content {
     flex-direction: column;
-    padding: 15px 0 0 0;
+    padding: 12px 0 0 0;
   }
 
   .about-content p {
     margin: 0;
   }
 
+  .about-para {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .about-para::first-letter {
+    font-size: 1.8em;
+    margin: 2px 6px 0 0;
+  }
+
+  .about-tags-kicker {
+    font-size: 0.65rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
   .about-tags {
-    margin-top: 22px;
+    margin-top: 0;
+    gap: 8px;
+  }
+
+  .about-tag {
+    font-size: 0.62rem;
+    padding: 6px 12px;
+  }
+
+  .section-kicker {
+    font-size: 0.65rem;
+    margin-bottom: 8px;
   }
 
   .section-title {
     margin: 0;
     text-align: left;
+    font-size: 26px;
   }
 
   .about-title-wrap {
     align-items: flex-start;
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0 0 15px 0;
+    padding: 0 0 12px 0;
     width: 100%;
   }
 
   .about-deco-asterisk {
-    width: 110px;
-    height: 110px;
-    top: -20px;
-    right: -20px;
+    width: 90px;
+    height: 90px;
+    top: -16px;
+    right: -16px;
   }
 
   .about-inner,
   .project-inner {
     flex-direction: column;
-    padding: 28px;
+    padding: 22px;
   }
 
   .project-title-row {
@@ -1264,36 +1300,35 @@ h5 {
     height: 32px;
   }
 
-  /* Carousel adjustments: stacked cards, each fully readable at a glance */
+  /* Mobile: show one project at a time, paged via the prev/next controls */
   .carousel {
-    flex-direction: column;
     height: auto;
-    gap: 16px;
   }
 
   .card {
-    width: 100%;
-    height: 150px;
+    display: none;
   }
 
   .card.active {
-    height: 300px;
+    display: flex;
+    width: 100%;
+    height: 340px;
   }
 
   .card-content {
-    padding: 20px;
-  }
-
-  .card-title {
-    font-size: 1rem;
+    padding: 22px;
   }
 
   .card.active .card-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .card-details {
     font-size: 0.85rem;
+  }
+
+  .carousel-nav {
+    margin-top: 20px;
   }
 
   /* Footer adjustments */
