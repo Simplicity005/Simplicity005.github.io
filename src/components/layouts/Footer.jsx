@@ -72,13 +72,11 @@ function Footer() {
             <span className="footer-bottom-spacer" aria-hidden="true"></span>
             <p>© {year} Arjun Sanesh. All rights reserved.</p>
             <a
-              href="#hero"
+              href="#"
               className="back-to-top"
               onClick={(e) => {
                 e.preventDefault();
-                document
-                  .getElementById("hero")
-                  ?.scrollIntoView({ behavior: "smooth" });
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
               }}
             >
               Back to top ↑
