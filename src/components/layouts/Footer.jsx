@@ -39,9 +39,6 @@ function Footer() {
                   className="footer-logo"
                 />
               </div>
-              <p className="footer-tagline">
-                Building things that (mostly) work, and making them look good.
-              </p>
             </div>
 
             <div className="footer-col">
@@ -78,11 +75,6 @@ function Footer() {
               Back to top ↑
             </a>
           </div>
-        </div>
-        <div className="footer-glow" aria-hidden="true">
-          <span className="aurora aurora-1"></span>
-          <span className="aurora aurora-2"></span>
-          <span className="aurora aurora-3"></span>
         </div>
       </div>
     </footer>
