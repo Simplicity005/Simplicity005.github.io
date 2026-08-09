@@ -1,5 +1,4 @@
 import React from "react";
-/* Changed BrowserRouter to HashRouter below */
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 
@@ -8,6 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* You can add your future <Route path="/projects" element={<Projects />} /> here later! */}
       </Routes>
     </Router>
   );

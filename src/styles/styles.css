@@ -177,25 +177,25 @@ body {
   border-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Pseudo-element background. Animating filter instead of opacity stops artifacts */
+/* Pseudo-element background. Animating opacity guarantees the blur works smoothly */
+/* Apply the blur permanently, but hide it by default with opacity: 0 */
 .navbar::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50px;
-  background-color: transparent;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  z-index: -1;
-  transition: all 0.35s ease;
-}
-
-.navbar.scrolled::before {
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.35s ease; /* Animate ONLY the opacity */
 }
 
+/* Fade the blur in smoothly when scrolled */
+.navbar.scrolled::before {
+  opacity: 1;
+}
 /* Hides the pill background when the mobile menu is open */
 .navbar.nav-side-open {
   border-color: transparent;
