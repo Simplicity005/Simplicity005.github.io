@@ -26,17 +26,6 @@ body {
   scroll-behavior: smooth;
 }
 
-html {
-  scroll-snap-type: y proximity;
-}
-
-.hero-container,
-.about-container,
-.project-container,
-.footer-container {
-  scroll-snap-align: start;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -436,17 +425,27 @@ h5 {
 /* ==========================================================================
    5. ABOUT & PROJECT SHARED LAYOUT
    ========================================================================== */
-.about-container,
-.project-container {
+.about-container {
   width: 90%;
-  margin: auto;
+  margin: 0 auto;
   max-width: 1200px;
   z-index: 3;
   display: flex;
   min-height: 100vh;
   justify-content: center;
-  scroll-margin-top: 20px;
   align-items: center;
+  scroll-margin-top: 20px;
+}
+
+.project-container {
+  width: 90%;
+  margin: 100px auto 120px;
+  max-width: 1200px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-margin-top: 20px;
 }
 
 .about-inner,
@@ -528,14 +527,56 @@ h5 {
   letter-spacing: -0.03em;
 }
 
-.section-title {
+.about-title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   padding: 0 60px 0 0;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-kicker {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 14px;
 }
 
 .project-title {
   padding-bottom: 50px;
   text-align: center;
+}
+
+.about-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-deco-asterisk {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 2.5;
+  transform: rotate(12deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-tags-kicker {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 30px;
+  margin-bottom: 14px;
 }
 
 .about-content {
@@ -560,11 +601,21 @@ h5 {
   line-height: 1.6;
 }
 
+.about-para::first-letter {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.6em;
+  font-weight: 500;
+  color: #ffffff;
+  float: left;
+  line-height: 0.8;
+  margin: 4px 8px 0 0;
+}
+
 .about-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 28px;
+  margin-top: 0;
 }
 
 .about-tag {
@@ -600,8 +651,8 @@ h5 {
 .card {
   position: relative;
   flex: 1;
-  height: 350px;
-  border-radius: 16px;
+  height: 260px;
+  border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -613,7 +664,7 @@ h5 {
 
 .card.active {
   flex: 2.5;
-  height: 500px;
+  height: 380px;
   cursor: default;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -679,7 +730,7 @@ h5 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 32px;
+  padding: 22px;
   box-sizing: border-box;
   justify-content: flex-end;
 }
@@ -726,8 +777,8 @@ h5 {
 }
 
 .card.active .card-title {
-  font-size: clamp(1.8rem, 2.6vw, 2.5rem);
-  margin-bottom: 16px;
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  margin-bottom: 10px;
 }
 
 .card-details {
@@ -738,15 +789,15 @@ h5 {
   color: rgba(255, 255, 255, 0.75);
   font-family: "DM Sans", sans-serif;
   font-weight: 300;
-  line-height: 1.55;
-  font-size: 1rem;
+  line-height: 1.5;
+  font-size: 0.9rem;
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   margin: 0;
 }
 
 .card.active .card-details {
   opacity: 1;
-  max-height: 200px;
+  max-height: 120px;
   transform: translateY(0);
   transition-delay: 0.25s;
 }
@@ -780,6 +831,88 @@ h5 {
   background: rgba(255, 255, 255, 0.06);
   border-radius: 20px;
   padding: 5px 12px;
+}
+
+.project-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 36px;
+}
+
+.project-title-row .project-title {
+  padding-bottom: 0;
+}
+
+.project-title-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-title-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.project-title-arrow:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+  transform: translateX(3px);
+}
+
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.carousel-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carousel-nav-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.carousel-nav-btn:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+}
+
+.carousel-nav-count {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.4);
+  min-width: 56px;
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -1097,10 +1230,22 @@ h5 {
 
   .section-title {
     margin: 0;
+    text-align: left;
+  }
+
+  .about-title-wrap {
+    align-items: flex-start;
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0 0 15px 0;
-    text-align: left;
+    width: 100%;
+  }
+
+  .about-deco-asterisk {
+    width: 110px;
+    height: 110px;
+    top: -20px;
+    right: -20px;
   }
 
   .about-inner,
@@ -1109,8 +1254,14 @@ h5 {
     padding: 28px;
   }
 
-  .project-title {
-    padding-bottom: 30px;
+  .project-title-row {
+    padding-bottom: 26px;
+    gap: 10px;
+  }
+
+  .project-title-arrow {
+    width: 32px;
+    height: 32px;
   }
 
   /* Carousel adjustments: stacked cards, each fully readable at a glance */
@@ -1122,27 +1273,27 @@ h5 {
 
   .card {
     width: 100%;
-    height: 190px;
+    height: 150px;
   }
 
   .card.active {
-    height: 380px;
+    height: 300px;
   }
 
   .card-content {
-    padding: 24px;
+    padding: 20px;
   }
 
   .card-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 
   .card.active .card-title {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
   }
 
   .card-details {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   /* Footer adjustments */
