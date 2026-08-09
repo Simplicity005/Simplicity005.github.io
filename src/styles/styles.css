@@ -535,7 +535,7 @@ h5 {
 
 .section-title,
 .project-title {
-  font-size: clamp(30px, 5vw, 70px);
+  font-size: clamp(30px, 3.5vw, 70px);
   font-family: "Space Grotesk", sans-serif;
   color: #ffffff;
   text-align: right;
@@ -659,7 +659,7 @@ h5 {
 .carousel {
   display: flex;
   width: 100%;
-  height: 500px;
+  height: 60%;
   gap: 24px;
   align-items: center;
 }
@@ -667,20 +667,20 @@ h5 {
 .card {
   position: relative;
   flex: 1;
-  height: 260px;
+  height: 300px;
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .card.active {
-  flex: 2.5;
-  height: 380px;
+  flex: 2;
+  height: 300px;
   cursor: default;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
