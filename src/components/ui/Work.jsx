@@ -4,14 +4,17 @@ import ProjectCard from "./ProjectCard";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 function Work() {
-  const [activeId, setActiveId] = useState(projects[0].id);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState("next");
   const revealRef = useScrollReveal();
-  const activeIndex = projects.findIndex((p) => p.id === activeId);
 
-  const goTo = (index) => {
-    const wrapped = (index + projects.length) % projects.length;
-    setActiveId(projects[wrapped].id);
+  const goTo = (nextIndex, dir) => {
+    const wrapped = (nextIndex + projects.length) % projects.length;
+    setDirection(dir);
+    setActiveIndex(wrapped);
   };
+
+  const activeProject = projects[activeIndex];
 
   return (
     <section className="project-container" id="work">
@@ -37,23 +40,39 @@ function Work() {
           </button>
         </div>
 
+        {/* Desktop: full carousel, click any card to expand it */}
         <div className="carousel">
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
               index={index}
-              isActive={activeId === project.id}
-              onClick={() => setActiveId(project.id)}
+              isActive={index === activeIndex}
+              onClick={() => goTo(index, index > activeIndex ? "next" : "prev")}
             />
           ))}
+        </div>
+
+        {/* Mobile: one project at a time, slides in on prev/next */}
+        <div className="carousel-mobile">
+          <div
+            className={`carousel-mobile-track slide-${direction}`}
+            key={activeProject.id}
+          >
+            <ProjectCard
+              project={activeProject}
+              index={activeIndex}
+              isActive={true}
+              onClick={() => {}}
+            />
+          </div>
         </div>
 
         <div className="carousel-nav">
           <button
             type="button"
             className="carousel-nav-btn"
-            onClick={() => goTo(activeIndex - 1)}
+            onClick={() => goTo(activeIndex - 1, "prev")}
             aria-label="Previous project"
           >
             <svg viewBox="0 0 24 24" fill="none">
@@ -73,7 +92,7 @@ function Work() {
           <button
             type="button"
             className="carousel-nav-btn"
-            onClick={() => goTo(activeIndex + 1)}
+            onClick={() => goTo(activeIndex + 1, "next")}
             aria-label="Next project"
           >
             <svg viewBox="0 0 24 24" fill="none">
