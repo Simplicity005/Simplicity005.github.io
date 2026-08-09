@@ -4,12 +4,12 @@
 :root {
   --color-bg1: rgb(5, 5, 7);
   --color-bg2: rgb(12, 15, 18);
-  --color1: 15, 25, 30;
-  --color2: 5, 5, 5;
-  --color3: 30, 45, 50;
-  --color4: 20, 35, 40;
-  --color5: 40, 50, 60;
-  --color-interactive: 80, 120, 125;
+  --color1: 5, 5, 5;
+  --color2: 60, 60, 60;
+  --color3: 70, 70, 70;
+  --color4: 100, 100, 100;
+  --color5: 40, 40, 40;
+  --color-interactive: 50, 50, 50;
   --circle-size: 90%;
   --blending: screen;
 }
@@ -1268,6 +1268,47 @@ h5 {
 /* ==========================================================================
    8. KEYFRAMES & ANIMATIONS
    ========================================================================== */
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+  50% {
+    transform: translateY(50%);
+    z-index: -1;
+  }
+  100% {
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+    z-index: -1;
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+    z-index: -1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+    z-index: -1;
+  }
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+    z-index: -1;
+  }
+  100% {
+    transform: rotate(360deg);
+    z-index: -1;
+  }
+}
 .load-anim {
   opacity: 0;
   animation: gracefulFade 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
