@@ -26,6 +26,17 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  scroll-snap-type: y proximity;
+}
+
+.hero-container,
+.about-container,
+.project-container,
+.footer-container {
+  scroll-snap-align: start;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -310,6 +321,9 @@ h5 {
   color: #000;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
+  /* Overrides the generic .load-anim fade with a left-to-right wipe reveal */
+  opacity: 1;
+  animation: nameReveal 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.4s both;
 }
 
 .asterisk-socials {
@@ -368,6 +382,12 @@ h5 {
 .image-side {
   display: flex;
   position: relative;
+}
+
+/* Overrides the generic .load-anim fade with a zoom-in reveal */
+.image-side.load-anim.item-4 {
+  opacity: 1;
+  animation: heroImageReveal 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both;
 }
 
 .asterisk-big {
@@ -444,8 +464,54 @@ h5 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+/* Generic "zoom into place" reveal, driven by useScrollReveal toggling .in-view */
+.reveal-zoom {
   opacity: 0;
+  transform: scale(0.9) translateY(30px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
+}
+
+.reveal-zoom.in-view {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Cards pop in with a stagger once the project section has revealed */
+.project-inner.in-view .card {
+  animation: cardPop 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.project-inner.in-view .card:nth-child(1) {
+  animation-delay: 0.15s;
+}
+.project-inner.in-view .card:nth-child(2) {
+  animation-delay: 0.28s;
+}
+.project-inner.in-view .card:nth-child(3) {
+  animation-delay: 0.41s;
+}
+
+/* About tags pop in with a stagger once the about section has revealed */
+.about-inner.in-view .about-tag {
+  animation: tagPop 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.about-inner.in-view .about-tag:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.about-inner.in-view .about-tag:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.about-inner.in-view .about-tag:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.about-inner.in-view .about-tag:nth-child(4) {
+  animation-delay: 0.5s;
 }
 
 .project-inner {
@@ -494,6 +560,32 @@ h5 {
   line-height: 1.6;
 }
 
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.about-tag {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 8px 16px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-tag:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 /* ==========================================================================
    6. CAROUSEL & CARDS
    ========================================================================== */
@@ -512,7 +604,7 @@ h5 {
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   display: flex;
   align-items: center;
@@ -523,7 +615,18 @@ h5 {
   flex: 2.5;
   height: 500px;
   cursor: default;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@media (hover: hover) {
+  .card:not(.active):hover {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .card:not(.active):hover .card-bg {
+    filter: grayscale(15%) contrast(1.05) brightness(0.55);
+    transform: scale(1.12);
+  }
 }
 
 .card-bg {
@@ -534,30 +637,50 @@ h5 {
   height: 100%;
   background-size: cover;
   background-position: center;
-  filter: blur(12px) brightness(0.2) grayscale(50%);
-  transform: scale(1.1);
+  filter: grayscale(30%) contrast(1.05) brightness(0.42);
+  transform: scale(1.08);
   transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 1;
 }
 
 .card.active .card-bg {
-  filter: blur(0px) brightness(0.4) grayscale(0%);
+  filter: grayscale(0%) contrast(1.05) brightness(0.62);
   transform: scale(1);
+}
+
+/* Gradient scrim keeps text legible over the photo without hiding it */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card.active::after {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
 }
 
 .card-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 32px;
   box-sizing: border-box;
-  justify-content: center;
-}
-
-.card.active .card-content {
   justify-content: flex-end;
 }
 
@@ -568,21 +691,17 @@ h5 {
 .text-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.card.active .text-content {
-  height: auto;
   align-items: flex-start;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
 }
 
 .card-index {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: auto;
   align-self: flex-start;
   opacity: 0;
@@ -593,46 +712,193 @@ h5 {
 .card.active .card-index {
   opacity: 1;
   transform: translateY(0);
-  margin-bottom: 20px;
 }
 
 .card-title {
   font-family: "Space Grotesk", sans-serif;
   color: #ffffff;
-  font-size: 1.4rem;
-  text-align: center;
+  font-size: 1.15rem;
+  text-align: left;
   letter-spacing: -0.02em;
+  line-height: 1.25;
   transition: all 0.65s cubic-bezier(0.22, 1, 0.36, 1);
   margin: 0;
 }
 
 .card.active .card-title {
-  font-size: 2.5rem;
-  text-align: left;
+  font-size: clamp(1.8rem, 2.6vw, 2.5rem);
   margin-bottom: 16px;
 }
 
 .card-details {
   opacity: 0;
-  transform: translateY(20px);
-  color: rgba(255, 255, 255, 0.8);
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(12px);
+  color: rgba(255, 255, 255, 0.75);
   font-family: "DM Sans", sans-serif;
   font-weight: 300;
-  line-height: 1.5;
-  font-size: 1.1rem;
+  line-height: 1.55;
+  font-size: 1rem;
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  display: none;
+  margin: 0;
 }
 
 .card.active .card-details {
   opacity: 1;
+  max-height: 200px;
   transform: translateY(0);
-  transition-delay: 0.3s;
-  display: block;
+  transition-delay: 0.25s;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(12px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card.active .card-tags {
+  opacity: 1;
+  max-height: 100px;
+  transform: translateY(0);
+  margin-top: 18px;
+  transition-delay: 0.4s;
+}
+
+.card-tag {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 5px 12px;
 }
 
 /* ==========================================================================
-   7. KEYFRAMES & ANIMATIONS
+   7. FOOTER
+   ========================================================================== */
+.footer-container {
+  width: 90%;
+  margin: 60px auto 0;
+  max-width: 1200px;
+  z-index: 3;
+  scroll-margin-top: 20px;
+}
+
+.footer-inner {
+  width: 100%;
+  padding: clamp(30px, 4vw, 60px) clamp(24px, 4vw, 60px) 30px;
+  border-radius: 24px 24px 0 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: none;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 320px;
+}
+
+.footer-logo {
+  height: 22px;
+  width: auto;
+  opacity: 0.7;
+}
+
+.footer-tagline {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-col-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 4px;
+}
+
+.footer-col a {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-col a:hover {
+  color: #ffffff;
+}
+
+.footer-socials {
+  gap: 12px;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom p {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.back-to-top {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.back-to-top:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   8. KEYFRAMES & ANIMATIONS
    ========================================================================== */
 .load-anim {
   opacity: 0;
@@ -650,6 +916,48 @@ h5 {
 }
 .item-4 {
   animation-delay: 1s;
+}
+
+@keyframes nameReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes heroImageReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes cardPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes tagPop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes moveAsterisk {
@@ -675,7 +983,7 @@ h5 {
 }
 
 /* ==========================================================================
-   8. MEDIA QUERIES (MOBILE STYLES)
+   9. MEDIA QUERIES (MOBILE STYLES)
    ========================================================================== */
 @media screen and (max-width: 768px) {
   .navbar {
@@ -783,6 +1091,10 @@ h5 {
     margin: 0;
   }
 
+  .about-tags {
+    margin-top: 22px;
+  }
+
   .section-title {
     margin: 0;
     border-right: none;
@@ -794,21 +1106,68 @@ h5 {
   .about-inner,
   .project-inner {
     flex-direction: column;
-    padding: 40px;
+    padding: 28px;
   }
 
-  /* Carousel adjustments */
+  .project-title {
+    padding-bottom: 30px;
+  }
+
+  /* Carousel adjustments: stacked cards, each fully readable at a glance */
   .carousel {
     flex-direction: column;
     height: auto;
+    gap: 16px;
   }
 
   .card {
     width: 100%;
-    height: 150px;
+    height: 190px;
   }
 
   .card.active {
-    height: 350px;
+    height: 380px;
+  }
+
+  .card-content {
+    padding: 24px;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+  }
+
+  .card.active .card-title {
+    font-size: 1.7rem;
+  }
+
+  .card-details {
+    font-size: 0.9rem;
+  }
+
+  /* Footer adjustments */
+  .footer-container {
+    margin-top: 40px;
+  }
+
+  .footer-inner {
+    border-radius: 20px 20px 0 0;
+    padding: 30px 24px 24px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 28px;
+    padding-bottom: 28px;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 }

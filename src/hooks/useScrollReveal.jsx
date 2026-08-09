@@ -1,23 +1,22 @@
 import { useEffect, useRef } from "react";
-export function useScrollReveal() {
+export function useScrollReveal({ once = true } = {}) {
   const ref = useRef(null);
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = "translateY(0) scale(1)";
+          node.classList.add("in-view");
+          if (once) observer.unobserve(node);
+        } else if (!once) {
+          node.classList.remove("in-view");
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
     );
-    if (ref.current) {
-      ref.current.style.opacity = 0;
-      ref.current.style.transform = "translateY(30px) scale(0.98)";
-      ref.current.style.transition = "all 1s cubic-bezier(0.22, 1, 0.36, 1)";
-      observer.observe(ref.current);
-    }
+    observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [once]);
   return ref;
 }
