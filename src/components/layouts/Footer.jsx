@@ -79,7 +79,11 @@ function Footer() {
             </a>
           </div>
         </div>
-        <div className="footer-glow" aria-hidden="true"></div>
+        <div className="footer-glow" aria-hidden="true">
+          <span className="aurora aurora-1"></span>
+          <span className="aurora aurora-2"></span>
+          <span className="aurora aurora-3"></span>
+        </div>
       </div>
     </footer>
   );
