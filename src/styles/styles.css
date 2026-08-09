@@ -612,6 +612,7 @@ h5 {
 .about-para {
   color: rgba(255, 255, 255, 0.7);
   font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.01em;
   font-weight: 300;
   font-size: clamp(15px, 1.1rem, 40px);
   line-height: 1.6;

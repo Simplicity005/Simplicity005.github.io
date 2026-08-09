@@ -2,10 +2,10 @@ import React from "react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 
 const focusAreas = [
-  "Software Engineering",
+  "Full Stack Web Development",
   "UI/UX Design",
   "IoT & Hardware",
-  "Applied Mathematics",
+  "Machine Learning and AI",
 ];
 
 function About() {
@@ -31,12 +31,13 @@ function About() {
         <div className="about-content">
           <div className="about-text-side">
             <p className="about-para">
-              I'm Arjun. I write code that occasionally behaves and design
-              interfaces with a Michelin-star aesthetic. When I'm not wiring up
-              ESP32s for hardware hacks or falling down Linux Mint customization
-              rabbit holes, you can find me shooting hoops or taking photos.
-              Basically, I build cool stuff and make it look incredibly posh
-              while doing it.
+              I'm Arjun (Simplicity or Simple Minded Moron) .I'm just a guy who
+              loves design and loves to code. I don't have a degree in designing
+              but I do love to try out new designs. I love working with hardware
+              and software. I have worked with ESP32s, Arduinos and more. I love
+              working with software too and I like to make it look good while I
+              work on it. Currently a dual booter using Linux Mint and Windows.
+              Open to try and learn new softwares or hardwares.
             </p>
             <span className="about-tags-kicker">Currently focused on</span>
             <div className="about-tags">
