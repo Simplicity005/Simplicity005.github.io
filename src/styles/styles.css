@@ -44,6 +44,7 @@ body {
 /* ==========================================================================
    2. BACKGROUND & ANIMATED BLOBS
    ========================================================================== */
+
 .gradient-bg {
   width: 100vw;
   min-height: 100dvh;
@@ -155,6 +156,7 @@ body {
 /* ==========================================================================
    3. NAVBAR
    ========================================================================== */
+
 .navbar {
   width: 90%;
   max-width: 1200px;
@@ -197,6 +199,7 @@ body {
 .navbar.scrolled::before {
   opacity: 1;
 }
+
 /* Hides the pill background when the mobile menu is open */
 .navbar.nav-side-open {
   border-color: transparent;
@@ -275,6 +278,7 @@ body {
 /* ==========================================================================
    4. HERO SECTION
    ========================================================================== */
+
 .hero-container {
   display: flex;
   flex: 1 0 auto;
@@ -389,6 +393,7 @@ body {
 /* ==========================================================================
    5. ABOUT & PROJECT SHARED LAYOUT
    ========================================================================== */
+
 .about-container {
   width: 90%;
   margin: 0 auto;
@@ -451,9 +456,11 @@ body {
 .project-inner.in-view .card:nth-child(1) {
   animation-delay: 0.15s;
 }
+
 .project-inner.in-view .card:nth-child(2) {
   animation-delay: 0.28s;
 }
+
 .project-inner.in-view .card:nth-child(3) {
   animation-delay: 0.41s;
 }
@@ -466,12 +473,15 @@ body {
 .about-inner.in-view .about-tag:nth-child(1) {
   animation-delay: 0.2s;
 }
+
 .about-inner.in-view .about-tag:nth-child(2) {
   animation-delay: 0.3s;
 }
+
 .about-inner.in-view .about-tag:nth-child(3) {
   animation-delay: 0.4s;
 }
+
 .about-inner.in-view .about-tag:nth-child(4) {
   animation-delay: 0.5s;
 }
@@ -604,6 +614,7 @@ body {
 /* ==========================================================================
    6. CAROUSEL & CARDS
    ========================================================================== */
+
 .carousel {
   display: flex;
   width: 100%;
@@ -637,7 +648,6 @@ body {
   .card:not(.active):hover {
     border-color: rgba(255, 255, 255, 0.18);
   }
-
   .card:not(.active):hover .card-bg {
     filter: grayscale(15%) contrast(1.05) brightness(0.55);
     transform: scale(1.12);
@@ -879,7 +889,7 @@ body {
   text-align: center;
 }
 
-/* Mobile single-card carousel — hidden on desktop, shown via media query */
+/* Mobile single-card carousel - hidden on desktop, shown via media query */
 .carousel-mobile {
   display: none;
 }
@@ -899,12 +909,13 @@ body {
 /* ==========================================================================
    7. FOOTER
    ========================================================================== */
+
 .footer-container {
   width: 100%;
   margin-top: auto;
 }
 
-/* Full-bleed glass panel — spans the whole viewport width */
+/* Full-bleed glass panel - spans the whole viewport width */
 .footer-blur {
   display: flex;
   position: relative;
@@ -1149,6 +1160,7 @@ body {
     transform: translateX(0);
   }
 }
+
 .load-anim {
   opacity: 0;
   animation: gracefulFade 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -1157,12 +1169,15 @@ body {
 .item-1 {
   animation-delay: 0.1s;
 }
+
 .item-2 {
   animation-delay: 0.4s;
 }
+
 .item-3 {
   animation-delay: 0.7s;
 }
+
 .item-4 {
   animation-delay: 1s;
 }
@@ -1209,9 +1224,40 @@ body {
   }
 }
 
+.footer-container {
+  position: relative;
+  overflow: hidden;
+}
+
+#aurora-ribbon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.3;
+  filter: blur(4px);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+}
 /* ==========================================================================
    9. MEDIA QUERIES (MOBILE STYLES)
    ========================================================================== */
+
 @media screen and (max-width: 768px) {
   .navbar {
     padding: 12px 20px;
@@ -1442,6 +1488,7 @@ body {
     gap: 10px;
     padding-top: 20px;
   }
+
   .footer-col {
     padding-left: clamp(15px, 5vw, 40px);
   }
@@ -1455,4 +1502,6 @@ body {
     grid-column: 1;
     justify-self: center;
   }
+
+  /* THE TAPERED AURORA EFFECT FOR THE FOOTER */
 }
