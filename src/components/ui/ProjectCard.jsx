@@ -1,4 +1,3 @@
-import React from "react";
 function ProjectCard({ project, index, isActive, onClick }) {
   const formattedIndex = String(index + 1).padStart(2, "0");
   return (

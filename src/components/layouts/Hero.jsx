@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Socials from "../ui/Socials";
-import Asterisk from "../ui/Asterisk";
 import linkedinIcon from "../../assets/images/linkedin.png";
 import instagramIcon from "../../assets/images/instagram.png";
-import heroPhoto from "../../assets/images/1000027072 (1).png";
+
 function Hero() {
   const heroRef = useRef(null);
   useEffect(() => {
@@ -43,12 +42,6 @@ function Hero() {
                 alt="Instagram"
               />
             </div>
-          </div>
-        </div>
-        <div className="image-side load-anim item-4">
-          <Asterisk />
-          <div className="image-container" id="hero-photo-slot">
-            <img src={heroPhoto} alt="Arjun Sanesh" />
           </div>
         </div>
       </div>
