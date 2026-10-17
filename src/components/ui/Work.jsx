@@ -1,13 +1,17 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { projects, categories } from "../../data/projectsData";
 import ProjectCard from "./ProjectCard";
 
-function Work() {
+function Work({ isPreview = false }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredProjects = useMemo(() => {
+    if (isPreview) {
+      return projects.slice(0, 3);
+    }
     return projects.filter((p) => {
       const pCat = (p.category || "").toLowerCase();
       const pDomain = (p.domain || "").toLowerCase();
@@ -21,12 +25,28 @@ function Work() {
         (p.tags && p.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase())));
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [isPreview, selectedCategory, searchQuery]);
 
   return (
-    <section className="work-section" id="work">
+    <section className={`work-section ${isPreview ? "work-preview-mode" : "work-full-page"}`} id="work">
       <div className="work-container">
-        {/* Clean Header with scroll animation */}
+        {/* Back navigation button when in full page mode */}
+        {!isPreview && (
+          <motion.div
+            className="projects-back-bar"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Link to="/" className="projects-back-link">
+              <span className="back-arrow">←</span>
+              <span>RETURN TO HOME</span>
+            </Link>
+            <span className="neo-tag neo-tag-teal">[ARCHIVE: {projects.length} PROJECTS]</span>
+          </motion.div>
+        )}
+
+        {/* Section Header */}
         <motion.div
           className="section-header-block"
           initial={{ opacity: 0, y: 24 }}
@@ -34,57 +54,74 @@ function Work() {
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="section-kicker">02 // PROJECTS</span>
+          <span className="section-kicker">
+            {isPreview ? "02 // PROJECTS" : "02 // REPOSITORY ARCHIVE"}
+          </span>
           <h2 className="section-heading">
-            Featured Projects &amp; <span>Systems.</span>
-          </h2>
-        </motion.div>
-
-        {/* Clean Controls Strip with scroll animation */}
-        <motion.div
-          className="work-controls-strip"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="work-filter-tabs">
-            {categories.map((cat) => {
-              const isActive = selectedCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  className={`neo-filter-btn ${isActive ? "active" : ""}`}
-                  onClick={() => setSelectedCategory(cat.id)}
-                >
-                  <span>{cat.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="work-search-wrapper">
-            <input
-              type="text"
-              className="neo-input work-search-input"
-              placeholder="Search projects..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Filter projects"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                className="search-clear-btn"
-                onClick={() => setSearchQuery("")}
-                aria-label="Clear search"
-              >
-                ✕
-              </button>
+            {isPreview ? (
+              <>
+                Featured Projects &amp; <span>Systems.</span>
+              </>
+            ) : (
+              <>
+                All Projects &amp; <span>Systems.</span>
+              </>
             )}
-          </div>
+          </h2>
+          {!isPreview && (
+            <p className="projects-catalog-desc">
+              Complete catalog of open-source architectures, embedded nodes, AI experiments, and web tools deployed across GitHub.
+            </p>
+          )}
         </motion.div>
+
+        {/* Filter & Search Controls (Rendered on Full Page, or if not preview) */}
+        {!isPreview && (
+          <motion.div
+            className="work-controls-strip"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="work-filter-tabs">
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    className={`neo-filter-btn ${isActive ? "active" : ""}`}
+                    onClick={() => setSelectedCategory(cat.id)}
+                  >
+                    <span>{cat.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="work-search-wrapper">
+              <input
+                type="text"
+                className="neo-input work-search-input"
+                placeholder="Search projects..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                aria-label="Filter projects"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  className="search-clear-btn"
+                  onClick={() => setSearchQuery("")}
+                  aria-label="Clear search"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </motion.div>
+        )}
 
         {/* Projects Grid */}
         <div className="projects-grid">
@@ -97,7 +134,8 @@ function Work() {
           ))}
         </div>
 
-        {filteredProjects.length === 0 && (
+        {/* Empty state for search on full page */}
+        {!isPreview && filteredProjects.length === 0 && (
           <div className="neo-window empty-results-window">
             <div className="empty-state-content">
               <span className="neo-tag">[EMPTY_QUERY]</span>
@@ -117,6 +155,35 @@ function Work() {
               </button>
             </div>
           </div>
+        )}
+
+        {/* View More Action Strip on Homepage Preview */}
+        {isPreview && (
+          <motion.div
+            className="work-view-more-container"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="view-more-banner">
+              <div className="view-more-info">
+                <div className="view-more-meta-pill">
+                  <span className="meta-pulse-dot"></span>
+                  <span className="meta-label">SHOWING 3 OF {projects.length} PROJECTS</span>
+                </div>
+                <h3 className="view-more-title">Looking for more architectures?</h3>
+                <p className="view-more-summary">
+                  Explore all {projects.length} repositories across robotics, machine learning, embedded firmware, and tools.
+                </p>
+              </div>
+
+              <Link to="/projects" className="neo-btn neo-btn-teal view-more-cta-btn">
+                <span>VIEW ALL PROJECTS ({projects.length})</span>
+                <span className="btn-arrow">→</span>
+              </Link>
+            </div>
+          </motion.div>
         )}
       </div>
     </section>

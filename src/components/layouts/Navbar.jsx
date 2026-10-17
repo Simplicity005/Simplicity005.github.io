@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import logoLight from "../../assets/images/logo.svg";
 import logoDark from "../../assets/images/logo-dark.svg";
@@ -18,6 +19,8 @@ const mobileNavItems = [
 ];
 
 function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
@@ -82,9 +85,22 @@ function Navbar() {
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -93,15 +109,15 @@ function Navbar() {
       <nav className="navbar-pill">
         {/* Brand: Theme-Aware SVG Logo Only */}
         <div className="nav-brand">
-          <a
-            href="/"
+          <Link
+            to="/"
             onClick={(e) => scrollToSection(e, "hero")}
             className="brand-link"
             aria-label="Home"
             title="Arjun Sanesh Portfolio"
           >
             <img src={currentLogo} alt="Logo" className="nav-brand-logo" />
-          </a>
+          </Link>
         </div>
 
         {/* Center Links (Uniform Size) */}

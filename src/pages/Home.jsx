@@ -12,7 +12,7 @@ function Home() {
       <Navbar />
       <Hero />
       <About />
-      <Work />
+      <Work isPreview={true} />
       <Terminal />
       <Contact />
       <Footer />
