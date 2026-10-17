@@ -1188,16 +1188,20 @@ body {
   border-radius: var(--radius-box);
   text-decoration: none;
   color: inherit;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
 }
 
 .interactive-project-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 4.5px 4.5px 0px var(--stroke-primary);
+  transform: translateY(-4px);
+  border-color: var(--accent-teal) !important;
+  box-shadow: 5.5px 5.5px 0px var(--accent-teal), 0 0 24px rgba(59, 130, 139, 0.22);
 }
 
 .project-card-titlebar {
   background-size: 28px 28px;
-  transition: background-color 0.25s ease, color 0.2s ease;
+  transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .interactive-project-card:hover .project-card-titlebar {
@@ -1212,6 +1216,7 @@ body {
   background-size: 28px 28px;
   animation: flowLines 1.2s linear infinite;
   color: #ffffff;
+  border-bottom-color: var(--accent-teal);
 }
 
 .interactive-project-card:hover .prj-index-text {
@@ -1228,6 +1233,7 @@ body {
   text-transform: uppercase;
   color: var(--text-muted);
   border-radius: var(--radius-badge);
+  transition: all 0.2s ease;
 }
 
 .interactive-project-card:hover .card-cat-badge-simple {
@@ -1240,12 +1246,24 @@ body {
   width: 100%;
   height: 175px;
   border-bottom: var(--stroke-width) solid var(--stroke-primary);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.interactive-project-card:hover .card-image-wrap {
+  border-bottom-color: var(--accent-teal);
 }
 
 .card-project-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.interactive-project-card:hover .card-project-img {
+  transform: scale(1.03);
+  filter: brightness(1.05);
 }
 
 .card-content-body {
@@ -1253,6 +1271,15 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
+  transition: background 0.25s ease;
+}
+
+.interactive-project-card:hover .card-content-body {
+  background: linear-gradient(
+    180deg,
+    rgba(59, 130, 139, 0.10) 0%,
+    rgba(59, 130, 139, 0.02) 100%
+  );
 }
 
 .card-heading {
@@ -1261,6 +1288,11 @@ body {
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 10px;
+  transition: color 0.2s ease;
+}
+
+.interactive-project-card:hover .card-heading {
+  color: var(--accent-teal);
 }
 
 .card-summary {
@@ -1288,6 +1320,19 @@ body {
   font-size: 0.74rem;
   font-weight: 700;
   color: var(--accent-teal);
+  transition: border-color 0.2s ease;
+}
+
+.interactive-project-card:hover .card-action-bar {
+  border-top-color: var(--accent-teal);
+}
+
+.card-cta-arrow {
+  transition: transform 0.2s ease;
+}
+
+.interactive-project-card:hover .card-cta-arrow {
+  transform: translate(3px, -3px);
 }
 
 .empty-results-window {
