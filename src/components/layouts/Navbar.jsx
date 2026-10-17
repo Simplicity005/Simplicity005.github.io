@@ -23,7 +23,6 @@ function Navbar() {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentTime, setCurrentTime] = useState("");
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("portfolio-theme") || "dark";
@@ -57,22 +56,6 @@ function Navbar() {
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "paper" : "dark"));
   };
-
-  useEffect(() => {
-    const updateClock = () => {
-      const now = new Date();
-      setCurrentTime(
-        now.toLocaleTimeString("en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-        })
-      );
-    };
-    updateClock();
-    const interval = setInterval(updateClock, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -162,11 +145,6 @@ function Navbar() {
               </svg>
             )}
           </button>
-
-          {/* Clock */}
-          <div className="nav-system-tray" title="System Time">
-            <span className="tray-time">{currentTime || "12:00 PM"}</span>
-          </div>
 
           <a
             href="#contact"
