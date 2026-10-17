@@ -49,10 +49,11 @@ function Work({ isPreview = false }) {
         {/* Section Header */}
         <motion.div
           className="section-header-block"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, y: isPreview ? 24 : 14 }}
+          animate={!isPreview ? { opacity: 1, y: 0 } : undefined}
+          whileInView={isPreview ? { opacity: 1, y: 0 } : undefined}
+          viewport={isPreview ? { once: true, margin: "-40px" } : undefined}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="section-kicker">
             {isPreview ? "02 // PROJECTS" : "02 // REPOSITORY ARCHIVE"}
@@ -79,10 +80,9 @@ function Work({ isPreview = false }) {
         {!isPreview && (
           <motion.div
             className="work-controls-strip"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="work-filter-tabs">
               {categories.map((cat) => {

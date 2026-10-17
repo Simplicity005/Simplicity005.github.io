@@ -1439,17 +1439,30 @@ body {
 
 .projects-page-main {
   flex: 1;
-  padding-top: 100px;
-  padding-bottom: 80px;
+  padding-top: 0;
+  padding-bottom: 60px;
 }
 
-.projects-back-bar {
+.work-section.work-full-page {
+  padding-top: 76px;
+  padding-bottom: 60px;
+}
+
+.work-full-page .projects-back-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
   border-bottom: 1px dashed var(--stroke-primary);
+}
+
+.work-full-page .section-header-block {
+  margin-bottom: 22px;
+}
+
+.work-full-page .work-controls-strip {
+  margin-bottom: 26px;
 }
 
 .projects-back-link {
