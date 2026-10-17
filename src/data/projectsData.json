@@ -1,0 +1,211 @@
+[
+  {
+    "id": 1,
+    "repo": "3-10-30-rule-experiment",
+    "title": "Quantifying Fact-Checking Efficiency: The 3/10/30 Rule Experiment",
+    "domain": "AI, ML",
+    "category": "ai",
+    "description": "This project models how fake news spreads through a social network and measures the impact of targeted fact-checking. It shows that checking the most connected users can achieve similar results to checking a much larger random group.",
+    "about": "This project models how fake news spreads through a social network and measures the impact of targeted fact-checking. It shows that checking the most connected users can achieve similar results to checking a much larger random group.",
+    "tags": [
+      "Python",
+      "Network Science",
+      "Fake News",
+      "Simulation"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "optimization",
+    "github": "https://github.com/Simplicity005/3-10-30-rule-experiment"
+  },
+  {
+    "id": 2,
+    "repo": "Assignment-ML-24204",
+    "title": "Assignment-ML-24204",
+    "domain": "ML",
+    "category": "ai",
+    "description": "This repository contains code and exercises for a machine learning course. It focuses on learning and applying core ML concepts through practical assignments and experiments.",
+    "about": "This repository contains code and exercises for a machine learning course. It focuses on learning and applying core ML concepts through practical assignments and experiments.",
+    "tags": [
+      "Python",
+      "Machine Learning",
+      "Coursework",
+      "Assignments"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "optimization",
+    "github": "https://github.com/Simplicity005/Assignment-ML-24204"
+  },
+  {
+    "id": 3,
+    "repo": "cv-guided-esp32-robot",
+    "title": "CV-Guided ESP32 Robot",
+    "domain": "Robotics",
+    "category": "robotics",
+    "description": "This project combines an ESP32 camera system with a robot controller to build a vision-guided mobile robot. It uses live video and simple control commands to enable remote movement and basic visual tracking.",
+    "about": "This project combines an ESP32 camera system with a robot controller to build a vision-guided mobile robot. It uses live video and simple control commands to enable remote movement and basic visual tracking.",
+    "tags": [
+      "ESP32",
+      "Computer Vision",
+      "ROS",
+      "Embedded"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "robotics",
+    "github": "https://github.com/Simplicity005/cv-guided-esp32-robot"
+  },
+  {
+    "id": 4,
+    "repo": "daily-ui-archive",
+    "title": "Daily UI Archive",
+    "domain": "Software",
+    "category": "software",
+    "description": "This repository stores a collection of daily UI design explorations and interface ideas. It acts as a visual archive of creative design practice and front-end experimentation.",
+    "about": "This repository stores a collection of daily UI design explorations and interface ideas. It acts as a visual archive of creative design practice and front-end experimentation.",
+    "tags": [
+      "Design",
+      "UI/UX",
+      "Frontend",
+      "Archive"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "optimization",
+    "github": "https://github.com/Simplicity005/daily-ui-archive"
+  },
+  {
+    "id": 5,
+    "repo": "first-contributions",
+    "title": "First Contributions",
+    "domain": "Software",
+    "category": "software",
+    "description": "This project is a beginner-friendly guide for making a first open-source contribution on GitHub. It walks users through the essential Git workflow in a simple, hands-on way.",
+    "about": "This project is a beginner-friendly guide for making a first open-source contribution on GitHub. It walks users through the essential Git workflow in a simple, hands-on way.",
+    "tags": [
+      "Git",
+      "Open Source",
+      "GitHub",
+      "Beginner"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "optimization",
+    "github": "https://github.com/Simplicity005/first-contributions"
+  },
+  {
+    "id": 6,
+    "repo": "iisc-final-project-automated-car",
+    "title": "ROS2 Core Orchestrator",
+    "domain": "Robotics, AI",
+    "category": "robotics",
+    "description": "This project builds a ROS2-based autonomous robot system that combines LLM intent parsing, object detection, and hardware control. It demonstrates a modular architecture for directing a robot using AI perception and language-driven commands.",
+    "about": "This project builds a ROS2-based autonomous robot system that combines LLM intent parsing, object detection, and hardware control. It demonstrates a modular architecture for directing a robot using AI perception and language-driven commands.",
+    "tags": [
+      "ROS2",
+      "AI",
+      "Computer Vision",
+      "Embedded"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "robotics",
+    "github": "https://github.com/Simplicity005/iisc-final-project-automated-car"
+  },
+  {
+    "id": 7,
+    "repo": "minimal-calendar",
+    "title": "Align Shared Calendar",
+    "domain": "Software",
+    "category": "software",
+    "description": "Align is a multi-tenant shared calendar app built for teams, cohorts, and study groups to coordinate schedules efficiently. It includes secure room-based collaboration, event categorization, and automated invites for shared planning.",
+    "about": "Align is a multi-tenant shared calendar app built for teams, cohorts, and study groups to coordinate schedules efficiently. It includes secure room-based collaboration, event categorization, and automated invites for shared planning.",
+    "tags": [
+      "Next.js",
+      "Supabase",
+      "Calendar",
+      "SaaS"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "optimization",
+    "github": "https://github.com/Simplicity005/minimal-calendar"
+  },
+  {
+    "id": 8,
+    "repo": "modular-home-security",
+    "title": "SecureHome: Modular ESP32 Smart Security System",
+    "domain": "Embedded",
+    "category": "robotics",
+    "description": "This project builds a modular smart home security system using ESP32 nodes, MQTT communication, and AI-based person detection. It combines access control, live camera monitoring, and a real-time dashboard for home security automation.",
+    "about": "This project builds a modular smart home security system using ESP32 nodes, MQTT communication, and AI-based person detection. It combines access control, live camera monitoring, and a real-time dashboard for home security automation.",
+    "tags": [
+      "ESP32",
+      "IoT",
+      "Security",
+      "MQTT"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "robotics",
+    "github": "https://github.com/Simplicity005/modular-home-security"
+  },
+  {
+    "id": 9,
+    "repo": "SimpleMindedMoron",
+    "title": "Arjun Sanesh",
+    "domain": "Software",
+    "category": "software",
+    "description": "This repository acts as a personal portfolio and developer profile showcasing work across software, embedded systems, and hardware projects. It highlights the creator’s technical interests, skills, and featured projects.",
+    "about": "This repository acts as a personal portfolio and developer profile showcasing work across software, embedded systems, and hardware projects. It highlights the creator’s technical interests, skills, and featured projects.",
+    "tags": [
+      "Portfolio",
+      "Developer",
+      "Embedded",
+      "Hardware"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "optimization",
+    "github": "https://github.com/Simplicity005/SimpleMindedMoron"
+  },
+  {
+    "id": 10,
+    "repo": "UID-Project",
+    "title": "UID Project",
+    "domain": "Software",
+    "category": "software",
+    "description": "This repository contains a UI-focused prototype designed to explore interface ideas and product interactions. It serves as a small design and frontend experiment for testing user experience concepts.",
+    "about": "This repository contains a UI-focused prototype designed to explore interface ideas and product interactions. It serves as a small design and frontend experiment for testing user experience concepts.",
+    "tags": [
+      "UI",
+      "Design",
+      "Prototyping",
+      "Frontend"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "optimization",
+    "github": "https://github.com/Simplicity005/UID-Project"
+  },
+  {
+    "id": 11,
+    "repo": "Simplicity005.github.io",
+    "title": "Simplicity’s Portfolio",
+    "domain": "Software",
+    "category": "software",
+    "description": "This project is a modern personal portfolio website built with React and Vite to showcase projects, skills, and background. It provides a clean, animated single-page experience for presenting a developer profile.",
+    "about": "This project is a modern personal portfolio website built with React and Vite to showcase projects, skills, and background. It provides a clean, animated single-page experience for presenting a developer profile.",
+    "tags": [
+      "React",
+      "Vite",
+      "Portfolio",
+      "Frontend"
+    ],
+    "year": "2024",
+    "image": null,
+    "fallbackImage": "optimization",
+    "github": "https://github.com/Simplicity005/Simplicity005.github.io"
+  }
+]

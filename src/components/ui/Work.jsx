@@ -9,11 +9,15 @@ function Work() {
 
   const filteredProjects = useMemo(() => {
     return projects.filter((p) => {
+      const pCat = (p.category || "").toLowerCase();
+      const pDomain = (p.domain || "").toLowerCase();
       const matchesCategory =
-        selectedCategory === "all" || p.category === selectedCategory;
+        selectedCategory === "all" ||
+        pCat === selectedCategory.toLowerCase() ||
+        pDomain.includes(selectedCategory.toLowerCase());
       const matchesSearch =
         p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (p.description || p.about || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
         (p.tags && p.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase())));
       return matchesCategory && matchesSearch;
     });

@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 function ProjectCard({ project, index }) {
   const prjNumber = `PRJ_${index + 1}`;
-  const githubUrl = "https://github.com/Simplemindedmoron";
+  const githubUrl = project.github || "https://github.com/Simplicity005";
 
   return (
     <motion.a
@@ -26,7 +26,7 @@ function ProjectCard({ project, index }) {
           <span className="neo-titlebar-dot"></span>
           <span className="neo-titlebar-text prj-index-text">{prjNumber}</span>
         </div>
-        <span className="card-cat-badge-simple">{project.category}</span>
+        <span className="card-cat-badge-simple">{project.domain || project.category}</span>
       </div>
 
       {/* Card Image Thumbnail */}

@@ -1,0 +1,7 @@
+Title: Simplicity’s Portfolio
+Domain: Software
+Tags: React, Vite, Portfolio, Frontend
+Year: 2024
+
+About:
+This project is a modern personal portfolio website built with React and Vite to showcase projects, skills, and background. It provides a clean, animated single-page experience for presenting a developer profile.
