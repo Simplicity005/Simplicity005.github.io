@@ -8,19 +8,25 @@ const rootDir = path.resolve(__dirname, "..");
 
 const GITHUB_USERNAME = "Simplicity005";
 
+// Repositories to exclude from portfolio showcase
+const EXCLUDED_REPOSITORIES = [
+  "SimpleMindedMoron",
+  "SimpleMindedMoron.github.io",
+  "Simplicity005",
+  "Simplicity005.github.io",
+  "daily-ui-archive"
+];
+
 // Default known repositories list
 const KNOWN_REPOSITORIES = [
   "3-10-30-rule-experiment",
   "Assignment-ML-24204",
   "cv-guided-esp32-robot",
-  "daily-ui-archive",
   "first-contributions",
   "iisc-final-project-automated-car",
   "minimal-calendar",
   "modular-home-security",
-  "SimpleMindedMoron",
-  "UID-Project",
-  "Simplicity005.github.io"
+  "UID-Project"
 ];
 
 // Helper to parse key-value about.txt format
@@ -168,6 +174,9 @@ async function syncProjects() {
 
   for (let i = 0; i < repoList.length; i++) {
     const repo = repoList[i];
+    if (EXCLUDED_REPOSITORIES.some((ex) => ex.toLowerCase() === repo.toLowerCase())) {
+      continue;
+    }
     process.stdout.write(`Scanning [${repo}]... `);
 
     let rawAboutText = null;

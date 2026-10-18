@@ -58,25 +58,6 @@
   },
   {
     "id": 4,
-    "repo": "daily-ui-archive",
-    "title": "Daily UI Archive",
-    "domain": "Software",
-    "category": "software",
-    "description": "This repository stores a collection of daily UI design explorations and interface ideas. It acts as a visual archive of creative design practice and front-end experimentation.",
-    "about": "This repository stores a collection of daily UI design explorations and interface ideas. It acts as a visual archive of creative design practice and front-end experimentation.",
-    "tags": [
-      "Design",
-      "UI/UX",
-      "Frontend",
-      "Archive"
-    ],
-    "year": "2024",
-    "image": null,
-    "fallbackImage": "optimization",
-    "github": "https://github.com/Simplicity005/daily-ui-archive"
-  },
-  {
-    "id": 5,
     "repo": "first-contributions",
     "title": "First Contributions",
     "domain": "Software",
@@ -95,7 +76,7 @@
     "github": "https://github.com/Simplicity005/first-contributions"
   },
   {
-    "id": 6,
+    "id": 5,
     "repo": "iisc-final-project-automated-car",
     "title": "ROS2 Core Orchestrator",
     "domain": "Robotics, AI",
@@ -114,7 +95,7 @@
     "github": "https://github.com/Simplicity005/iisc-final-project-automated-car"
   },
   {
-    "id": 7,
+    "id": 6,
     "repo": "minimal-calendar",
     "title": "Align Shared Calendar",
     "domain": "Software",
@@ -133,7 +114,7 @@
     "github": "https://github.com/Simplicity005/minimal-calendar"
   },
   {
-    "id": 8,
+    "id": 7,
     "repo": "modular-home-security",
     "title": "SecureHome: Modular ESP32 Smart Security System",
     "domain": "Embedded",
@@ -152,26 +133,7 @@
     "github": "https://github.com/Simplicity005/modular-home-security"
   },
   {
-    "id": 9,
-    "repo": "SimpleMindedMoron",
-    "title": "Arjun Sanesh",
-    "domain": "Software",
-    "category": "software",
-    "description": "This repository acts as a personal portfolio and developer profile showcasing work across software, embedded systems, and hardware projects. It highlights the creator’s technical interests, skills, and featured projects.",
-    "about": "This repository acts as a personal portfolio and developer profile showcasing work across software, embedded systems, and hardware projects. It highlights the creator’s technical interests, skills, and featured projects.",
-    "tags": [
-      "Portfolio",
-      "Developer",
-      "Embedded",
-      "Hardware"
-    ],
-    "year": "2024",
-    "image": null,
-    "fallbackImage": "optimization",
-    "github": "https://github.com/Simplicity005/SimpleMindedMoron"
-  },
-  {
-    "id": 10,
+    "id": 8,
     "repo": "UID-Project",
     "title": "UID Project",
     "domain": "Software",
@@ -188,24 +150,5 @@
     "image": null,
     "fallbackImage": "optimization",
     "github": "https://github.com/Simplicity005/UID-Project"
-  },
-  {
-    "id": 11,
-    "repo": "Simplicity005.github.io",
-    "title": "Simplicity’s Portfolio",
-    "domain": "Software",
-    "category": "software",
-    "description": "This project is a modern personal portfolio website built with React and Vite to showcase projects, skills, and background. It provides a clean, animated single-page experience for presenting a developer profile.",
-    "about": "This project is a modern personal portfolio website built with React and Vite to showcase projects, skills, and background. It provides a clean, animated single-page experience for presenting a developer profile.",
-    "tags": [
-      "React",
-      "Vite",
-      "Portfolio",
-      "Frontend"
-    ],
-    "year": "2024",
-    "image": null,
-    "fallbackImage": "optimization",
-    "github": "https://github.com/Simplicity005/Simplicity005.github.io"
   }
 ]
