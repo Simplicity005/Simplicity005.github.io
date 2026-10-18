@@ -243,7 +243,7 @@ function Background() {
 
       ctx.clearRect(0, 0, width, height);
 
-      const isPaper = document.documentElement.getAttribute("data-theme") === "paper";
+      const isPaper = document.documentElement.getAttribute("data-theme") !== "dark";
 
       // Render living cells and glowing trails
       for (let r = 0; r < rows; r++) {
@@ -258,8 +258,8 @@ function Background() {
 
             if (isPaper) {
               ctx.fillStyle = isLive
-                ? `rgba(59, 130, 139, ${age * 0.3})`
-                : `rgba(90, 120, 115, ${age * 0.1})`;
+                ? `rgba(0, 0, 0, ${age * 0.16})`
+                : `rgba(0, 0, 0, ${age * 0.04})`;
             } else {
               ctx.fillStyle = isLive
                 ? `rgba(59, 130, 139, ${age * 0.38})`

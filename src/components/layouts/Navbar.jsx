@@ -1,17 +1,8 @@
 import { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import logoLight from "../../assets/images/logo.svg";
-import logoDark from "../../assets/images/logo-dark.svg";
 
-const desktopNavItems = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#work" },
-  { label: "Terminal", href: "#terminal" },
-];
-
-const mobileNavItems = [
+const navItems = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#work" },
   { label: "Terminal", href: "#terminal" },
@@ -21,32 +12,13 @@ const mobileNavItems = [
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("portfolio-theme") || "dark";
+      return localStorage.getItem("portfolio-theme") || "paper";
     }
-    return "dark";
+    return "paper";
   });
-
-  const currentLogo = theme === "paper" ? logoDark : logoLight;
-
-  // Body scroll lock on mobile when drawer is open
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      if (isMobileMenuOpen) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "";
-      }
-    }
-    return () => {
-      if (typeof document !== "undefined") {
-        document.body.style.overflow = "";
-      }
-    };
-  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -56,14 +28,6 @@ function Navbar() {
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "paper" : "dark"));
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
@@ -88,148 +52,76 @@ function Navbar() {
   };
 
   return (
-    <header className={`navbar-wrapper ${isScrolled ? "is-scrolled" : ""}`} id="main-nav">
-      <nav className="navbar-pill">
-        {/* Brand: Theme-Aware SVG Logo Only */}
-        <div className="nav-brand">
+    <>
+      {/* Top Neo-Brutalism Ticker Marquee Strip */}
+      <div className="top-ticker-strip">
+        <div className="ticker-content">
+          ✦ ARJUN SANESH // FULL-STACK WEB &amp; EMBEDDED SYSTEMS ✦ BASED IN BANGALORE ✦ LINUX MINT + WINDOWS 11 ✦ ROS 2 &amp; ESP32 ✦ EXPLORE OPEN-SOURCE REPOSITORIES ✦ ARJUN SANESH // FULL-STACK WEB &amp; EMBEDDED SYSTEMS ✦ BASED IN BANGALORE ✦ LINUX MINT + WINDOWS 11 ✦ ROS 2 &amp; ESP32 ✦
+        </div>
+      </div>
+
+      <header className="navbar-wrapper" id="main-nav">
+        <nav className="navbar-pill">
+          {/* Brand Badge */}
           <Link
             to="/"
             onClick={(e) => scrollToSection(e, "hero")}
-            className="brand-link"
-            aria-label="Home"
-            title="Arjun Sanesh Portfolio"
+            className="nav-brand-group"
+            title="Arjun Sanesh Home"
           >
-            <img src={currentLogo} alt="Logo" className="nav-brand-logo" />
+            <span className="nav-logo-pill">✦ ARJUN SANESH</span>
           </Link>
-        </div>
 
-        {/* Center Links (Uniform Size) */}
-        <div className="nav-center-links">
-          {desktopNavItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={(e) => scrollToSection(e, item.href.replace("#", ""))}
-              className="nav-link-item nav-btn-uniform"
-            >
-              <span>{item.label}</span>
-            </a>
-          ))}
-        </div>
-
-        {/* Right Actions (Uniform Size) */}
-        <div className="nav-right-actions">
-          {/* Theme Mode Toggle (Icon only, no lettering) */}
-          <button
-            type="button"
-            className="nav-theme-toggle-btn"
-            onClick={toggleTheme}
-            title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
-            aria-label="Toggle Theme"
-          >
-            {theme === "dark" ? (
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-            )}
-          </button>
-
-          <a
-            href="#contact"
-            onClick={(e) => scrollToSection(e, "contact")}
-            className="nav-cta-btn nav-btn-uniform"
-          >
-            Contact
-          </a>
-
-          <button
-            type="button"
-            className={`mobile-hamburger-btn ${isMobileMenuOpen ? "active" : ""}`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Navigation Menu"
-          >
-            <span className={`hamburger-bar ${isMobileMenuOpen ? "top-open" : ""}`}></span>
-            <span className={`hamburger-bar ${isMobileMenuOpen ? "mid-open" : ""}`}></span>
-            <span className={`hamburger-bar ${isMobileMenuOpen ? "bot-open" : ""}`}></span>
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Drawer mounted directly to body to avoid clipping / z-index traps */}
-      {typeof document !== "undefined" &&
-        createPortal(
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                className="mobile-drawer-backdrop"
-                onClick={() => setIsMobileMenuOpen(false)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.18 }}
+          {/* Center Links */}
+          <div className="nav-links-center">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => scrollToSection(e, item.href.replace("#", ""))}
+                className="nav-item-btn"
               >
-                <motion.div
-                  className="mobile-drawer"
-                  onClick={(e) => e.stopPropagation()}
-                  initial={{ x: "100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ x: "100%" }}
-                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="drawer-header">
-                    <span className="drawer-title">SYSTEM MENU</span>
-                    <button
-                      type="button"
-                      className="drawer-close-btn"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      aria-label="Close menu"
-                    >
-                      ✕
-                    </button>
-                  </div>
+                {item.label}
+              </a>
+            ))}
+          </div>
 
-                  <div className="drawer-theme-strip">
-                    <button
-                      type="button"
-                      className="drawer-theme-toggle"
-                      onClick={toggleTheme}
-                    >
-                      <span>THEME: {theme === "dark" ? "DARK" : "LIGHT"}</span>
-                      <span className="drawer-toggle-badge">TOGGLE</span>
-                    </button>
-                  </div>
+          {/* Right Actions */}
+          <div className="nav-right-actions">
+            <a
+              href="https://github.com/Simplemindedmoron"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="neo-btn neo-btn-sm neo-btn-coral"
+            >
+              <span>GitHub ↗</span>
+            </a>
 
-                  <div className="drawer-links">
-                    {mobileNavItems.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={(e) => scrollToSection(e, item.href.replace("#", ""))}
-                        className="drawer-link"
-                      >
-                        <span>{item.label}</span>
-                      </a>
-                    ))}
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>,
-          document.body
-        )}
-    </header>
+            <button
+              type="button"
+              className="theme-toggle-neo"
+              onClick={toggleTheme}
+              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              aria-label="Toggle color theme"
+            >
+              {theme === "dark" ? "☀️" : "🌙"}
+            </button>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              type="button"
+              className="mobile-hamburger-btn"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+            >
+              <span className="hamburger-bar"></span>
+              <span className="hamburger-bar"></span>
+              <span className="hamburger-bar"></span>
+            </button>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 }
 
