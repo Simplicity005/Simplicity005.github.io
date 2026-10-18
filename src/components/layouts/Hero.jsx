@@ -46,6 +46,10 @@ function Hero() {
 
   return (
     <main className="hero-section" id="hero">
+      {/* Subtle Atmospheric Ambient Auroras (Behind Window, Above Conway Grid) */}
+      <div className="hero-ambient-glow glow-teal" aria-hidden="true" />
+      <div className="hero-ambient-glow glow-amber" aria-hidden="true" />
+
       <div className="hero-container">
         {/* Windows 98 / Retro Window */}
         <motion.div

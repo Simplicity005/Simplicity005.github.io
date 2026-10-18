@@ -831,10 +831,47 @@ body {
    6. HERO SECTION
    -------------------------------------------------------------------------- */
 .hero-section {
+  position: relative;
   padding: 110px 24px 60px;
   max-width: var(--max-width);
   margin: 0 auto;
   width: 100%;
+}
+
+.hero-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(90px);
+  opacity: 0.12;
+  mix-blend-mode: screen;
+}
+
+[data-theme="paper"] .hero-ambient-glow {
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+}
+
+.hero-ambient-glow.glow-teal {
+  top: 15%;
+  left: 8%;
+  width: 460px;
+  height: 380px;
+  background: var(--accent-teal);
+}
+
+.hero-ambient-glow.glow-amber {
+  bottom: 8%;
+  right: 5%;
+  width: 440px;
+  height: 360px;
+  background: var(--accent-amber);
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-window-inner {
@@ -1043,61 +1080,608 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   7. ABOUT SECTION
+   7. ABOUT SECTION - WINDOWS BENTO ARCHITECTURE & AMBIENT DEPTH
    -------------------------------------------------------------------------- */
 .about-section {
-  padding: 40px 16px;
+  position: relative;
+  padding: 80px 24px;
   max-width: var(--max-width);
   margin: 0 auto;
   width: 100%;
 }
 
-.neo-tabs-bar {
-  display: flex;
-  gap: 8px;
-  margin-bottom: -1.5px;
-  position: relative;
-  z-index: 2;
-  overflow-x: auto;
+/* Atmospheric Ambient Glowing Auroras (Sits Behind Windows, Above Conway Canvas) */
+.about-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(85px);
+  opacity: 0.13;
+  mix-blend-mode: screen;
 }
 
-.neo-tab-btn {
-  padding: 8px 18px;
+[data-theme="paper"] .about-ambient-glow {
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+
+.glow-amber {
+  top: 8%;
+  left: -8%;
+  width: 440px;
+  height: 380px;
+  background: #f59e0b;
+}
+
+.glow-cyan {
+  top: 36%;
+  right: -8%;
+  width: 480px;
+  height: 420px;
+  background: #0ea5e9;
+}
+
+.glow-teal {
+  bottom: 4%;
+  left: 22%;
+  width: 520px;
+  height: 380px;
+  background: #10b981;
+}
+
+.section-subheading {
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 660px;
+  margin-top: 10px;
+}
+
+/* Asymmetric Windows Bento Grid */
+.bento-grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  margin-top: 36px;
+}
+
+.bento-card-hardware {
+  grid-column: span 7;
+}
+
+.bento-card-workflow {
+  grid-column: span 5;
+}
+
+.bento-card-robotics {
+  grid-column: span 5;
+}
+
+.bento-card-software {
+  grid-column: span 7;
+}
+
+@media (max-width: 960px) {
+  .bento-card-hardware,
+  .bento-card-workflow,
+  .bento-card-robotics,
+  .bento-card-software {
+    grid-column: span 12;
+  }
+}
+
+/* Bento Window Base */
+.bento-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-box);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 4px 4px 0px #000000, inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s ease;
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+[data-theme="paper"] .bento-card {
+  border: 1.5px solid var(--stroke-primary);
+  box-shadow: 4px 4px 0px var(--stroke-primary);
+}
+
+/* Themed Bento Card Hover Glows */
+.bento-card-hardware:hover {
+  transform: translateY(-3px);
+  border-color: #10b981 !important;
+  box-shadow: 5px 5px 0px #10b981, 0 0 28px rgba(16, 185, 129, 0.2);
+}
+
+.bento-card-workflow:hover {
+  transform: translateY(-3px);
+  border-color: #38bdf8 !important;
+  box-shadow: 5px 5px 0px #38bdf8, 0 0 28px rgba(56, 189, 248, 0.2);
+}
+
+.bento-card-robotics:hover {
+  transform: translateY(-3px);
+  border-color: #f59e0b !important;
+  box-shadow: 5px 5px 0px #f59e0b, 0 0 28px rgba(245, 158, 11, 0.2);
+}
+
+.bento-card-software:hover {
+  transform: translateY(-3px);
+  border-color: #2dd4bf !important;
+  box-shadow: 5px 5px 0px #2dd4bf, 0 0 28px rgba(45, 212, 191, 0.2);
+}
+
+/* Bento Window Titlebar & Dots */
+.bento-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+}
+
+.dot-emerald {
+  background: #10b981 !important;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
+
+.dot-cyan {
+  background: #38bdf8 !important;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.6);
+}
+
+.dot-amber {
+  background: #f59e0b !important;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+}
+
+.dot-teal {
+  background: #2dd4bf !important;
+  box-shadow: 0 0 6px rgba(45, 212, 191, 0.6);
+}
+
+.bento-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: var(--radius-badge);
+}
+
+.status-emerald {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.status-cyan {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.status-amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.status-teal {
+  background: rgba(45, 212, 191, 0.12);
+  color: #2dd4bf;
+  border: 1px solid rgba(45, 212, 191, 0.4);
+}
+
+.status-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: liveBlink 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes liveBlink {
+  0% { opacity: 0.35; }
+  100% { opacity: 1; }
+}
+
+/* Card Content Interior */
+.bento-card-content {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+.bento-domain-tag {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.tag-emerald { color: #34d399; }
+.tag-cyan { color: #38bdf8; }
+.tag-amber { color: #fbbf24; }
+.tag-teal { color: #2dd4bf; }
+
+.bento-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.bento-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Hardware Diagnostics Grid */
+.hardware-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.spec-tile {
   background: var(--bg-card-secondary);
-  border: var(--stroke-width) solid var(--stroke-primary);
-  box-shadow: var(--shadow-1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 12px;
+  border-radius: var(--radius-btn);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+[data-theme="paper"] .spec-tile {
+  border: 1px solid var(--stroke-primary);
+  background: var(--bg-card-inset);
+}
+
+.spec-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.spec-val {
   font-family: var(--font-mono);
   font-size: 0.76rem;
   font-weight: 700;
-  color: var(--text-secondary);
-  cursor: pointer;
+  color: var(--text-primary);
+}
+
+/* Interactive GPIO Pinout Bar */
+.bento-interactive-strip {
+  background: var(--bg-card-inset);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 14px;
   border-radius: var(--radius-btn);
-  white-space: nowrap;
 }
 
-.neo-tab-btn.active {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border-bottom-color: var(--bg-card);
-  box-shadow: 2px -1px 0px var(--stroke-primary);
+[data-theme="paper"] .bento-interactive-strip {
+  border: 1px solid var(--stroke-primary);
 }
 
-.about-window-content {
-  padding: clamp(24px, 4vw, 38px);
+.strip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
 }
 
-.about-focus-desc {
-  font-size: 1.05rem;
-  color: var(--text-primary);
-  line-height: 1.7;
-  margin-bottom: 22px;
+.strip-title {
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
 }
 
-.about-tags-row {
+.strip-subtitle {
+  color: var(--text-muted);
+  font-size: 0.58rem;
+}
+
+.gpio-pins-bar {
   display: flex;
   flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gpio-pin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  background: var(--bg-card-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+[data-theme="paper"] .gpio-pin-btn {
+  border: 1px solid var(--stroke-primary);
+}
+
+.gpio-pin-btn:hover,
+.gpio-pin-btn.active {
+  border-color: #10b981;
+  color: var(--text-primary);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.pin-led {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 5px #10b981;
+}
+
+.pin-pulse {
+  animation: liveBlink 0.9s infinite alternate;
+}
+
+.pin-sda {
+  background: #38bdf8;
+  box-shadow: 0 0 5px #38bdf8;
+}
+
+.pin-scl {
+  background: #f59e0b;
+  box-shadow: 0 0 5px #f59e0b;
+}
+
+.pin-uart {
+  background: #a855f7;
+  box-shadow: 0 0 5px #a855f7;
+}
+
+/* Dual-Boot OS Selector & Details */
+.os-selector-strip {
+  display: flex;
+  gap: 6px;
+}
+
+.os-pill-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--bg-card-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+[data-theme="paper"] .os-pill-btn {
+  border: 1px solid var(--stroke-primary);
+}
+
+.os-pill-btn.active {
+  border-color: #38bdf8;
+  color: #ffffff;
+  background: rgba(56, 189, 248, 0.15);
+}
+
+[data-theme="paper"] .os-pill-btn.active {
+  color: #000000;
+  background: #cbd5e1;
+}
+
+.os-pill-btn .os-dot {
+  font-size: 0.6rem;
+  color: #38bdf8;
+}
+
+.os-detail-window {
+  background: var(--bg-card-inset);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 14px;
+  border-radius: var(--radius-btn);
+  min-height: 120px;
+}
+
+[data-theme="paper"] .os-detail-window {
+  border: 1px solid var(--stroke-primary);
+}
+
+.os-badge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+}
+
+.os-flag {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+}
+
+.os-shell {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+.os-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.os-spec-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.spec-micro-tag {
+  background: var(--bg-card-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2px 7px;
+  border-radius: var(--radius-badge);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-primary);
+}
+
+[data-theme="paper"] .spec-micro-tag {
+  border: 1px solid var(--stroke-primary);
+}
+
+/* Robotics Pipeline Box */
+.robotics-pipeline-box {
+  background: var(--bg-card-inset);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 14px;
+  border-radius: var(--radius-btn);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+[data-theme="paper"] .robotics-pipeline-box {
+  border: 1px solid var(--stroke-primary);
+}
+
+.pipe-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pipe-num {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #f59e0b;
+}
+
+.pipe-name {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pipe-sub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+.pipe-arrow {
+  color: #f59e0b;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Software Metrics Grid */
+.software-metrics-grid {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
+
+.software-spec-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card-inset);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 12px;
+  border-radius: var(--radius-btn);
+}
+
+[data-theme="paper"] .software-spec-box {
+  border: 1px solid var(--stroke-primary);
+}
+
+.spec-icon {
+  font-size: 1.1rem;
+}
+
+.spec-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spec-head {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.spec-sub {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+/* Bento Tags Row */
+.bento-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.bento-tag {
+  background: var(--bg-card-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.67rem;
+  font-family: var(--font-mono);
+  padding: 2px 7px;
+  border-radius: var(--radius-badge);
+}
+
+[data-theme="paper"] .bento-tag {
+  border: 1px solid var(--stroke-primary);
+}
+
+.hash-emerald { color: #10b981; font-weight: 700; margin-right: 2px; }
+.hash-cyan { color: #38bdf8; font-weight: 700; margin-right: 2px; }
+.hash-amber { color: #f59e0b; font-weight: 700; margin-right: 2px; }
+.hash-teal { color: #2dd4bf; font-weight: 700; margin-right: 2px; }
 
 /* --------------------------------------------------------------------------
    8. SELECTED WORKS
