@@ -14,7 +14,8 @@ const EXCLUDED_REPOSITORIES = [
   "SimpleMindedMoron.github.io",
   "Simplicity005",
   "Simplicity005.github.io",
-  "daily-ui-archive"
+  "daily-ui-archive",
+  "first-contributions"
 ];
 
 // Default known repositories list
@@ -22,7 +23,6 @@ const KNOWN_REPOSITORIES = [
   "3-10-30-rule-experiment",
   "Assignment-ML-24204",
   "cv-guided-esp32-robot",
-  "first-contributions",
   "iisc-final-project-automated-car",
   "minimal-calendar",
   "modular-home-security",
