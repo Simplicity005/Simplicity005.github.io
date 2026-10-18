@@ -46,10 +46,10 @@ function Contact() {
         {/* Left Column: Direct Links & Info */}
         <div className="contact-info-col">
           <span className="neo-pill pill-yellow">● DIRECT CHANNELS</span>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", fontWeight: "800", color: "#000" }}>
+          <h3 className="contact-callout-title">
             Reach out directly or send a message.
           </h3>
-          <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
+          <p className="contact-callout-desc">
             Based in Bangalore, India. Always open to discussing interesting robotics projects, embedded systems, or web applications.
           </p>
 
@@ -61,7 +61,7 @@ function Contact() {
               className="profile-neo-btn"
             >
               <span>GitHub Profile</span>
-              <span>↗</span>
+              <span className="btn-arrow">↗</span>
             </a>
 
             <a
@@ -71,7 +71,7 @@ function Contact() {
               className="profile-neo-btn"
             >
               <span>LinkedIn Network</span>
-              <span>↗</span>
+              <span className="btn-arrow">↗</span>
             </a>
           </div>
         </div>
@@ -122,7 +122,7 @@ function Contact() {
             disabled={isSubmitting}
             style={{ width: "100%", marginTop: "6px" }}
           >
-            <span>{isSubmitting ? "Dispatching..." : isSent ? "✓ Message Dispatched!" : "Send Message →"}</span>
+            <span>{isSubmitting ? "Dispatching..." : isSent ? "MESSAGE SENT // SUCCESS ↗" : "Send Message →"}</span>
           </button>
         </form>
       </motion.div>

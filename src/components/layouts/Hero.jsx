@@ -13,34 +13,72 @@ const FOLDERS = [
   {
     id: "web",
     label: "Web & React",
+    themeClass: "folder-mint",
     pillClass: "pill-mint",
     title: "Modern Web Engineering",
     desc: "Building clean, high-performance web applications using React, modern CSS systems, and RESTful APIs. Fast load times and responsive layouts.",
     tags: ["React 19", "JavaScript", "Modern CSS", "Vite", "Node.js", "REST APIs"],
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
   },
   {
     id: "embedded",
     label: "ESP32 & IoT",
+    themeClass: "folder-yellow",
     pillClass: "pill-yellow",
     title: "Microcontrollers & Hardware",
     desc: "Writing interrupt-driven C++ for ESP32 and Arduino boards, handling serial buses (I2C, SPI, UART), ADC sensors, and MQTT relays.",
     tags: ["ESP32", "Arduino", "Embedded C++", "I2C / SPI / UART", "MQTT", "Sensors"],
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <rect x="9" y="9" width="6" height="6" />
+        <line x1="9" y1="1" x2="9" y2="4" />
+        <line x1="15" y1="1" x2="15" y2="4" />
+        <line x1="9" y1="20" x2="9" y2="23" />
+        <line x1="15" y1="20" x2="15" y2="23" />
+        <line x1="20" y1="9" x2="23" y2="9" />
+        <line x1="20" y1="14" x2="23" y2="14" />
+        <line x1="1" y1="9" x2="4" y2="9" />
+        <line x1="1" y1="14" x2="4" y2="14" />
+      </svg>
+    ),
   },
   {
     id: "robotics",
     label: "Robotics ROS2",
+    themeClass: "folder-coral",
     pillClass: "pill-coral",
     title: "Autonomous Robotics & SLAM",
     desc: "Developing 2D LiDAR distance scanning, SLAM mapping algorithms, and differential drive motion controllers using ROS 2 on Linux.",
     tags: ["ROS 2", "Python", "2D LiDAR", "SLAM", "Linux Mint"],
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <line x1="12" y1="3" x2="12" y2="21" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    ),
   },
   {
     id: "workflow",
     label: "Dual-Boot OS",
+    themeClass: "folder-lilac",
     pillClass: "pill-lilac",
     title: "Dual-Boot Development",
     desc: "Using Linux Mint for ROS 2 nodes, bash scripting, and terminal agility, paired with Windows 11 for hardware flashing toolchains.",
     tags: ["Linux Mint", "Windows 11", "Bash & Git", "PlatformIO", "VS Code"],
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="4 17 10 11 4 5" />
+        <line x1="12" y1="19" x2="20" y2="19" />
+      </svg>
+    ),
   },
 ];
 
@@ -161,33 +199,71 @@ function Hero() {
 
         {/* Right Column: Folder Tab Showcase (Inspired by Reference Image 3) */}
         <div className="hero-folder-showcase">
-          {/* Top Folder Tabs */}
+          {/* Top Folder Tabs with distinct colors */}
           <div className="folder-tabs-header" role="tablist">
-            {FOLDERS.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                className={`folder-tab-btn ${activeFolderId === f.id ? "active" : ""}`}
-                onClick={() => setActiveFolderId(f.id)}
-              >
-                <span>{f.label}</span>
-              </button>
-            ))}
+            {FOLDERS.map((f) => {
+              const isActive = activeFolderId === f.id;
+              return (
+                <button
+                  key={f.id}
+                  type="button"
+                  className={`folder-tab-btn ${f.themeClass} ${isActive ? "active" : ""}`}
+                  onClick={() => setActiveFolderId(f.id)}
+                >
+                  <span>{f.label}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Folder Card Body */}
           <div className="folder-card-body">
-            <span className={`neo-pill folder-tag-pill ${activeFolder.pillClass}`}>
-              ● ACTIVE FOCUS
-            </span>
-            <h3 className="folder-title">{activeFolder.title}</h3>
+            <div className="folder-body-top">
+              {/* Colorful Icon Box (Reference Image 3 inspired) */}
+              <div className={`folder-icon-box ${activeFolder.themeClass}`}>
+                {activeFolder.icon}
+              </div>
+              <div className="folder-body-header-text">
+                <span className={`neo-pill folder-tag-pill ${activeFolder.pillClass}`}>
+                  ● ACTIVE FOCUS
+                </span>
+                <h3 className="folder-title">{activeFolder.title}</h3>
+              </div>
+            </div>
+
             <p className="folder-desc">{activeFolder.desc}</p>
+
             <div className="folder-tags-wrap">
               {activeFolder.tags.map((tag) => (
                 <span key={tag} className="micro-tech-tag">#{tag}</span>
               ))}
             </div>
           </div>
+        </div>
+      </motion.div>
+
+      {/* Vibrant 4-Block Stats Strip (Directly inspired by Reference Image 4) */}
+      <motion.div
+        className="hero-stats-strip"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className="stat-block stat-block-lilac">
+          <span className="stat-val">3+</span>
+          <span className="stat-lbl">Years Building</span>
+        </div>
+        <div className="stat-block stat-block-yellow">
+          <span className="stat-val">10+</span>
+          <span className="stat-lbl">Systems Built</span>
+        </div>
+        <div className="stat-block stat-block-mint">
+          <span className="stat-val">IoT &amp; Web</span>
+          <span className="stat-lbl">Core Focus</span>
+        </div>
+        <div className="stat-block stat-block-coral">
+          <span className="stat-val">Dual-Boot</span>
+          <span className="stat-lbl">Linux Mint + Win11</span>
         </div>
       </motion.div>
     </main>
