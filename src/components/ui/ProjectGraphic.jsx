@@ -32,7 +32,6 @@ function ProjectGraphic({ domain = "software", title = "" }) {
           <text x="18" y="44" fill="rgba(245, 158, 11, 0.6)" fontFamily="monospace" fontSize="8">RATE: 50Hz // LiDAR_2D</text>
           <text x="320" y="180" fill="rgba(245, 158, 11, 0.6)" fontFamily="monospace" fontSize="8" textAnchor="end">FRAME: BASE_LINK</text>
         </svg>
-        <div className="graphic-badge badge-robotics">ROBOTICS TELEMETRY</div>
       </div>
     );
   }
@@ -74,7 +73,6 @@ function ProjectGraphic({ domain = "software", title = "" }) {
           <text x="18" y="44" fill="rgba(16, 185, 129, 0.6)" fontFamily="monospace" fontSize="8">INTERRUPT: IRAM_ATTR</text>
           <text x="382" y="180" fill="rgba(16, 185, 129, 0.6)" fontFamily="monospace" fontSize="8" textAnchor="end">SYS_CLOCK: 40MHz_XTAL</text>
         </svg>
-        <div className="graphic-badge badge-embedded">HARDWARE CIRCUIT</div>
       </div>
     );
   }
@@ -118,7 +116,6 @@ function ProjectGraphic({ domain = "software", title = "" }) {
           <text x="18" y="44" fill="rgba(167, 139, 250, 0.6)" fontFamily="monospace" fontSize="8">LOSS: 0.0014 // P-VALUE: &lt;0.01</text>
           <text x="382" y="180" fill="rgba(167, 139, 250, 0.6)" fontFamily="monospace" fontSize="8" textAnchor="end">ALGO: BARABÁSI_ALBERT</text>
         </svg>
-        <div className="graphic-badge badge-ai">MACHINE INTELLIGENCE</div>
       </div>
     );
   }
@@ -146,7 +143,6 @@ function ProjectGraphic({ domain = "software", title = "" }) {
         <text x="18" y="44" fill="rgba(56, 189, 248, 0.6)" fontFamily="monospace" fontSize="8">PROTOCOL: NEXT_SUPABASE</text>
         <text x="382" y="180" fill="rgba(56, 189, 248, 0.6)" fontFamily="monospace" fontSize="8" textAnchor="end">LATENCY: &lt;16ms (60FPS)</text>
       </svg>
-      <div className="graphic-badge badge-software">SYSTEM ARCHITECTURE</div>
     </div>
   );
 }
