@@ -10,7 +10,15 @@ function Work({ isPreview = false }) {
 
   const filteredProjects = useMemo(() => {
     if (isPreview) {
-      return projects.slice(0, 3);
+      const previewRepos = [
+        "cv-guided-esp32-robot",
+        "3-10-30-rule-experiment",
+        "modular-home-security",
+      ];
+      const previewSelection = previewRepos
+        .map((repo) => projects.find((p) => p.repo === repo))
+        .filter(Boolean);
+      return previewSelection.length === 3 ? previewSelection : projects.slice(0, 3);
     }
     return projects.filter((p) => {
       const pCat = (p.category || "").toLowerCase();

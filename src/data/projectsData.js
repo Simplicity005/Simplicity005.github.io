@@ -1,5 +1,3 @@
-import optimizationImage from "../assets/images/Optimization_Modelling.png";
-import roboticsImage from "../assets/images/ROS_Robotics.jpg";
 import syncedProjects from "./projectsData.json";
 
 export const categories = [
@@ -10,14 +8,10 @@ export const categories = [
 ];
 
 export const projects = syncedProjects.map((p, idx) => {
-  let displayImage = p.image;
-  if (!displayImage) {
-    displayImage = p.fallbackImage === "robotics" ? roboticsImage : optimizationImage;
-  }
   return {
     ...p,
     id: p.id || idx + 1,
-    image: displayImage,
+    image: p.image || null,
     category: p.category || "software",
     domain: p.domain || "Software",
     title: p.title,
