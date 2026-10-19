@@ -50,7 +50,7 @@ function Contact() {
             Reach out directly or send a message.
           </h3>
           <p className="contact-callout-desc">
-            Based in Bangalore, India. Always open to discussing interesting robotics projects, embedded systems, or web applications.
+            Always open to discussing interesting robotics projects, embedded systems, or software applications.
           </p>
 
           <div className="direct-profiles-list">

@@ -44,8 +44,8 @@ function Terminal() {
         newEntries.push({
           type: "output",
           text: `Arjun Sanesh (@Simplemindedmoron)
-Software & Embedded Systems Engineer based in Bangalore.
-Dual-boot workflow: Linux Mint + Windows 11.`,
+Hardware and Software Developer.
+Specializing in embedded firmware, robotics, and full-stack software.`,
         });
         break;
 

@@ -49,8 +49,8 @@ const CAPABILITIES = [
     badgeClass: "pill-coral",
     cardTheme: "cap-theme-coral",
     title: "Robotics & Automation",
-    desc: "Developing 2D LiDAR distance scanning, SLAM mapping, and kinematic differential drive motion controllers using ROS 2 nodes on Linux.",
-    tags: ["ROS 2", "Python", "2D LiDAR", "SLAM", "Linux Mint"],
+    desc: "Developing 2D LiDAR distance scanning, SLAM mapping, and kinematic differential drive motion controllers using ROS 2 nodes.",
+    tags: ["ROS 2", "Python", "2D LiDAR", "SLAM", "Kinematics"],
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="9" />
@@ -61,14 +61,14 @@ const CAPABILITIES = [
     ),
   },
   {
-    id: "workflow",
+    id: "tools",
     num: "04",
-    badge: "WORKFLOW & TOOLS",
+    badge: "SYSTEMS & TOOLS",
     badgeClass: "pill-lilac",
     cardTheme: "cap-theme-lilac",
-    title: "Dual-Boot Development",
-    desc: "Dual-boot workstation setup utilizing Linux Mint for low-latency ROS 2 nodes and bash automation, paired with Windows 11 for hardware flashing toolchains.",
-    tags: ["Linux Mint", "Windows 11", "Bash & Git", "PlatformIO", "VS Code"],
+    title: "System Architecture & Tools",
+    desc: "Designing modular software architectures, automation scripting with Bash and Python, version control with Git, and embedded flashing toolchains.",
+    tags: ["Git", "Python", "Bash", "PlatformIO", "VS Code", "REST APIs"],
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="4 17 10 11 4 5" />

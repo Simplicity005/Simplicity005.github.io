@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 
 const ROLES = [
+  "Hardware & Software Developer",
   "Full-Stack Web Developer",
-  "Hardware & Embedded Systems Hacker",
+  "Embedded Systems & Firmware Hacker",
   "Microcontroller & IoT Developer",
   "Robotics & Sensor Systems Explorer",
-  "Dual-Boot: Linux Mint + Windows 11",
 ];
 
 const FOLDERS = [
@@ -54,8 +54,8 @@ const FOLDERS = [
     themeClass: "folder-coral",
     pillClass: "pill-coral",
     title: "Autonomous Robotics & SLAM",
-    desc: "Developing 2D LiDAR distance scanning, SLAM mapping algorithms, and differential drive motion controllers using ROS 2 on Linux.",
-    tags: ["ROS 2", "Python", "2D LiDAR", "SLAM", "Linux Mint"],
+    desc: "Developing 2D LiDAR distance scanning, SLAM mapping algorithms, and differential drive motion controllers using ROS 2 nodes.",
+    tags: ["ROS 2", "Python", "2D LiDAR", "SLAM", "Kinematics"],
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="9" />
@@ -66,13 +66,13 @@ const FOLDERS = [
     ),
   },
   {
-    id: "workflow",
-    label: "Dual-Boot OS",
+    id: "tools",
+    label: "Tools & Stack",
     themeClass: "folder-lilac",
     pillClass: "pill-lilac",
-    title: "Dual-Boot Development",
-    desc: "Using Linux Mint for ROS 2 nodes, bash scripting, and terminal agility, paired with Windows 11 for hardware flashing toolchains.",
-    tags: ["Linux Mint", "Windows 11", "Bash & Git", "PlatformIO", "VS Code"],
+    title: "Developer Toolchains & CLI",
+    desc: "Automation scripting with Bash and Python, version control with Git, embedded flashing toolchains, and rapid software deployments.",
+    tags: ["Git", "Python", "Bash", "PlatformIO", "VS Code", "REST APIs"],
     icon: (
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="4 17 10 11 4 5" />
@@ -131,12 +131,12 @@ function Hero() {
         <div className="hero-text-col">
           <div className="hero-salutation-strip">
             <span className="neo-pill pill-yellow">✦ HEY THERE! I AM</span>
-            <span className="neo-pill pill-white">BANGALORE, IN</span>
+            <span className="neo-pill pill-white">OPEN FOR OPPORTUNITIES</span>
           </div>
 
           <h1 className="hero-main-title">
             Arjun Sanesh.<br />
-            <span className="highlight-text">Software &amp; Hardware.</span>
+            <span className="highlight-text">Hardware &amp; Software Developer.</span>
           </h1>
 
           <p className="hero-bio-lead">
@@ -262,8 +262,8 @@ function Hero() {
           <span className="stat-lbl">Core Focus</span>
         </div>
         <div className="stat-block stat-block-coral">
-          <span className="stat-val">Dual-Boot</span>
-          <span className="stat-lbl">Linux Mint + Win11</span>
+          <span className="stat-val">Full-Stack</span>
+          <span className="stat-lbl">Hardware &amp; Web</span>
         </div>
       </motion.div>
     </main>

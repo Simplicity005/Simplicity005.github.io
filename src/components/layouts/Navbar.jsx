@@ -55,7 +55,7 @@ function Navbar() {
       {/* Top Neo-Brutalism Ticker Marquee Strip */}
       <div className="top-ticker-strip">
         <div className="ticker-content">
-          ✦ ARJUN SANESH // FULL-STACK WEB &amp; EMBEDDED SYSTEMS ✦ BASED IN BANGALORE ✦ LINUX MINT + WINDOWS 11 ✦ ROS 2 &amp; ESP32 ✦ EXPLORE OPEN-SOURCE REPOSITORIES ✦ ARJUN SANESH // FULL-STACK WEB &amp; EMBEDDED SYSTEMS ✦ BASED IN BANGALORE ✦ LINUX MINT + WINDOWS 11 ✦ ROS 2 &amp; ESP32 ✦
+          ✦ ARJUN SANESH // HARDWARE &amp; SOFTWARE DEVELOPER ✦ OPEN FOR COLLABORATION ✦ ROS 2 &amp; ESP32 ✦ EXPLORE OPEN-SOURCE REPOSITORIES ✦ ARJUN SANESH // HARDWARE &amp; SOFTWARE DEVELOPER ✦ OPEN FOR COLLABORATION ✦ ROS 2 &amp; ESP32 ✦
         </div>
       </div>
 
