@@ -1,6 +1,5 @@
 import Navbar from "../components/layouts/Navbar";
 import Hero from "../components/layouts/Hero";
-import About from "../components/layouts/About";
 import Work from "../components/ui/Work";
 import Terminal from "../components/ui/Terminal";
 import Contact from "../components/layouts/Contact";
@@ -11,7 +10,6 @@ function Home() {
     <div className="portfolio-app-root">
       <Navbar />
       <Hero />
-      <About />
       <Work isPreview={true} />
       <Terminal />
       <Contact />

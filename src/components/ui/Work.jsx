@@ -62,7 +62,7 @@ function Work({ isPreview = false }) {
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="section-kicker">
-            {isPreview ? "02 // PROJECTS" : "02 // REPOSITORY ARCHIVE"}
+            {isPreview ? "01 // PROJECTS" : "01 // REPOSITORY ARCHIVE"}
           </span>
           <h2 className="section-heading">
             {isPreview ? (

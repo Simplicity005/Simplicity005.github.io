@@ -27,7 +27,7 @@ function Contact() {
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <span className="section-kicker">04 // CONNECT</span>
+        <span className="section-kicker">03 // CONNECT</span>
         <h2 className="section-heading">
           Let's Build Something <span>Together.</span>
         </h2>

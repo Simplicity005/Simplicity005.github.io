@@ -117,7 +117,7 @@ GitHub:   github.com/Simplemindedmoron`,
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <span className="section-kicker">03 // TERMINAL</span>
+        <span className="section-kicker">02 // TERMINAL</span>
         <h2 className="section-heading">
           Interactive Command <span>Shell.</span>
         </h2>

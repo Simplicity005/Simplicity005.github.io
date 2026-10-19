@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const navItems = [
-  { label: "About", href: "#about" },
   { label: "Projects", href: "#work" },
   { label: "Terminal", href: "#terminal" },
   { label: "Contact", href: "#contact" },
