@@ -7,11 +7,20 @@ export const categories = [
   { id: "software", label: "Software & Systems" },
 ];
 
+const resolveImagePath = (imgPath) => {
+  if (!imgPath) return null;
+  if (imgPath.startsWith("http://") || imgPath.startsWith("https://")) return imgPath;
+  const base = import.meta.env.BASE_URL || "./";
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = imgPath.startsWith("/") ? imgPath.slice(1) : imgPath;
+  return `${cleanBase}${cleanPath}`;
+};
+
 export const projects = syncedProjects.map((p, idx) => {
   return {
     ...p,
     id: p.id || idx + 1,
-    image: p.image || null,
+    image: p.image ? resolveImagePath(p.image) : null,
     category: p.category || "software",
     domain: p.domain || "Software",
     title: p.title,

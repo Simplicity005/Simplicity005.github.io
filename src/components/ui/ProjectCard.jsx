@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import ProjectGraphic from "./ProjectGraphic";
 
@@ -28,9 +29,11 @@ function getDomainMeta(domain = "", category = "") {
 }
 
 function ProjectCard({ project, index }) {
+  const [imgError, setImgError] = useState(false);
   const prjNumber = `PRJ_${index + 1}`;
   const githubUrl = project.github || "https://github.com/Simplicity005";
   const domainMeta = getDomainMeta(project.domain, project.category);
+  const hasImage = project.image && !imgError;
 
   return (
     <motion.a
@@ -50,12 +53,13 @@ function ProjectCard({ project, index }) {
     >
       {/* Thumbnail or Schematic Banner */}
       <div className="project-card-banner">
-        {project.image ? (
+        {hasImage ? (
           <img
             src={project.image}
             alt={project.title}
             className="card-project-img"
             loading="lazy"
+            onError={() => setImgError(true)}
           />
         ) : (
           <ProjectGraphic domain={project.domain} title={project.title} />

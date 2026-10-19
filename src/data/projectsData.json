@@ -14,7 +14,7 @@
       "Simulation"
     ],
     "year": "2024",
-    "image": null,
+    "image": "projects/3-10-30-rule-experiment.jpg",
     "fallbackImage": "optimization",
     "github": "https://github.com/Simplicity005/3-10-30-rule-experiment"
   },
@@ -33,7 +33,7 @@
       "Assignments"
     ],
     "year": "2024",
-    "image": null,
+    "image": "projects/Assignment-ML-24204.jpg",
     "fallbackImage": "optimization",
     "github": "https://github.com/Simplicity005/Assignment-ML-24204"
   },
@@ -52,7 +52,7 @@
       "Embedded"
     ],
     "year": "2024",
-    "image": null,
+    "image": "projects/cv-guided-esp32-robot.jpg",
     "fallbackImage": "robotics",
     "github": "https://github.com/Simplicity005/cv-guided-esp32-robot"
   },
@@ -71,7 +71,7 @@
       "Embedded"
     ],
     "year": "2024",
-    "image": null,
+    "image": "projects/iisc-final-project-automated-car.jpg",
     "fallbackImage": "robotics",
     "github": "https://github.com/Simplicity005/iisc-final-project-automated-car"
   },
@@ -90,7 +90,7 @@
       "SaaS"
     ],
     "year": "2024",
-    "image": null,
+    "image": "projects/minimal-calendar.jpg",
     "fallbackImage": "optimization",
     "github": "https://github.com/Simplicity005/minimal-calendar"
   },
@@ -109,7 +109,7 @@
       "MQTT"
     ],
     "year": "2024",
-    "image": null,
+    "image": "projects/modular-home-security.jpg",
     "fallbackImage": "robotics",
     "github": "https://github.com/Simplicity005/modular-home-security"
   },
@@ -128,7 +128,7 @@
       "Frontend"
     ],
     "year": "2024",
-    "image": null,
+    "image": "projects/UID-Project.jpg",
     "fallbackImage": "optimization",
     "github": "https://github.com/Simplicity005/UID-Project"
   }
