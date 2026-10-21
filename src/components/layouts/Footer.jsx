@@ -12,15 +12,13 @@ function Footer() {
         viewport={{ once: true, margin: "-20px" }}
         transition={{ duration: 0.45 }}
       >
-        <div className="footer-brand">
-          <span className="footer-logo-pill">✦ ARJUN SANESH</span>
-          <span className="footer-copyright">
-            &copy; {year} Arjun Sanesh. Hardware &amp; Software Developer.
-          </span>
-        </div>
+        {/* Top Row: Name on Left, Actions on Right */}
+        <div className="footer-main-row">
+          <div className="footer-brand-side">
+            <span className="footer-logo-pill">✦ ARJUN SANESH</span>
+          </div>
 
-        <div className="footer-actions">
-          <div className="footer-social-links">
+          <div className="footer-links-side">
             <a
               href="https://github.com/Simplemindedmoron"
               target="_blank"
@@ -39,16 +37,22 @@ function Footer() {
             >
               LinkedIn ↗
             </a>
+            <button
+              type="button"
+              className="neo-btn neo-btn-sm neo-btn-white footer-back-btn"
+              onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
+              aria-label="Scroll back to top"
+            >
+              <span>Back to Top ↑</span>
+            </button>
           </div>
+        </div>
 
-          <button
-            type="button"
-            className="neo-btn neo-btn-sm neo-btn-white footer-back-btn"
-            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
-            aria-label="Scroll back to top"
-          >
-            <span>Back to Top ↑</span>
-          </button>
+        {/* Bottom Row: Copyright at the bottom */}
+        <div className="footer-bottom-row">
+          <p className="footer-copyright">
+            &copy; {year} Arjun Sanesh. Hardware &amp; Software Developer.
+          </p>
         </div>
       </motion.div>
     </footer>

@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import { motion, AnimatePresence } from "motion/react";
 
 const navItems = [
   { label: "Projects", href: "#work" },
@@ -11,6 +12,7 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef(null);
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("portfolio-theme") || "paper";
@@ -22,6 +24,37 @@ function Navbar() {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
+
+  // Close mobile menu on resize, escape key, or click outside
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "paper" : "dark"));
@@ -58,7 +91,7 @@ function Navbar() {
         </div>
       </div>
 
-      <header className="navbar-wrapper" id="main-nav">
+      <header className="navbar-wrapper" id="main-nav" ref={navRef}>
         <nav className="navbar-pill">
           {/* Brand Badge */}
           <Link
@@ -90,7 +123,7 @@ function Navbar() {
               href="https://github.com/Simplemindedmoron"
               target="_blank"
               rel="noopener noreferrer"
-              className="neo-btn neo-btn-sm neo-btn-coral"
+              className="neo-btn neo-btn-sm neo-btn-coral nav-github-desktop"
             >
               <span>GitHub ↗</span>
             </a>
@@ -106,7 +139,7 @@ function Navbar() {
               {theme === "dark" ? (
                 /* Sun Vector Icon */
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="4.5" />
+                  <circle cx="12" cy="4.5" r="4.5" />
                   <line x1="12" y1="2" x2="12" y2="4.5" />
                   <line x1="12" y1="19.5" x2="12" y2="22" />
                   <line x1="4.93" y1="4.93" x2="6.7" y2="6.7" />
@@ -127,9 +160,10 @@ function Navbar() {
             {/* Mobile Hamburger Button */}
             <button
               type="button"
-              className="mobile-hamburger-btn"
+              className={`mobile-hamburger-btn ${isMobileMenuOpen ? "is-active" : ""}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle navigation menu"
+              aria-expanded={isMobileMenuOpen}
             >
               <span className="hamburger-bar"></span>
               <span className="hamburger-bar"></span>
@@ -137,6 +171,53 @@ function Navbar() {
             </button>
           </div>
         </nav>
+
+        {/* Mobile Dropdown Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="mobile-menu-card"
+              initial={{ opacity: 0, y: -10, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.98 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="mobile-menu-links">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={(e) => scrollToSection(e, item.href.replace("#", ""))}
+                    className="mobile-nav-link"
+                  >
+                    <span>{item.label}</span>
+                    <span className="mobile-nav-arrow">→</span>
+                  </a>
+                ))}
+                <a
+                  href="https://github.com/Simplemindedmoron"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mobile-nav-link mobile-nav-github"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span>GitHub Profile</span>
+                  <span className="mobile-nav-arrow">↗</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/arjun-sanesh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mobile-nav-link mobile-nav-linkedin"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span>LinkedIn Network</span>
+                  <span className="mobile-nav-arrow">↗</span>
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
     </>
   );
