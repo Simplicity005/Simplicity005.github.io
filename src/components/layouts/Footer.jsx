@@ -15,17 +15,41 @@ function Footer() {
         <div className="footer-brand">
           <span className="footer-logo-pill">✦ ARJUN SANESH</span>
           <span className="footer-copyright">
-            &copy; {year} Arjun Sanesh. Built with React &amp; Neo-Brutalism.
+            &copy; {year} Arjun Sanesh. Hardware &amp; Software Developer.
           </span>
         </div>
 
-        <button
-          type="button"
-          className="neo-btn neo-btn-sm neo-btn-white"
-          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
-        >
-          <span>Back to Top ↑</span>
-        </button>
+        <div className="footer-actions">
+          <div className="footer-social-links">
+            <a
+              href="https://github.com/Simplemindedmoron"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link-pill"
+              aria-label="GitHub Profile"
+            >
+              GitHub ↗
+            </a>
+            <a
+              href="https://www.linkedin.com/in/arjun-sanesh/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link-pill"
+              aria-label="LinkedIn Profile"
+            >
+              LinkedIn ↗
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="neo-btn neo-btn-sm neo-btn-white footer-back-btn"
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}
+            aria-label="Scroll back to top"
+          >
+            <span>Back to Top ↑</span>
+          </button>
+        </div>
       </motion.div>
     </footer>
   );
