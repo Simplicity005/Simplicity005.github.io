@@ -312,7 +312,8 @@ body {
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   z-index: 1000;
   padding: 0 16px;
   pointer-events: none;
@@ -331,6 +332,7 @@ body {
   box-shadow: var(--shadow-md);
   border-radius: var(--radius-pill);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
 }
 
 [data-theme="dark"] .navbar-pill {
@@ -404,6 +406,7 @@ body {
   cursor: pointer;
   color: var(--text-primary);
   transition: all 0.15s ease;
+  flex-shrink: 0;
 }
 
 .theme-toggle-neo:hover {
@@ -427,6 +430,8 @@ body {
   gap: 4px;
   cursor: pointer;
   transition: all 0.15s ease;
+  padding: 0;
+  flex-shrink: 0;
 }
 
 .mobile-hamburger-btn:hover {
@@ -434,16 +439,26 @@ body {
   box-shadow: 3px 3px 0px #000000;
 }
 
+.hamburger-bar {
+  display: block;
+  width: 18px;
+  height: 2.2px;
+  background-color: #000000;
+  border-radius: 2px;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease;
+}
+
 .mobile-hamburger-btn.is-active .hamburger-bar:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
+  transform: translateY(6.2px) rotate(45deg);
 }
 
 .mobile-hamburger-btn.is-active .hamburger-bar:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0);
 }
 
 .mobile-hamburger-btn.is-active .hamburger-bar:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
+  transform: translateY(-6.2px) rotate(-45deg);
 }
 
 .mobile-menu-card {
@@ -520,13 +535,8 @@ body {
 
 @media (max-width: 768px) {
   .nav-links-center { display: none; }
+  .nav-github-desktop { display: none; }
   .mobile-hamburger-btn { display: flex; }
-}
-
-@media (max-width: 480px) {
-  .nav-github-desktop {
-    display: none;
-  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1366,7 +1376,7 @@ textarea.neo-input-box {
   border: var(--border-main);
   box-shadow: var(--shadow-md);
   border-radius: var(--radius-card);
-  padding: 22px 28px;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -1376,19 +1386,20 @@ textarea.neo-input-box {
   box-shadow: var(--shadow-md), var(--card-outline);
 }
 
+/* Row 1: Left has Name/AJ, Right has GitHub & LinkedIn (On the same line!) */
 .footer-main-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .footer-brand-side {
   display: flex;
   align-items: center;
-  text-align: left;
+  flex-shrink: 0;
 }
 
 .footer-logo-pill {
@@ -1407,12 +1418,20 @@ textarea.neo-input-box {
   letter-spacing: 0.03em;
 }
 
+.footer-name-full {
+  display: inline;
+}
+
+.footer-name-short {
+  display: none;
+}
+
 .footer-links-side {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
   justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .footer-link-pill {
@@ -1439,14 +1458,15 @@ textarea.neo-input-box {
   box-shadow: 2.5px 2.5px 0px #000000;
 }
 
-.footer-back-btn {
-  white-space: nowrap;
-}
-
+/* Row 2: Left has Copyright, Right has small Back to Top button */
 .footer-bottom-row {
   border-top: 1.5px dashed var(--stroke-primary);
-  padding-top: 12px;
+  padding-top: 14px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 .footer-copyright {
@@ -1455,57 +1475,99 @@ textarea.neo-input-box {
   line-height: 1.4;
   text-align: left;
   margin: 0;
+  flex: 1;
+}
+
+.footer-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: var(--bg-card-secondary);
+  border: 1.5px solid #000000;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  box-shadow: 1.5px 1.5px 0px #000000;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.footer-back-btn:hover {
+  background: var(--color-yellow);
+  color: #000000;
+  transform: translate(-1px, -1px);
+  box-shadow: 2.5px 2.5px 0px #000000;
+}
+
+.footer-back-arrow {
+  font-size: 0.85rem;
+  font-weight: 800;
 }
 
 /* Responsive Footer on Tablet & Mobile */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .footer-container {
     padding: 24px 16px 20px;
   }
 
   .footer-neo-card {
-    padding: 18px 16px;
-    gap: 14px;
-  }
-
-  .footer-main-row {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    padding: 16px;
     gap: 12px;
   }
 
-  .footer-brand-side {
-    text-align: left;
+  /* Switch full name to AJ on small screens to ensure same line */
+  .footer-name-full {
+    display: none;
+  }
+
+  .footer-name-short {
+    display: inline;
+    font-weight: 800;
+  }
+
+  .footer-logo-pill {
+    padding: 4px 10px;
+    font-size: 0.78rem;
   }
 
   .footer-links-side {
     gap: 8px;
-    justify-content: flex-end;
   }
 
   .footer-link-pill {
-    padding: 4px 10px;
+    padding: 4px 9px;
     font-size: 0.72rem;
   }
 
+  .footer-bottom-row {
+    padding-top: 10px;
+    gap: 10px;
+  }
+
   .footer-copyright {
-    text-align: left;
-    font-size: 0.78rem;
-  }
-}
-
-@media (max-width: 520px) {
-  .footer-main-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    font-size: 0.75rem;
   }
 
-  .footer-links-side {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 8px;
+  /* Back to top icon button on mobile: just the small up arrow next to copyright */
+  .footer-back-text {
+    display: none;
+  }
+
+  .footer-back-btn {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: var(--radius-pill);
+  }
+
+  .footer-back-arrow {
+    font-size: 0.95rem;
   }
 }
 
