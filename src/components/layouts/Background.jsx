@@ -11,16 +11,12 @@ function Background() {
   const mouseX = useMotionValue(typeof window !== "undefined" ? window.innerWidth / 2 : 600);
   const mouseY = useMotionValue(typeof window !== "undefined" ? window.innerHeight / 2 : 400);
 
-  // Smooth, critically damped Motion physics spring for cursor glow
+  // Smooth, critically damped Motion physics spring for cursor illumination
   const springX = useSpring(mouseX, { stiffness: 90, damping: 26, mass: 0.6 });
   const springY = useSpring(mouseY, { stiffness: 90, damping: 26, mass: 0.6 });
 
-  // Counterbalance spring for subtle opposing ambient depth
-  const oppositeX = useSpring(mouseX, { stiffness: 45, damping: 22, mass: 1 });
-  const oppositeY = useSpring(mouseY, { stiffness: 45, damping: 22, mass: 1 });
-
-  // Reactive radial mask that illuminates the canvas around the cursor
-  const lightMask = useMotionTemplate`radial-gradient(540px circle at ${springX}px ${springY}px, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 50%, transparent 80%)`;
+  // Reactive radial mask that illuminates the dot grid around the cursor
+  const lightMask = useMotionTemplate`radial-gradient(480px circle at ${springX}px ${springY}px, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.12) 50%, transparent 80%)`;
 
   useEffect(() => {
     const handlePointerMove = (e) => {
@@ -32,7 +28,7 @@ function Background() {
     return () => window.removeEventListener("pointermove", handlePointerMove);
   }, [mouseX, mouseY]);
 
-  // Conway's Game of Life Mathematical Cellular Automaton Simulation
+  // Conway's Game of Life Mathematical Cellular Automaton Simulation (Monochrome)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -50,9 +46,8 @@ function Background() {
 
     let grid = new Uint8Array(totalCells);
     let nextGrid = new Uint8Array(totalCells);
-    let cellAge = new Float32Array(totalCells); // For glowing phosphor trails
+    let cellAge = new Float32Array(totalCells);
 
-    // Spawn classic seed patterns (Glider, Pulsar, Acorn, etc.)
     const spawnGlider = (startCol, startRow) => {
       const pattern = [
         [0, 1],
@@ -117,7 +112,6 @@ function Background() {
 
     seedRandomLife();
 
-    // Interactive Life Seeding via Mouse
     const injectLifeAt = (x, y, radius = 2) => {
       const centerCol = Math.floor(x / cellSize);
       const centerRow = Math.floor(y / cellSize);
@@ -153,7 +147,6 @@ function Background() {
     window.addEventListener("pointermove", handlePointer, { passive: true });
     window.addEventListener("click", handleClick, { passive: true });
 
-    // Handle Window Resize
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
@@ -168,7 +161,6 @@ function Background() {
 
     window.addEventListener("resize", handleResize);
 
-    // Simulation stepping loop (throttled to ~95ms per generation for smooth life dynamics)
     let lastTick = 0;
     const tickInterval = 95;
 
@@ -208,7 +200,7 @@ function Background() {
                 activeCount++;
               } else {
                 nextGrid[idx] = 0;
-                cellAge[idx] *= 0.82; // Phosphor decay
+                cellAge[idx] *= 0.82;
               }
             } else {
               if (neighbors === 3) {
@@ -227,13 +219,11 @@ function Background() {
         grid = nextGrid;
         nextGrid = temp;
 
-        // Auto-reseed if population is dying out
         if (activeCount < 22) {
           spawnGlider(Math.floor(Math.random() * (cols - 8)), Math.floor(Math.random() * (rows - 8)));
           spawnAcorn(Math.floor(Math.random() * (cols - 8)), Math.floor(Math.random() * (rows - 8)));
         }
       } else {
-        // Continuous smooth fading between simulation steps
         for (let i = 0; i < totalCells; i++) {
           if (!grid[i] && cellAge[i] > 0.01) {
             cellAge[i] *= 0.96;
@@ -243,9 +233,7 @@ function Background() {
 
       ctx.clearRect(0, 0, width, height);
 
-      const isPaper = document.documentElement.getAttribute("data-theme") !== "dark";
-
-      // Render living cells and glowing trails
+      // Pure Monochrome Black & White Cellular Rendering
       for (let r = 0; r < rows; r++) {
         const rOff = r * cols;
         for (let c = 0; c < cols; c++) {
@@ -256,24 +244,14 @@ function Background() {
             const y = r * cellSize;
             const isLive = grid[idx];
 
-            if (isPaper) {
-              ctx.fillStyle = isLive
-                ? `rgba(0, 0, 0, ${age * 0.16})`
-                : `rgba(0, 0, 0, ${age * 0.04})`;
-            } else {
-              ctx.fillStyle = isLive
-                ? `rgba(59, 130, 139, ${age * 0.38})`
-                : `rgba(40, 75, 85, ${age * 0.14})`;
-            }
+            ctx.fillStyle = isLive
+              ? `rgba(255, 255, 255, ${age * 0.24})`
+              : `rgba(255, 255, 255, ${age * 0.06})`;
 
-            // Retro pixel cells with 1px border gutter
             ctx.fillRect(x + 1, y + 1, cellSize - 2, cellSize - 2);
 
-            // Living cell center phosphor dot
             if (isLive && age > 0.5) {
-              ctx.fillStyle = isPaper
-                ? `rgba(194, 147, 74, ${age * 0.45})`
-                : `rgba(194, 147, 74, ${age * 0.6})`;
+              ctx.fillStyle = `rgba(255, 255, 255, ${age * 0.72})`;
               ctx.fillRect(x + Math.floor(cellSize / 2) - 1, y + Math.floor(cellSize / 2) - 1, 2, 2);
             }
           }
@@ -295,62 +273,13 @@ function Background() {
 
   return (
     <div className="ambient-background-root" aria-hidden="true">
-      {/* Base Canvas Foundation */}
       <div className="bg-canvas-base" />
 
-      {/* Floating Harmonic Ambient Orbs for Depth */}
-      <motion.div
-        className="ambient-gradient-orb sapphire-orb"
-        animate={{
-          x: [0, 45, -30, 0],
-          y: [0, -35, 25, 0],
-          scale: [1, 1.08, 0.95, 1],
-        }}
-        transition={{
-          duration: 22,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      <motion.div
-        className="ambient-gradient-orb violet-orb"
-        animate={{
-          x: [0, -40, 30, 0],
-          y: [0, 35, -25, 0],
-          scale: [1, 1.06, 0.94, 1],
-        }}
-        transition={{
-          duration: 26,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* Primary Interactive Spring Physics Glow */}
-      <motion.div
-        className="interactive-physics-glow primary-glow"
-        style={{
-          x: springX,
-          y: springY,
-        }}
-      />
-
-      <motion.div
-        className="interactive-physics-glow secondary-glow"
-        style={{
-          x: oppositeX,
-          y: oppositeY,
-        }}
-      />
-
-      {/* Mathematical Conway's Game of Life Cellular Simulation Canvas */}
       <canvas
         ref={canvasRef}
         className="conway-life-canvas"
       />
 
-      {/* Interactive Dot Grid Illuminated via Cursor Radial Mask */}
       <motion.div
         className="minimalist-dot-grid interactive-light-grid"
         style={{
@@ -359,14 +288,8 @@ function Background() {
         }}
       />
 
-      {/* Subtle Static Dot Grid Baseline */}
       <div className="minimalist-dot-grid base-grid" />
-
-      {/* Peripheral Vignette for Focus & Contrast */}
       <div className="ambient-vignette" />
-
-      {/* Subtle 1% optical diffusion blur between background simulation and foreground */}
-      <div className="ambient-optical-blur" />
     </div>
   );
 }

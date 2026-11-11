@@ -15,117 +15,139 @@ function Contact() {
       setIsSubmitting(false);
       setIsSent(true);
       setFormData({ name: "", email: "", message: "" });
-    }, 600);
+    }, 500);
   };
 
   return (
     <section className="contact-section" id="contact">
-      <motion.div
-        className="section-header-block"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <span className="section-kicker">03 // CONNECT</span>
-        <h2 className="section-heading">
-          Let's Build Something <span>Together.</span>
-        </h2>
-        <p className="section-desc">
-          Have a project idea, question, or want to collaborate on hardware/software? Reach out below.
-        </p>
-      </motion.div>
+      <div className="contact-bento-grid">
+        <motion.div
+          className="bento-cell contact-info-cell"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="bento-cell-top">
+            <span className="bento-index">03 // CONTACT</span>
+            <span className="bento-meta-label">DIRECT CHANNELS</span>
+          </div>
 
-      <motion.div
-        className="contact-neo-card"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {/* Left Column: Direct Links & Info */}
-        <div className="contact-info-col">
-          <span className="neo-pill pill-yellow">● DIRECT CHANNELS</span>
-          <h3 className="contact-callout-title">
-            Reach out directly or send a message.
-          </h3>
-          <p className="contact-callout-desc">
-            Always open to discussing interesting robotics projects, embedded systems, or software applications.
-          </p>
+          <div className="contact-info-body">
+            <h2 className="section-heading">Get in Touch</h2>
+            <p className="contact-lead">
+              Available for collaborations and conversations around embedded
+              systems, robotics, and software engineering.
+            </p>
+          </div>
 
-          <div className="direct-profiles-list">
+          <div className="contact-links-list">
             <a
               href="https://github.com/Simplemindedmoron"
               target="_blank"
               rel="noopener noreferrer"
-              className="profile-neo-btn"
+              className="contact-channel-link"
             >
-              <span>GitHub Profile</span>
-              <span className="btn-arrow">↗</span>
+              <span className="channel-name">GitHub</span>
+              <span className="channel-handle">
+                github.com/Simplemindedmoron
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" />
+                </svg>
+              </span>
             </a>
 
             <a
               href="https://www.linkedin.com/in/arjun-sanesh/"
               target="_blank"
               rel="noopener noreferrer"
-              className="profile-neo-btn"
+              className="contact-channel-link"
             >
-              <span>LinkedIn Network</span>
-              <span className="btn-arrow">↗</span>
+              <span className="channel-name">LinkedIn</span>
+              <span className="channel-handle">
+                linkedin.com/in/arjun-sanesh
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" />
+                </svg>
+              </span>
             </a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right Column: Contact Dispatch Form */}
-        <form onSubmit={handleSubmit} className="contact-form-col">
-          <div className="neo-form-group">
-            <label className="form-label" htmlFor="contact-name">YOUR NAME</label>
-            <input
-              id="contact-name"
-              type="text"
-              className="neo-input-box"
-              placeholder="Arjun"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              required
-            />
+        <motion.form
+          onSubmit={handleSubmit}
+          className="bento-cell contact-form-cell"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.45, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="bento-cell-top">
+            <span className="bento-index">MESSAGE DISPATCH</span>
           </div>
 
-          <div className="neo-form-group">
-            <label className="form-label" htmlFor="contact-email">EMAIL ADDRESS</label>
-            <input
-              id="contact-email"
-              type="email"
-              className="neo-input-box"
-              placeholder="arjun@example.com"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              required
-            />
+          <div className="form-row-two-col">
+            <div className="form-group">
+              <label className="form-label" htmlFor="contact-name">
+                NAME
+              </label>
+              <input
+                id="contact-name"
+                type="text"
+                className="form-input"
+                placeholder="Your name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label" htmlFor="contact-email">
+                EMAIL
+              </label>
+              <input
+                id="contact-email"
+                type="email"
+                className="form-input"
+                placeholder="you@example.com"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+              />
+            </div>
           </div>
 
-          <div className="neo-form-group">
-            <label className="form-label" htmlFor="contact-message">PROJECT DETAILS / MESSAGE</label>
+          <div className="form-group">
+            <label className="form-label" htmlFor="contact-message">
+              MESSAGE
+            </label>
             <textarea
               id="contact-message"
-              className="neo-input-box"
-              placeholder="Tell me about your project, idea, or questions..."
+              className="form-input"
+              placeholder="Project details or inquiry..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               required
             />
           </div>
 
-          <button
-            type="submit"
-            className="neo-btn"
-            disabled={isSubmitting}
-            style={{ width: "100%", marginTop: "6px" }}
-          >
-            <span>{isSubmitting ? "Dispatching..." : isSent ? "MESSAGE SENT // SUCCESS ↗" : "Send Message →"}</span>
-          </button>
-        </form>
-      </motion.div>
+          <div className="form-submit-row">
+            <button
+              type="submit"
+              className="btn-solid-white"
+              disabled={isSubmitting}
+            >
+              <span>
+                {isSubmitting ? "Sending..." : isSent ? "Message Sent" : "Send Message"}
+              </span>
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3.5 8H12.5M12.5 8L8.5 4M12.5 8L8.5 12" />
+              </svg>
+            </button>
+          </div>
+        </motion.form>
+      </div>
     </section>
   );
 }

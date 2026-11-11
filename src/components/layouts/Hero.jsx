@@ -1,117 +1,22 @@
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
-const ROLES = [
-  "Hardware & Software Developer",
-  "Full-Stack Web Developer",
-  "Embedded Systems & Firmware Hacker",
-  "Microcontroller & IoT Developer",
-  "Robotics & Sensor Systems Explorer",
-];
-
-const FOLDERS = [
+const STACK_DOMAINS = [
   {
-    id: "web",
-    label: "Web & React",
-    themeClass: "folder-mint",
-    pillClass: "pill-mint",
-    title: "Modern Web Engineering",
-    desc: "Building clean, high-performance web applications using React, modern CSS systems, and RESTful APIs. Fast load times and responsive layouts.",
-    tags: ["React 19", "JavaScript", "Modern CSS", "Vite", "Node.js", "REST APIs"],
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
+    label: "EMBEDDED",
+    items: "ESP32 · Arduino · C++ · FreeRTOS · I2C / SPI / MQTT",
   },
   {
-    id: "embedded",
-    label: "ESP32 & IoT",
-    themeClass: "folder-yellow",
-    pillClass: "pill-yellow",
-    title: "Microcontrollers & Hardware",
-    desc: "Writing interrupt-driven C++ for ESP32 and Arduino boards, handling serial buses (I2C, SPI, UART), ADC sensors, and MQTT relays.",
-    tags: ["ESP32", "Arduino", "Embedded C++", "I2C / SPI / UART", "MQTT", "Sensors"],
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="4" width="16" height="16" rx="2" />
-        <rect x="9" y="9" width="6" height="6" />
-        <line x1="9" y1="1" x2="9" y2="4" />
-        <line x1="15" y1="1" x2="15" y2="4" />
-        <line x1="9" y1="20" x2="9" y2="23" />
-        <line x1="15" y1="20" x2="15" y2="23" />
-        <line x1="20" y1="9" x2="23" y2="9" />
-        <line x1="20" y1="14" x2="23" y2="14" />
-        <line x1="1" y1="9" x2="4" y2="9" />
-        <line x1="1" y1="14" x2="4" y2="14" />
-      </svg>
-    ),
+    label: "ROBOTICS",
+    items: "ROS 2 · Computer Vision · 2D LiDAR · Kinematics",
   },
   {
-    id: "robotics",
-    label: "Robotics ROS2",
-    themeClass: "folder-coral",
-    pillClass: "pill-coral",
-    title: "Autonomous Robotics & SLAM",
-    desc: "Developing 2D LiDAR distance scanning, SLAM mapping algorithms, and differential drive motion controllers using ROS 2 nodes.",
-    tags: ["ROS 2", "Python", "2D LiDAR", "SLAM", "Kinematics"],
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="9" />
-        <line x1="12" y1="3" x2="12" y2="21" />
-        <line x1="3" y1="12" x2="21" y2="12" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    ),
-  },
-  {
-    id: "tools",
-    label: "Tools & Stack",
-    themeClass: "folder-lilac",
-    pillClass: "pill-lilac",
-    title: "Developer Toolchains & CLI",
-    desc: "Automation scripting with Bash and Python, version control with Git, embedded flashing toolchains, and rapid software deployments.",
-    tags: ["Git", "Python", "Bash", "PlatformIO", "VS Code", "REST APIs"],
-    icon: (
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="4 17 10 11 4 5" />
-        <line x1="12" y1="19" x2="20" y2="19" />
-      </svg>
-    ),
+    label: "SOFTWARE",
+    items: "React · Next.js · Python · Node.js · Supabase",
   },
 ];
 
 function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [activeFolderId, setActiveFolderId] = useState("web");
-
-  const activeFolder = FOLDERS.find((f) => f.id === activeFolderId) || FOLDERS[0];
-
-  useEffect(() => {
-    const currentRole = ROLES[roleIndex];
-    const speed = isDeleting ? 25 : 50;
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setDisplayText(currentRole.substring(0, displayText.length + 1));
-        if (displayText.length + 1 === currentRole.length) {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        setDisplayText(currentRole.substring(0, displayText.length - 1));
-        if (displayText.length === 0) {
-          setIsDeleting(false);
-          setRoleIndex((prev) => (prev + 1) % ROLES.length);
-        }
-      }
-    }, speed);
-
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, roleIndex]);
-
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -121,151 +26,156 @@ function Hero() {
 
   return (
     <main className="hero-section" id="hero">
-      <motion.div
-        className="hero-neo-card"
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {/* Left Column: Bio & Core Info */}
-        <div className="hero-text-col">
-          <div className="hero-salutation-strip">
-            <span className="neo-pill pill-yellow">✦ HEY THERE! I AM</span>
-            <span className="neo-pill pill-white">OPEN FOR OPPORTUNITIES</span>
+      <div className="hero-bento-grid">
+        {/* BENTO CELL 1: Main Identity & Introduction (Span 7 cols, 2 rows) */}
+        <motion.div
+          className="bento-cell hero-identity-cell"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="bento-cell-top">
+            <span className="bento-index">01 // OVERVIEW</span>
+            <span className="bento-meta-label">HARDWARE &amp; SOFTWARE</span>
           </div>
 
-          <h1 className="hero-main-title">
-            Arjun Sanesh.<br />
-            <span className="highlight-text">Hardware &amp; Software Developer.</span>
-          </h1>
+          <div className="hero-identity-body">
+            <h1 className="hero-main-title">
+              Arjun Sanesh
+              <span className="hero-serif-line">
+                Hardware &amp; Software Developer.
+              </span>
+            </h1>
 
-          <p className="hero-bio-lead">
-            I build responsive web applications, microcontroller firmware (ESP32 / Arduino), and autonomous robotics. Focused on clean code and reliable hardware.
-          </p>
-
-          {/* Typing Prompt Box */}
-          <div className="neo-type-box">
-            <span className="type-prompt">&gt;</span>
-            <span className="type-text">{displayText}</span>
-            <span className="cursor-blink">_</span>
+            <p className="hero-bio-lead">
+              Building across microcontroller firmware, autonomous robotics, and
+              modern web applications — focused on clean architecture and
+              reliable systems.
+            </p>
           </div>
 
-          {/* Action Buttons */}
           <div className="hero-actions-row">
             <button
               type="button"
-              className="neo-btn"
+              className="btn-solid-white"
               onClick={() => scrollTo("work")}
             >
-              <span>Explore Projects →</span>
+              <span>Selected Work</span>
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3.5V12.5M8 12.5L4 8.5M8 12.5L12 8.5" />
+              </svg>
             </button>
+
+            <Link to="/projects" className="btn-outline-mono">
+              <span>Full Archive (7)</span>
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3.5 8H12.5M12.5 8L8.5 4M12.5 8L8.5 12" />
+              </svg>
+            </Link>
 
             <button
               type="button"
-              className="neo-btn neo-btn-white"
-              onClick={() => scrollTo("terminal")}
+              className="btn-outline-mono"
+              onClick={() => scrollTo("contact")}
             >
-              <span>Terminal CLI &gt;_</span>
+              <span>Contact</span>
             </button>
-
-            {/* Social Icons */}
-            <a
-              href="https://github.com/Simplemindedmoron"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-social-pill"
-              title="GitHub Profile"
-              aria-label="GitHub Profile"
-            >
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-              </svg>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/arjun-sanesh/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-social-pill"
-              title="LinkedIn Profile"
-              aria-label="LinkedIn Profile"
-            >
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-              </svg>
-            </a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Right Column: Folder Tab Showcase (Inspired by Reference Image 3) */}
-        <div className="hero-folder-showcase">
-          {/* Top Folder Tabs with distinct colors */}
-          <div className="folder-tabs-header" role="tablist">
-            {FOLDERS.map((f) => {
-              const isActive = activeFolderId === f.id;
-              return (
-                <button
-                  key={f.id}
-                  type="button"
-                  className={`folder-tab-btn ${f.themeClass} ${isActive ? "active" : ""}`}
-                  onClick={() => setActiveFolderId(f.id)}
-                >
-                  <span>{f.label}</span>
-                </button>
-              );
-            })}
+        {/* BENTO CELL 2: Live Mathematical Game of Life Cutout Viewport (Span 5 cols, 1 row) */}
+        <motion.div
+          className="bento-cell hero-simulation-cell"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="bento-cell-top">
+            <span className="bento-index">CONWAY&apos;S GAME OF LIFE</span>
+            <span className="bento-live-indicator">
+              <span className="live-dot" aria-hidden="true" />
+              CLICK TO SEED
+            </span>
           </div>
 
-          {/* Folder Card Body */}
-          <div className="folder-card-body">
-            <div className="folder-body-top">
-              {/* Colorful Icon Box (Reference Image 3 inspired) */}
-              <div className={`folder-icon-box ${activeFolder.themeClass}`}>
-                {activeFolder.icon}
+          <div className="simulation-viewport-spacer" aria-hidden="true">
+            <span className="crosshair tl">+</span>
+            <span className="crosshair tr">+</span>
+            <span className="crosshair bl">+</span>
+            <span className="crosshair br">+</span>
+          </div>
+
+          <div className="bento-cell-bottom">
+            <span className="bento-meta-label">CELLULAR AUTOMATON</span>
+            <span className="bento-meta-label">RULE B3/S23</span>
+          </div>
+        </motion.div>
+
+        {/* BENTO CELL 3: Technical Stack Breakdown (Span 3 cols, 1 row) */}
+        <motion.div
+          className="bento-cell hero-stack-cell"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="bento-cell-top">
+            <span className="bento-index">DOMAINS &amp; STACK</span>
+          </div>
+
+          <div className="stack-rows-list">
+            {STACK_DOMAINS.map((group) => (
+              <div key={group.label} className="stack-row-item">
+                <span className="stack-domain-key">{group.label}</span>
+                <span className="stack-domain-val">{group.items}</span>
               </div>
-              <div className="folder-body-header-text">
-                <span className={`neo-pill folder-tag-pill ${activeFolder.pillClass}`}>
-                  ● ACTIVE FOCUS
-                </span>
-                <h3 className="folder-title">{activeFolder.title}</h3>
-              </div>
-            </div>
-
-            <p className="folder-desc">{activeFolder.desc}</p>
-
-            <div className="folder-tags-wrap">
-              {activeFolder.tags.map((tag) => (
-                <span key={tag} className="micro-tech-tag">#{tag}</span>
-              ))}
-            </div>
+            ))}
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
 
-      {/* Vibrant 4-Block Stats Strip (Directly inspired by Reference Image 4) */}
-      <motion.div
-        className="hero-stats-strip"
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="stat-block stat-block-lilac">
-          <span className="stat-val">3+</span>
-          <span className="stat-lbl">Years Building</span>
-        </div>
-        <div className="stat-block stat-block-yellow">
-          <span className="stat-val">10+</span>
-          <span className="stat-lbl">Systems Built</span>
-        </div>
-        <div className="stat-block stat-block-mint">
-          <span className="stat-val">IoT &amp; Web</span>
-          <span className="stat-lbl">Core Focus</span>
-        </div>
-        <div className="stat-block stat-block-coral">
-          <span className="stat-val">Full-Stack</span>
-          <span className="stat-lbl">Hardware &amp; Web</span>
-        </div>
-      </motion.div>
+        {/* BENTO CELL 4: Direct Profiles (Span 2 cols, 1 row) */}
+        <motion.div
+          className="hero-profiles-cell"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <a
+            href="https://github.com/Simplemindedmoron"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bento-profile-tile"
+          >
+            <div className="bento-cell-top">
+              <span className="bento-index">CODE</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" />
+              </svg>
+            </div>
+            <div className="profile-tile-bottom">
+              <span className="profile-tile-name">GitHub</span>
+              <span className="profile-tile-sub">@Simplemindedmoron</span>
+            </div>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/arjun-sanesh/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bento-profile-tile"
+          >
+            <div className="bento-cell-top">
+              <span className="bento-index">NETWORK</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" />
+              </svg>
+            </div>
+            <div className="profile-tile-bottom">
+              <span className="profile-tile-name">LinkedIn</span>
+              <span className="profile-tile-sub">in/arjun-sanesh</span>
+            </div>
+          </a>
+        </motion.div>
+      </div>
     </main>
   );
 }

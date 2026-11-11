@@ -3,9 +3,8 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 
 const navItems = [
-  { label: "Projects", href: "#work" },
-  { label: "Terminal", href: "#terminal" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", sectionId: "work" },
+  { label: "Contact", sectionId: "contact" },
 ];
 
 function Navbar() {
@@ -13,19 +12,12 @@ function Navbar() {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef(null);
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("portfolio-theme") || "paper";
-    }
-    return "paper";
-  });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("portfolio-theme", theme);
-  }, [theme]);
+    document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.removeItem("portfolio-theme");
+  }, []);
 
-  // Close mobile menu on resize, escape key, or click outside
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
@@ -56,10 +48,6 @@ function Navbar() {
     };
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "paper" : "dark"));
-  };
-
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
@@ -83,143 +71,116 @@ function Navbar() {
   };
 
   return (
-    <>
-      {/* Top Neo-Brutalism Ticker Marquee Strip */}
-      <div className="top-ticker-strip">
-        <div className="ticker-content">
-          ✦ ARJUN SANESH // HARDWARE &amp; SOFTWARE DEVELOPER ✦ OPEN FOR COLLABORATION ✦ ROS 2 &amp; ESP32 ✦ EXPLORE OPEN-SOURCE REPOSITORIES ✦ ARJUN SANESH // HARDWARE &amp; SOFTWARE DEVELOPER ✦ OPEN FOR COLLABORATION ✦ ROS 2 &amp; ESP32 ✦
-        </div>
-      </div>
-
-      <header className="navbar-wrapper" id="main-nav" ref={navRef}>
-        <nav className="navbar-pill">
-          {/* Brand Badge */}
+    <header className="navbar-wrapper" id="main-nav" ref={navRef}>
+      <nav className="navbar-bento-bar">
+        <div className="nav-left-group">
           <Link
             to="/"
             onClick={(e) => scrollToSection(e, "hero")}
             className="nav-brand-group"
-            title="Arjun Sanesh Home"
           >
-            <span className="nav-logo-pill">✦ ARJUN SANESH</span>
+            <span className="nav-brand-dot" aria-hidden="true" />
+            <span className="nav-brand-name">ARJUN SANESH</span>
           </Link>
+          <span className="nav-discipline-tag">HARDWARE / ROBOTICS / SOFTWARE</span>
+        </div>
 
-          {/* Center Links */}
+        <div className="nav-right-group">
           <div className="nav-links-center">
             {navItems.map((item) => (
               <a
                 key={item.label}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href.replace("#", ""))}
+                href={`#${item.sectionId}`}
+                onClick={(e) => scrollToSection(e, item.sectionId)}
                 className="nav-item-btn"
               >
                 {item.label}
               </a>
             ))}
+            <Link to="/projects" className="nav-item-btn">
+              Archive
+            </Link>
           </div>
 
-          {/* Right Actions */}
-          <div className="nav-right-actions">
-            <a
-              href="https://github.com/Simplemindedmoron"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="neo-btn neo-btn-sm neo-btn-coral nav-github-desktop"
-            >
-              <span>GitHub ↗</span>
-            </a>
+          <a
+            href="https://github.com/Simplemindedmoron"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-cta-btn nav-github-desktop"
+          >
+            <span>GitHub</span>
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" />
+            </svg>
+          </a>
 
-            {/* Clean Professional SVG Theme Toggle (No Emojis) */}
-            <button
-              type="button"
-              className="theme-toggle-neo"
-              onClick={toggleTheme}
-              title={`Switch to ${theme === "dark" ? "light beige" : "dark"} mode`}
-              aria-label="Toggle color theme"
-            >
-              {theme === "dark" ? (
-                /* Moon Vector Icon for Dark Mode */
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-              ) : (
-                /* Sun Vector Icon for Light Mode */
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="5" />
-                  <line x1="12" y1="1" x2="12" y2="3" />
-                  <line x1="12" y1="21" x2="12" y2="23" />
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                  <line x1="1" y1="12" x2="3" y2="12" />
-                  <line x1="21" y1="12" x2="23" y2="12" />
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </svg>
-              )}
-            </button>
+          <button
+            type="button"
+            className={`mobile-hamburger-btn ${isMobileMenuOpen ? "is-active" : ""}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            <span className="hamburger-bar"></span>
+            <span className="hamburger-bar"></span>
+          </button>
+        </div>
+      </nav>
 
-            {/* Mobile Hamburger Button */}
-            <button
-              type="button"
-              className={`mobile-hamburger-btn ${isMobileMenuOpen ? "is-active" : ""}`}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              <span className="hamburger-bar"></span>
-              <span className="hamburger-bar"></span>
-              <span className="hamburger-bar"></span>
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile Dropdown Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              className="mobile-menu-card"
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="mobile-menu-links">
-                {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={(e) => scrollToSection(e, item.href.replace("#", ""))}
-                    className="mobile-nav-link"
-                  >
-                    <span>{item.label}</span>
-                    <span className="mobile-nav-arrow">→</span>
-                  </a>
-                ))}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="mobile-menu-card"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="mobile-menu-links">
+              {navItems.map((item) => (
                 <a
-                  href="https://github.com/Simplemindedmoron"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mobile-nav-link mobile-nav-github"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  key={item.label}
+                  href={`#${item.sectionId}`}
+                  onClick={(e) => scrollToSection(e, item.sectionId)}
+                  className="mobile-nav-link"
                 >
-                  <span>GitHub Profile</span>
-                  <span className="mobile-nav-arrow">↗</span>
+                  <span>{item.label}</span>
+                  <span>→</span>
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/arjun-sanesh/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mobile-nav-link mobile-nav-linkedin"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span>LinkedIn Network</span>
-                  <span className="mobile-nav-arrow">↗</span>
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-    </>
+              ))}
+              <Link
+                to="/projects"
+                className="mobile-nav-link"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>Archive</span>
+                <span>→</span>
+              </Link>
+              <a
+                href="https://github.com/Simplemindedmoron"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-nav-link"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>GitHub</span>
+                <span>↗</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/arjun-sanesh/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mobile-nav-link"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>LinkedIn</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }
 

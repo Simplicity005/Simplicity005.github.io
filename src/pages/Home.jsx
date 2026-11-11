@@ -1,7 +1,6 @@
 import Navbar from "../components/layouts/Navbar";
 import Hero from "../components/layouts/Hero";
 import Work from "../components/ui/Work";
-import Terminal from "../components/ui/Terminal";
 import Contact from "../components/layouts/Contact";
 import Footer from "../components/layouts/Footer";
 
@@ -11,7 +10,6 @@ function Home() {
       <Navbar />
       <Hero />
       <Work isPreview={true} />
-      <Terminal />
       <Contact />
       <Footer />
     </div>
